@@ -1,3 +1,6 @@
 import './styles.css';
+import Alpine from 'alpinejs'
 
-console.log('TailwindCSS + Webpack starter template');
+window.Alpine = Alpine
+
+Alpine.start()

@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-h2 {
-    @apply text-red-100
+@layer components {
+    .container {
+        @apply px-4 w-full minsm:max-w-[672px] minmd:max-w-[800px] minlg:max-w-[1056px] minxl:max-w-[1180px];
+    }
+}
+
+@layer base {
+    html {
+        font-family: 'Outfit', system-ui, sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        scroll-behavior: smooth;
+        @apply text-primary;
+    }
+
+    body {
+        @apply bg-background-color
+    }
+}
+
+section {
+    @apply w-full;
+}
+
+.row {
+    @apply -mx-4 grid grid-cols-12;
 }

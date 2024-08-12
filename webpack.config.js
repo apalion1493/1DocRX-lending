@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -58,7 +59,8 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [
-            '...',
+            '...', // Использовать существующие минимизаторы (например, `terser-webpack-plugin` для JavaScript)
+            new CssMinimizerPlugin(), // Минимизация CSS
             new ImageMinimizerPlugin({
                 minimizer: {
                     implementation: ImageMinimizerPlugin.imageminGenerate,

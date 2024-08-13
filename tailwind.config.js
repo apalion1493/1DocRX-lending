@@ -54,6 +54,7 @@ module.exports = {
                 'background-color': '#F9FAFF',
                 'dark-blue-100': '#001A60',
                 'dark-blue-50': '#001A6080',
+                'dark-blue-50-2': 'rgba(0, 26, 96, 0.50)',
                 'blue-1': '#335ACB',
                 'blue-2': '#3A60CD',
 

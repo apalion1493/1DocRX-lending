@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // Импортируем CopyWebpackPlugin
 
 module.exports = {
     entry: './src/index.js',
@@ -23,7 +24,10 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
-                type: 'asset',
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][ext]', // Перенос изображений в папку dist/images
+                },
             },
         ],
     },
@@ -33,6 +37,11 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css', // Название выходного CSS файла
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'src/images'), to: 'images' }, // Копирование всех изображений из папки src/images в dist/images
+            ],
         }),
         new ImageMinimizerPlugin({
             minimizer: {

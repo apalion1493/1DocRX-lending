@@ -29,3 +29,37 @@ section {
 .row {
     @apply -mx-4 grid grid-cols-12;
 }
+
+.h2 {
+    letter-spacing: -2.16px;
+    @apply text-h2 font-medium;
+}
+
+.arrow-right {
+    background: url("images/icons/Arrow-r.svg");
+    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+}
+
+/* Button animation */
+@keyframes moveArrow {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+    51% {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.group:hover .arrow {
+    animation: moveArrow 0.8s ease-in-out forwards;
+}
+/*--------------*/

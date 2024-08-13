@@ -258,12 +258,150 @@
             </div>
         </div>
     </section>
+    <section class="py-16 border-b border-dashed border-light-blue-1">
+        <div class="container">
+            <div class="row mb-12">
+                <div class="col-span-12">
+                    <div class="max-w-[552px] flex flex-col items-center mx-auto">
+                        <h2 class="text-primary h2 text-center mb-6">Most Popular Questions</h2>
+                        <p class="text-dark-blue-50-2 max-w-[434px] text-center text-main-text">Ozempic for weight loss has shown to be successful with patients losing weight in clinical trials.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap-6">
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-y-6">
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: true }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItemOne" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    How much does Ozempic cost?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItemOne" role="region" aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem3" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    Are there foods to avoid while taking Ozempic?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem3" role="region" aria-labelledby="controlsAccordionItem3" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem5" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    What are the most common Ozempic side effects?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem5" role="region" aria-labelledby="controlsAccordionItem5" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-y-6">
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem2" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    Are there foods to avoid while taking Ozempic?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem2" role="region" aria-labelledby="controlsAccordionItem2" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem4" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    How much does metabolic testing cost?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem4" role="region" aria-labelledby="controlsAccordionItem4" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem6" type="button" class="flex w-full items-center justify-between text-left text-h5 font-semibold" aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded" :class="isExpanded ? 'active'  : 'inActive'" :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    What are the most common Ozempic side effects?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem6" role="region" aria-labelledby="controlsAccordionItem6" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance coverage—and we’re here to help with that! As your insurance concierge, our team will work with your insurance provider to determine coverage for your GLP-1 medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16">
+        <div class="container">
+            <div class="row">
+                <div class="col-span-12">
+                    <div class="bg-secondary py-14 px-10 rounded-3xl overflow-hidden">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
 
-    <footer>
-
+    <footer class="py-8 bg-dark-blue-100 mt-auto w-full">
+        <div class="container">
+            <div class="row gap-x-6">
+                <div class="col-span-4 flex items-center">
+                    <span class="py-3 px-4 mr-auto text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded">1DocRX</span>
+                </div>
+                <div class="col-span-4 flex items-center">
+                    <p class="mx-auto text-white">© 2023 All rights reserved.</p>
+                </div>
+                <div class="col-span-4 flex items-center">
+                    <a class="ml-auto text-white" href="tel:+107425899611">
+                        <i></i>
+                        <span>+ (07425) 899611</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
 </main>
 

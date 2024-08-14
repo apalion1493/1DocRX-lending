@@ -13,56 +13,131 @@
     <header class="py-8 w-full">
         <div class="container">
             <div class="row">
-                <div class="col-span-2">
-                    <a class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary" href="#">1DocRX</a>
-                </div>
-                <div class="col-span-10">
-                    <div class="flex items-center justify-end w-full gap-x-8">
-                        <a href="tel:+107425899611">
-                            <i></i>
-                            <span>+ (07425) 899611</span>
-                        </a>
-                        <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12" href="#">Get Started Now
-                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                <div class="col-span-12">
+                    <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
+                         class="flex items-center justify-between" aria-label="penguin ui menu">
+                        <!-- Brand Logo -->
+                        <a class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
+                           href="#">1DocRX</a>
+                        <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
+                            <a class="flex items-center hover:underline" href="tel:+107425899611">
+                        <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                            <i class="phone-icon"></i>
+                        </span>
+                                <span class="text-base text-primary">+ (07425) 899611</span>
+                            </a>
+                            <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                               href="#">Get Started Now
+                                <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                <i class="arrow-right"></i>
+                            </span>
+                        </span>
+                            </a>
+                        </div>
+                        <!-- Mobile Menu Button -->
+                        <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
+                                :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
+                                class="flex text-slate-700 dark:text-slate-300 minmd:hidden" aria-label="mobile menu"
+                                aria-controls="mobileMenu">
+                    <span x-show="!mobileMenuIsOpen" class="rounded-full w-12 h-12 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                        <svg x-cloak xmlns="http://www.w3.org/2000/svg" fill="none"
+                             aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 stroke-primary">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                        </svg>
+                    </span>
+                            <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                        <!-- Mobile Menu -->
+                        <div x-cloak x-show="mobileMenuIsOpen"
+                             x-transition:enter="transition motion-reduce:transition-none ease-out duration-300"
+                             x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0"
+                             x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
+                             x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" id="mobileMenu"
+                             :class="mobileMenuIsOpen ? 'flex' : 'hidden'"
+                             class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-800 minmd:hidden">
+                            <div class="items-center justify-end w-full gap-y-8 flex flex-col">
+                        <span class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
+                        >1DocRX</span>
+                                <a class="flex items-center hover:underline" href="tel:+107425899611">
+                            <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                <i class="phone-icon"></i>
+                            </span>
+                                    <span class="text-base text-primary">+ (07425) 899611</span>
+                                </a>
+                                <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">Get Started Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                 <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                     <i class="arrow-right"></i>
                                 </span>
                             </span>
-                        </a>
-                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
     </header>
-    <section class="border-b border-dashed border-light-blue-1">
+    <section class="pb-16 border-b border-dashed border-light-blue-1">
         <div class="container">
-
+            <div class="background-blue-circle py-14 pl-16 pr-8 rounded-3xl overflow-hidden -mx-4 custom-width">
+                <div class="row gap-x-6 row--m0">
+                    <div class="col-span-6 flex items-center">
+                        <div class="flex flex-col text-white">
+                            <h1 class=" font-medium text-h1 tracking-tight-2.16 mb-5">Weight loss made easy <br>
+                                <span class="text-h2 font-light italic">with Ozempic !</span></h1>
+                            <p class="max-w-[414px] text-h5">Buy an Ozempic and lose unnecessary pounds, place an order and receive it the very next day!</p>
+                            <a class="group mt-6 flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                               href="#">Make a Request
+                                <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-6">
+                        <div class="relative -left-8">
+                            <img class="w-full" src="images/hero-img.png" alt="Ozempic">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section class="py-16 border-b border-dashed border-light-blue-1">
         <div class="container">
             <div class="row gap-x-6">
                 <div class="col-span-5">
-                    <div class="flex flex-col">
-                        <h1 class="mb-6">How does
-                            Ozempic works ?</h1>
-                        <p>Ozempic works by slowing the digestion process, and can help you to feel full for longer. Ozempic, acts like a hormone your body naturally makes to regulate blood sugar and help support weight loss.</p>
+                    <div class="flex flex-col max-w-[400px]">
+                        <h2 class="mb-6 text-h2 font-medium tracking-tight-2.16">How does
+                            Ozempic works ?</h2>
+                        <p class="text-dark-blue-50-2 text-main-text">Ozempic works by slowing the digestion process, and can help you to feel full for longer.
+                            Ozempic, acts like a hormone your body naturally makes to regulate blood sugar and help
+                            support weight loss.</p>
                     </div>
                 </div>
                 <div class="col-span-3">
-                    <div class="rounded-[20px] bg-secondary text-white px-6 py-8 flex flex-col overflow-hidden">
-                        <div>
-                            <i></i>
+                    <div class="rounded-[20px] h-full bg-secondary text-white px-6 py-8 flex flex-col overflow-hidden">
+                        <div class="rounded-full w-16 min-w-16 h-16 overflow-hidden flex items-center justify-center bg-white-2 mb-6">
+                            <i class="Overweight-icon"></i>
                         </div>
-                        <p>Ozempic treats type 2 diabetes but may be prescribed for weight loss, if appropriate. </p>
+                        <p class="text-main-text">Ozempic treats type 2 diabetes but may be prescribed for weight loss, if appropriate. </p>
                     </div>
                 </div>
                 <div class="col-span-4">
-                    <div class="rounded-[20px] px-6 py-8 flex flex-col bg-light-blue-2 overflow-hidden">
-                        <div>
-                            <i></i>
+                    <div class="rounded-[20px] h-full px-6 py-8 flex flex-col bg-light-blue-2 overflow-hidden border border-dashed border-light-blue-1">
+                        <div class="rounded-full w-16 min-w-16 h-16 overflow-hidden flex items-center justify-center bg-light-blue-1 mb-6">
+                            <i class="Weight-Scale-icon"></i>
                         </div>
-                        <p>90% of customers lost up to 2% percent of body fat in just a week of use, and up to
+                        <p class="text-main-text">90% of customers lost up to 2% percent of body fat in just a week of use, and up to
                             15 kg in a month of using Ozempik!</p>
                     </div>
                 </div>
@@ -73,14 +148,29 @@
         <div class="container">
             <div class="row gap-x-6">
                 <div class="col-span-7">
-                    <div class="px-8 pt-8 rounded-[20px] flex overflow-hidden bg-light-blue-2 mr-10">
-
+                    <div class="pl-8 pt-8 rounded-[20px] flex overflow-hidden bg-light-blue-2 mr-10">
+                        <img src="images/img-1.png" alt="Img 1">
+                        <div class="py-8 h-full mx-auto">
+                            <div x-data="{ currentVal: 20 }" class="flex flex-col max-w-[358px] w-full items-center">
+                                <span class="block mb-6 font-semibold text-h5">Your current weight:</span>
+                                <span class="w-[70px] h-[42px] text-main-text bg-secondary rounded-xl text-center flex items-center justify-center font-bold text-white" x-text="currentVal"></span>
+                                <div class="mt-3 mb-6">
+                                   <label for="rangeSlider" class="sr-only">Brightness</label>
+                                   <input x-model="currentVal" id="rangeSlider" type="range" class="h-[3px] w-[354px] appearance-none bg-light-blue-1 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-blue-700 active:[&::-moz-range-thumb]:scale-110 [&::-moz-range-thumb]:dark:bg-blue-600 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:bg-blue-700 active:[&::-webkit-slider-thumb]:scale-110 [&::-webkit-slider-thumb]:dark:bg-blue-600 [&::-moz-range-thumb]:rounded-full [&::-webkit-slider-thumb]:rounded-full rounded-full" min="0" max="100" step="1" />
+                                </div>
+                                <p class="text-main-text mb-3">You could easy lose:</p>
+                                <span class="text-secondary text-h5 font-bold">
+                                    <span class="" x-text="Number(currentVal) + 20"></span>
+                                    lib
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-5">
                     <div class="flex flex-col">
-                        <h2 class="mb-6">There’s a reason why everyone is talking about semaglutide. It works.</h2>
-                        <p class="max-w-[290px]">On average, people on Wegovy lose 15% of their weight in a year*.</p>
+                        <h2 class="mb-6 text-h2 font-medium tracking-tight-2.16">There’s a reason why everyone is talking about semaglutide. It works.</h2>
+                        <p class="max-w-[290px] text-main-text text-dark-blue-50-2">On average, people on Wegovy lose 15% of their weight in a year*.</p>
                     </div>
                 </div>
             </div>
@@ -90,44 +180,55 @@
         <div class="container">
             <div class="row">
                 <div class="col-span-12">
-                   <div class="max-w-[552px] flex flex-col items-center mx-auto mb-8">
-                       <h2 class="text-white h2 text-center mb-6">Lose up to 15% of your body weight in 3 easy steps</h2>
-                       <p class="text-white max-w-[434px] text-center text-main-text">Ozempic for weight loss has shown to be successful with patients losing weight in clinical trials. </p>
-                   </div>
+                    <div class="max-w-[552px] flex flex-col items-center mx-auto mb-8">
+                        <h2 class="text-white h2 text-center mb-6">Lose up to 15% of your body weight in 3 easy
+                            steps</h2>
+                        <p class="text-white max-w-[434px] text-center text-main-text">Ozempic for weight loss has shown
+                            to be successful with patients losing weight in clinical trials. </p>
+                    </div>
                 </div>
             </div>
-            <div class="row gap-x-6 pt-[73px] pb-[62px]">
+            <div class="row gap-x-6 pt-[73px] pb-[92px]">
                 <div class="col-span-4">
-                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col overflow-hidden h-full">
-                        <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
-                            <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
-                                <span class="text-white font-bold text-main-text">01</span>
+                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative arrow-right-top-block">
+                        <div class="flex flex-col overflow-hidden h-full">
+                            <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
+                                <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
+                                    <span class="text-white font-bold text-main-text">01</span>
+                                </div>
                             </div>
+                            <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Fill out our contact form</span>
+                            <p class="text-dark-blue-100 text-main-text">We will contact you within a few minutes for
+                                consultation and for confirmation of the order.</p>
                         </div>
-                        <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Fill out our contact form</span>
-                        <p class="text-dark-blue-100 text-main-text">We will contact you within a few minutes for consultation and for confirmation of the order.</p>
                     </div>
                 </div>
                 <div class="col-span-4">
-                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col overflow-hidden h-full">
-                        <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
-                            <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
-                                <span class="text-white font-bold text-main-text">02</span>
+                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative arrow-right-bottom-block">
+                        <div class="flex flex-col overflow-hidden h-full">
+                            <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
+                                <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
+                                    <span class="text-white font-bold text-main-text">02</span>
+                                </div>
                             </div>
+                            <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Get a prescription</span>
+                            <p class="text-dark-blue-100 text-main-text">After talking with our doctor, you will receive a
+                                qualified consultation and a prescription for Ozempic.</p>
                         </div>
-                        <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Get a prescription</span>
-                        <p class="text-dark-blue-100 text-main-text">After talking with our doctor, you will receive a qualified consultation and a prescription for Ozempic.</p>
                     </div>
                 </div>
                 <div class="col-span-4">
-                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col overflow-hidden h-full">
-                        <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
-                            <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
-                                <span class="text-white font-bold text-main-text">03</span>
+                    <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative">
+                        <div class="flex flex-col overflow-hidden h-full">
+                            <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
+                                <div class="w-[38px] h-[38px] rounded-full overflow-hidden flex items-center justify-center bg-secondary">
+                                    <span class="text-white font-bold text-main-text">03</span>
+                                </div>
                             </div>
+                            <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Delivery to your doorstep</span>
+                            <p class="text-dark-blue-100 text-main-text">You can order delivery to your doorstep the next
+                                day or set a time and place for delivery on another day.</p>
                         </div>
-                        <span class="text-dark-blue-100 font-semibold text-h4 mb-3 block">Delivery to your doorstep</span>
-                        <p class="text-dark-blue-100 text-main-text">You can order delivery to your doorstep the next day or set a time and place for delivery on another day.</p>
                     </div>
                 </div>
             </div>
@@ -135,7 +236,8 @@
                 <div class="col-span-12">
                     <div class="flex flex-col items-center mx-auto">
                         <span class="text-h3 font-semibold text-white block mb-6">Ready to get approved?</span>
-                        <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12" href="#">Make a Request
+                        <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           href="#">Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                 <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                     <i class="arrow-right"></i>
@@ -151,20 +253,70 @@
         <div class="container">
             <div class="row gap-x-6">
                 <div class="col-span-5">
-                    <h2 class="h2 block mb-6">Revolutionary <br>medications!</h2>
-                    <p>Wegovy, Saxenda and Ozempic are semaglutide
-                        (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that works by mimicking your body’s natural hormones, helping you feel fuller faster and for longer.</p>
+                    <div class="max-w-[433px]">
+                        <h2 class="h2 block mb-6 text-h2 font-medium tracking-tight-2.16">Revolutionary <br>medications!</h2>
+                        <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
+                            (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
+                            works by mimicking your body’s natural hormones, helping you feel fuller faster and for
+                            longer.</p>
+                    </div>
                 </div>
                 <div class="col-span-7">
                     <div class="grid grid-cols-7 grid-rows-2 gap-6">
                         <div class="col-span-3">
-                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-light-blue-2"></div>
+                            <div class="h-[154px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6">
+                                <img class="mr-6" src="images/image-2.png" alt="Saxenda RX Image">
+                                <div class="flex flex-col h-full py-4 text-primary">
+                                    <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
+                                    <p class="text-base">Semaglutude</p>
+                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                       href="#">Make a request
+                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                                <i class="arrow-right-white"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-span-4 col-start-4">
-                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-secondary"></div>
+                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6">
+                                <div class="flex-1 flex justify-center mr-4">
+                                    <img class="" src="images/image-3.png" alt="Saxenda RX Image">
+                                </div>
+                                <div class="flex flex-col h-full py-4 text-white flex-1">
+                                    <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
+                                    <p class="text-base">Semaglutude</p>
+                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                       href="#">Make a request
+                                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                                <i class="arrow-right"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-span-7 row-start-2">
-                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-light-blue-1"></div>
+                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6">
+                                <div class="flex-1 flex mr-8">
+                                    <img class="" src="images/image-4.png" alt="Saxenda RX Image">
+                                </div>
+                                <div class="flex flex-col h-full py-4 text-primary flex-1">
+                                    <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
+                                    <p class="text-base">Semaglutude</p>
+                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                       href="#">Make a request
+                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                                <i class="arrow-right-white"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,56 +325,64 @@
     </section>
     <section class="py-16 border-b border-dashed border-light-blue-1">
         <div class="container">
-            <div class="row">
+            <div class="row gap-x-6">
                 <div class="col-span-5">
-                    <div class="flex flex-col">
-                        <div class="flex items-center gap-x-4 mb-4">
-                            <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold">Starting with just 450$ month</span>
-                            <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold">Weekly you lost 1000$</span>
-                        </div>
-                        <div class="flex flex-col px-6 py-8 border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px]">
-                            <h4 class="text-h4 text-primary mb-6 block">What include our weight program?</h4>
-                            <ul class="flex flex-col gap-y-6 mb-10">
-                                <li class="flex items-center gap-x-4">
+                    <div class="flex items-center gap-x-4 mb-4">
+                        <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold">Starting with just 450$ month</span>
+                        <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold">Weekly you lost 1000$</span>
+                    </div>
+                </div>
+                <div class="col-span-7"></div>
+                <div class="col-span-5">
+                    <div class="flex flex-col h-full px-6 py-8 border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px]">
+                        <h4 class="text-h4 text-primary mb-6 block">What include our weight program?</h4>
+                        <ul class="flex flex-col gap-y-6 mb-10">
+                            <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
-                                        <i class=""></i>
+                                        <i class="Car-icon"></i>
                                     </span>
-                                    <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When you order an item on our website, you receive free shipping!</p>
-                                </li>
-                                <li class="flex items-center gap-x-4">
+                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                    you order an item on our website, you receive free shipping!</p>
+                            </li>
+                            <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
-                                        <i class=""></i>
+                                        <i class="present-icon"></i>
                                     </span>
-                                    <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We will deliver your order the next day to your door!</p>
-                                </li>
-                                <li class="flex items-center gap-x-4">
+                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                    will deliver your order the next day to your door!</p>
+                            </li>
+                            <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
-                                        <i class=""></i>
+                                        <i class="Plan-icon"></i>
                                     </span>
-                                    <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We will provide you with a complete treatment plan!</p>
-                                </li>
-                                <li class="flex items-center gap-x-4">
+                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                    will provide you with a complete treatment plan!</p>
+                            </li>
+                            <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
-                                        <i class=""></i>
+                                        <i class="Comment-icon"></i>
                                     </span>
-                                    <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We will advise you on all your concerns about treatment</p>
-                                </li>
-                            </ul>
-                            <a class="mb-4 group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12" href="#">
-                                Start Treatment Now
-                                <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                    will advise you on all your concerns about treatment</p>
+                            </li>
+                        </ul>
+                        <a class="mb-4 mt-auto group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           href="#">
+                            Start Treatment Now
+                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                            </a>
-                            <p class="text-dark-blue-100">We don’t work with insurance!</p>
-                        </div>
+                        </a>
+                        <p class="text-dark-blue-100">We don’t work with insurance!</p>
                     </div>
                 </div>
                 <div class="col-span-7">
-                    <div class="h-full w-full flex items-center justify-center rounded-3xl overflow-hidden px-8 py-14">
-                        <img class="object-contain" src="" alt="Image">
+                    <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                        <div class="px-8 py-14 flex items-center justify-center h-full w-full">
+                            <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,17 +412,275 @@
                             </div>
                         </div>
                         <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
-                        <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras diam semper vitae eu in ut.</p>
+                        <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
+                            est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
+                            diam semper vitae eu in ut.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section class="py-16 border-b border-dashed border-light-blue-1">
+        <div class="container">
+            <div class="row mb-12">
+                <div class="col-span-12">
+                    <div class="max-w-[552px] flex flex-col items-center mx-auto">
+                        <h2 class="text-primary h2 text-center mb-6">Most Popular Questions</h2>
+                        <p class="text-dark-blue-50-2 max-w-[434px] text-center text-main-text">Ozempic for weight loss
+                            has shown to be successful with patients losing weight in clinical trials.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row gap-6">
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-y-6">
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: true }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItemOne" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    How much does Ozempic cost?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItemOne" role="region"
+                                     aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem3" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    Are there foods to avoid while taking Ozempic?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem3" role="region"
+                                     aria-labelledby="controlsAccordionItem3" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem5" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    What are the most common Ozempic side effects?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem5" role="region"
+                                     aria-labelledby="controlsAccordionItem5" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-y-6">
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem2" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    Are there foods to avoid while taking Ozempic?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem2" role="region"
+                                     aria-labelledby="controlsAccordionItem2" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem4" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    How much does metabolic testing cost?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem4" role="region"
+                                     aria-labelledby="controlsAccordionItem4" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                                <button id="controlsAccordionItem6" type="button"
+                                        class="flex w-full items-center justify-between text-left text-h5 font-semibold"
+                                        aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                        :class="isExpanded ? 'active'  : 'inActive'"
+                                        :aria-expanded="isExpanded ? 'true' : 'false'">
+                                    What are the most common Ozempic side effects?
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
+                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+                                    </svg>
+                                </button>
+                                <div x-cloak x-show="isExpanded" id="accordionItem6" role="region"
+                                     aria-labelledby="controlsAccordionItem6" x-collapse>
+                                    <div class="pt-3 text-main-text">
+                                        The cost of your Ozempic medication can range depending on your insurance
+                                        coverage—and we’re here to help with that! As your insurance concierge, our team
+                                        will work with your insurance provider to determine coverage for your GLP-1
+                                        medication.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16">
+        <div class="container">
+            <form class="bg-secondary py-14 px-10 rounded-3xl overflow-hidden -mx-4">
+                <div class="row gap-x-6 row--m0">
+                    <div class="col-span-5">
+                        <div class="flex flex-col gap-y-6 h-full text-white">
+                            <span class="font-medium text-h1 tracking-tight-2.16">Still have questions?</span>
+                            <p class="text-main-text">If you have any questions or would like to know information about medications, leave your contact details and we will contact you!</p>
+                            <button type="submit" class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12 mt-auto"
+                               >Make a request
+                                <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                    <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-span-7">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="col-span-1">
+                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                                    <label for="textInputFirstName" class="w-fit text-none">First Name</label>
+                                    <input id="textInputFirstName" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="first name" placeholder="First Name" autocomplete="first name"/>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                                    <label for="textInputSecondName" class="w-fit text-none">Second Name</label>
+                                    <input id="textInputSecondName" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="second name" placeholder="Second Name" autocomplete="second name"/>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                                    <label for="textInputMail" class="w-fit text-none">Email</label>
+                                    <input id="textInputMail" type="email" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                                    <label for="textInputPhone" class="w-fit text-none">Phone</label>
+                                    <input id="textInputPhone" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="phone" placeholder="Phone" autocomplete="phone"/>
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <div class="relative flex w-full flex-col text-dark-blue-50-2">
+                                    <label for="selectState" class="w-fit text-none">Choose State</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
+                                        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
+                                    <select id="selectState" name="Choose State" class="w-full appearance-none h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75">
+                                        <option selected>Choose State</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 
-
-
-    <footer>
-
+    <footer class="py-8 bg-dark-blue-100 mt-auto w-full">
+        <div class="container">
+            <div class="row gap-x-6">
+                <div class="col-span-4 flex items-center">
+                    <span class="py-3 px-4 mr-auto text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded">1DocRX</span>
+                </div>
+                <div class="col-span-4 flex items-center">
+                    <p class="mx-auto text-white">© 2023 All rights reserved.</p>
+                </div>
+                <div class="col-span-4 flex items-center">
+                    <a class="ml-auto text-white" href="tel:+107425899611">
+                        <i></i>
+                        <span>+ (07425) 899611</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
 </main>
 

@@ -30,14 +30,21 @@ section {
     @apply -mx-4 grid grid-cols-12;
 }
 
+.row--m0 {
+    @apply mx-0;
+}
+
 .h2 {
     letter-spacing: -2.16px;
     @apply text-h2 font-medium;
 }
 
-.arrow-right {
-    background: url("images/icons/Arrow-r.svg");
-    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+.custom-width {
+    width: calc(100% + 32px) !important;
+}
+
+.input::placeholder {
+    @apply text-dark-blue-50-2;
 }
 
 /* Button animation */
@@ -63,3 +70,77 @@ section {
     animation: moveArrow 0.8s ease-in-out forwards;
 }
 /*--------------*/
+
+.background-blue-circle {
+    background: url("images/bg-img.png");
+    @apply block h-full w-full bg-cover bg-no-repeat;
+}
+
+.bg-r-full {
+    @apply bg-right-top;
+}
+
+/*icons start*/
+.arrow-right {
+    background: url("images/icons/Arrow-r.svg");
+    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.arrow-right-white {
+    background: url("images/icons/Arrow-r-white.svg");
+    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.phone-icon {
+    background: url("images/icons/Phone.svg");
+    @apply block h-[20px] w-[20px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Overweight-icon {
+    background: url("images/icons/Overweight.svg");
+    @apply block h-[46px] w-[46px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Weight-Scale-icon {
+    background: url("images/icons/Weight-Scale.svg");
+    @apply block h-[42px] w-[42px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Car-icon {
+    background: url("images/icons/Car.svg");
+    @apply block h-[15px] w-[22px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.present-icon {
+    background: url("images/icons/present.svg");
+    @apply block h-[18px] w-[18px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Plan-icon {
+    background: url("images/icons/Plan.svg");
+    @apply block h-[18px] w-[20px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Comment-icon {
+    background: url("images/icons/Comment.svg");
+    @apply block h-[20px] w-[20px] bg-100-auto bg-center bg-no-repeat;
+}
+/*icons end*/
+
+.arrow-right-top-block::before {
+    content: '';
+    position: absolute;
+    top: -75px;
+    right: -100px;
+    background: url("images/icons/arrow-1.svg");
+    @apply block h-[53px] w-[211px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.arrow-right-bottom-block::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -80px;
+    background: url("images/icons/arrow-2.svg");
+    @apply block h-[40px] w-[169px] bg-100-auto bg-center bg-no-repeat;
+}

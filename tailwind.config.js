@@ -57,9 +57,12 @@ module.exports = {
                 'dark-blue-50-2': 'rgba(0, 26, 96, 0.50)',
                 'blue-1': '#335ACB',
                 'blue-2': '#3A60CD',
+                'white-2': '#FFFFFF1A',
 
             },
-            letterSpacing: {},
+            letterSpacing: {
+                'tight-2.16': '-2.16px'
+            },
             padding: {
                 '1/4': '25%',
                 '3/4': '75%',

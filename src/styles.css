@@ -84,6 +84,10 @@ section {
     background-position: 45% 0;
 }
 
+.otherFont {
+    font-family: 'Poppins', system-ui, sans-serif;
+}
+
 /*icons start*/
 .arrow-right {
     background: url("images/icons/Arrow-r.svg");

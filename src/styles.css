@@ -144,3 +144,42 @@ section {
     background: url("images/icons/arrow-2.svg");
     @apply block h-[40px] w-[169px] bg-100-auto bg-center bg-no-repeat;
 }
+
+.swiper.mySwiper {
+    @apply flex flex-col -mx-4
+}
+
+.swiper.mySwiper .swiper-button-arrow {
+    top: 0;
+    margin-top: 0;
+    @apply w-12 h-12 rounded-full overflow-hidden bg-light-blue-2
+}
+
+.swiper.mySwiper .swiper-button-arrow:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.swiper.mySwiper .swiper-button-prev {
+    left: 0;
+    right: auto;
+}
+
+.swiper.mySwiper .swiper-button-next {
+    right: 0;
+    left: auto;
+}
+
+.swiper.mySwiper .swiper-button-prev:after {
+    background: url("images/icons/Arrow-l.svg");
+    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.swiper.mySwiper .swiper-button-next:after {
+    background: url("images/icons/Arrow-r.svg");
+    @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
+}
+

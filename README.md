@@ -1,1 +1,1 @@
-https://apalion1493.github.io/1DocRX-lending/build/index.html
+https://apalion1493.github.io/1DocRX-lending/dist/index.html

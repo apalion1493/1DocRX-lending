@@ -27,7 +27,7 @@ section {
 }
 
 .row {
-    @apply -mx-4 grid grid-cols-12;
+    @apply -mx-4 grid grid-cols-12 lg:mx-0;
 }
 
 .row--m0 {
@@ -80,6 +80,10 @@ section {
     @apply bg-right-top;
 }
 
+.bg-r-45 {
+    background-position: 45% 0;
+}
+
 /*icons start*/
 .arrow-right {
     background: url("images/icons/Arrow-r.svg");
@@ -93,6 +97,11 @@ section {
 
 .phone-icon {
     background: url("images/icons/Phone.svg");
+    @apply block h-[20px] w-[20px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.phone-white-icon {
+    background: url("images/icons/Phone-white.svg");
     @apply block h-[20px] w-[20px] bg-100-auto bg-center bg-no-repeat;
 }
 
@@ -146,7 +155,7 @@ section {
 }
 
 .swiper.mySwiper {
-    @apply flex flex-col -mx-4
+    @apply flex flex-col -mx-4 md:mx-0
 }
 
 .swiper.mySwiper .swiper-button-arrow {
@@ -173,6 +182,10 @@ section {
     left: auto;
 }
 
+.swiper.mySwiper .swiper-slide {
+    height: auto;
+}
+
 .swiper.mySwiper .swiper-button-prev:after {
     background: url("images/icons/Arrow-l.svg");
     @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
@@ -183,3 +196,34 @@ section {
     @apply block h-[17px] w-[17px] bg-100-auto bg-center bg-no-repeat;
 }
 
+@media (max-width: 767.98px) {
+    .custom-width {
+        width: 100% !important;
+    }
+
+    .arrow-right-top-block::before {
+        top: auto;
+        bottom: -44px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        background: url("images/icons/arrow-1-mob.svg");
+        @apply block h-[35px] w-[134px] bg-100-auto bg-center bg-no-repeat;
+    }
+
+    .arrow-right-bottom-block::before {
+        bottom: -50px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        background: url("images/icons/arrow-2-mob.svg");
+        @apply block h-[45px] w-[167px] bg-100-auto bg-center bg-no-repeat;
+    }
+
+    .h2 {
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: -1.5px;;
+    }
+}

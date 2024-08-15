@@ -17,10 +17,13 @@ module.exports = {
             base: ['16px', '140%'],
             h1: ['54px', '120%'],
             h2: ['48px', '100%'],
+            h1Min: ['34px', '100%'],
             h3: ['32px', '100%'],
+            h2Min: ['28px', '100%'],
             h4: ['22px', '120%'],
             h5: ['20px', '120%'],
             'main-text': ['18px', '120%'],
+            h3Min: ['14px', '120%'],
         },
         screens: {
             xl: {max: '1179.98px'},
@@ -61,7 +64,8 @@ module.exports = {
 
             },
             letterSpacing: {
-                'tight-2.16': '-2.16px'
+                'tight-2.16': '-2.16px',
+                'tight-1.5': '-1.5px'
             },
             padding: {
                 '1/4': '25%',

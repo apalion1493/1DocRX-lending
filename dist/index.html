@@ -10,7 +10,7 @@
 <body class="">
 
 <main id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
-    <header class="py-8 w-full">
+    <header class="py-8 md:py-5 w-full">
         <div class="container">
             <div class="row">
                 <div class="col-span-12">
@@ -21,9 +21,9 @@
                            href="#">1DocRX</a>
                         <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
                             <a class="flex items-center hover:underline" href="tel:+107425899611">
-                        <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
-                            <i class="phone-icon"></i>
-                        </span>
+                                <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                    <i class="phone-icon"></i>
+                                </span>
                                 <span class="text-base text-primary">+ (07425) 899611</span>
                             </a>
                             <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
@@ -38,16 +38,16 @@
                         <!-- Mobile Menu Button -->
                         <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
                                 :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
-                                class="flex text-slate-700 dark:text-slate-300 minmd:hidden" aria-label="mobile menu"
+                                class="flex text-slate-700 z-[51] minmd:hidden" aria-label="mobile menu"
                                 aria-controls="mobileMenu">
-                    <span x-show="!mobileMenuIsOpen" class="rounded-full w-12 h-12 overflow-hidden flex items-center justify-center bg-light-blue-1">
-                        <svg x-cloak xmlns="http://www.w3.org/2000/svg" fill="none"
-                             aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 stroke-primary">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                        </svg>
-                    </span>
-                            <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            <span x-show="!mobileMenuIsOpen" class="rounded-full w-12 h-12 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                <svg x-cloak xmlns="http://www.w3.org/2000/svg" fill="none"
+                                     aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 stroke-primary">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                                </svg>
+                            </span>
+                            <svg x-cloak x-show="mobileMenuIsOpen" style="display: none" xmlns="http://www.w3.org/2000/svg" fill="none"
                                  aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
                             </svg>
@@ -58,24 +58,24 @@
                              x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0"
                              x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
                              x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" id="mobileMenu"
-                             :class="mobileMenuIsOpen ? 'flex' : 'hidden'"
-                             class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-800 minmd:hidden">
+                             :class="mobileMenuIsOpen ? 'flex' : 'hidden'" style="display: none"
+                             class="fixed max-h-svh z-50 overflow-y-auto inset-x-0 top-0 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 minmd:hidden">
                             <div class="items-center justify-end w-full gap-y-8 flex flex-col">
-                        <span class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
-                        >1DocRX</span>
+                                <span class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
+                                >1DocRX</span>
                                 <a class="flex items-center hover:underline" href="tel:+107425899611">
-                            <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
-                                <i class="phone-icon"></i>
-                            </span>
+                                    <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                        <i class="phone-icon"></i>
+                                    </span>
                                     <span class="text-base text-primary">+ (07425) 899611</span>
                                 </a>
                                 <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                    href="#">Get Started Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                    <i class="arrow-right"></i>
-                                </span>
-                            </span>
+                                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                            <i class="arrow-right"></i>
+                                        </span>
+                                    </span>
                                 </a>
                             </div>
                         </div>
@@ -84,16 +84,16 @@
             </div>
         </div>
     </header>
-    <section class="pb-16 border-b border-dashed border-light-blue-1">
+    <section class="pb-16 md:pt-3 md:pb-8 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
-            <div class="background-blue-circle py-14 pl-16 pr-8 rounded-3xl overflow-hidden -mx-4 custom-width">
-                <div class="row gap-x-6 row--m0">
-                    <div class="col-span-6 flex items-center">
+            <div class="background-blue-circle bg-r-45 md:py-8 md:px-4 py-14 pl-16 pr-8 rounded-3xl overflow-hidden minmd:-mx-4 custom-width">
+                <div class="row gap-x-6 md:gap-x-0 row--m0">
+                    <div class="col-span-6 md:col-span-12 flex items-center">
                         <div class="flex flex-col text-white">
-                            <h1 class=" font-medium text-h1 tracking-tight-2.16 mb-5">Weight loss made easy <br>
-                                <span class="text-h2 font-light italic">with Ozempic !</span></h1>
-                            <p class="max-w-[414px] text-h5">Buy an Ozempic and lose unnecessary pounds, place an order and receive it the very next day!</p>
-                            <a class="group mt-6 flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                            <h1 class="font-medium text-h1 md:text-h1Min tracking-tight-2.16 md:tracking-tight-1.5 mb-5 md:mb-4">Weight loss made easy <br class="md:hidden">
+                                <span class="text-h2 md:text-h1Min font-light italic">with Ozempic !</span></h1>
+                            <p class="minmd:max-w-[414px] text-h5 md:text-main-text">Buy an Ozempic and lose unnecessary pounds, place an order and receive it the very next day!</p>
+                            <a class="group md:hidden mt-6 flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                href="#">Make a Request
                                 <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
@@ -103,37 +103,45 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-span-6">
-                        <div class="relative -left-8">
+                    <div class="col-span-6 md:col-span-12">
+                        <div class="relative minmd:-left-8 md:mt-6">
                             <img class="w-full" src="images/hero-img.png" alt="Ozempic">
                         </div>
+                        <a class="group mt-6 minmd:hidden flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           href="#">Make a Request
+                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 border-b border-dashed border-light-blue-1">
+    <section class="py-16 md:py-10 border-b border-dashed  border-light-blue-1 md:border">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-5">
-                    <div class="flex flex-col max-w-[400px]">
-                        <h2 class="mb-6 text-h2 font-medium tracking-tight-2.16">How does
-                            Ozempic works ?</h2>
+            <div class="row gap-x-6 lg:gap-x-0 lg:gap-y-5">
+                <div class="col-span-5 lg:col-span-12 lg:mb-5">
+                    <div class="flex flex-col minlg:max-w-[400px]">
+                        <h2 class="mb-6 md:mb-4 text-h2 md:text-h1Min font-medium tracking-tight-2.16">How does
+                            Ozempic works?</h2>
                         <p class="text-dark-blue-50-2 text-main-text">Ozempic works by slowing the digestion process, and can help you to feel full for longer.
                             Ozempic, acts like a hormone your body naturally makes to regulate blood sugar and help
                             support weight loss.</p>
                     </div>
                 </div>
-                <div class="col-span-3">
-                    <div class="rounded-[20px] h-full bg-secondary text-white px-6 py-8 flex flex-col overflow-hidden">
+                <div class="col-span-3 lg:col-span-12">
+                    <div class="rounded-[20px] h-full bg-secondary text-white px-6 py-8 md:py-6 md:px-5 flex flex-col overflow-hidden">
                         <div class="rounded-full w-16 min-w-16 h-16 overflow-hidden flex items-center justify-center bg-white-2 mb-6">
                             <i class="Overweight-icon"></i>
                         </div>
                         <p class="text-main-text">Ozempic treats type 2 diabetes but may be prescribed for weight loss, if appropriate. </p>
                     </div>
                 </div>
-                <div class="col-span-4">
-                    <div class="rounded-[20px] h-full px-6 py-8 flex flex-col bg-light-blue-2 overflow-hidden border border-dashed border-light-blue-1">
+                <div class="col-span-4 lg:col-span-12">
+                    <div class="rounded-[20px] h-full px-6 py-8 md:py-6 md:px-5 flex flex-col bg-light-blue-2 overflow-hidden border border-dashed border-light-blue-1">
                         <div class="rounded-full w-16 min-w-16 h-16 overflow-hidden flex items-center justify-center bg-light-blue-1 mb-6">
                             <i class="Weight-Scale-icon"></i>
                         </div>
@@ -144,19 +152,20 @@
             </div>
         </div>
     </section>
-    <section class="py-16">
+    <section class="py-16 md:py-10">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-7">
-                    <div class="pl-8 pt-8 rounded-[20px] flex overflow-hidden bg-light-blue-2 mr-10">
-                        <img src="images/img-1.png" alt="Img 1">
-                        <div class="py-8 h-full mx-auto">
-                            <div x-data="{ currentVal: 20 }" class="flex flex-col max-w-[358px] w-full items-center">
+            <div class="row gap-x-6 lg:gap-x-0 lg:gap-y-10 ">
+                <div class="col-span-7 lg:col-span-12 lg:order-2">
+                    <div class="pl-8 pt-8 rounded-[20px] flex overflow-hidden bg-light-blue-2 mr-10 md:flex-col md:items-center md:mr-0 md:pt-0 md:px-5 md:pb-6">
+                        <img class="md:hidden" src="images/img-1.png" alt="Img 1">
+                        <img class="minmd:hidden object-contain" src="images/image-6.png" alt="Img 1">
+                        <div class="py-8 md:p-0 md:mt-6 h-full mx-auto">
+                            <div x-data="{ currentVal: 20 }" class="flex flex-col max-w-[358px] md:max-w-[303px] w-full items-center">
                                 <span class="block mb-6 font-semibold text-h5">Your current weight:</span>
                                 <span class="w-[70px] h-[42px] text-main-text bg-secondary rounded-xl text-center flex items-center justify-center font-bold text-white" x-text="currentVal"></span>
                                 <div class="mt-3 mb-6">
                                    <label for="rangeSlider" class="sr-only">Brightness</label>
-                                   <input x-model="currentVal" id="rangeSlider" type="range" class="h-[3px] w-[354px] appearance-none bg-light-blue-1 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-blue-700 active:[&::-moz-range-thumb]:scale-110 [&::-moz-range-thumb]:dark:bg-blue-600 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:bg-blue-700 active:[&::-webkit-slider-thumb]:scale-110 [&::-webkit-slider-thumb]:dark:bg-blue-600 [&::-moz-range-thumb]:rounded-full [&::-webkit-slider-thumb]:rounded-full rounded-full" min="0" max="100" step="1" />
+                                   <input x-model="currentVal" id="rangeSlider" type="range" class="h-[3px] w-[354px] md:w-[248px] appearance-none bg-light-blue-1 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-blue-700 active:[&::-moz-range-thumb]:scale-110 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:bg-blue-700 active:[&::-webkit-slider-thumb]:scale-110 [&::-moz-range-thumb]:rounded-full [&::-webkit-slider-thumb]:rounded-full rounded-full" min="0" max="100" step="1" />
                                 </div>
                                 <p class="text-main-text mb-3">You could easy lose:</p>
                                 <span class="text-secondary text-h5 font-bold">
@@ -167,29 +176,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-5">
+                <div class="col-span-5 lg:col-span-12 lg:order-1">
                     <div class="flex flex-col">
-                        <h2 class="mb-6 text-h2 font-medium tracking-tight-2.16">There’s a reason why everyone is talking about semaglutide. It works.</h2>
-                        <p class="max-w-[290px] text-main-text text-dark-blue-50-2">On average, people on Wegovy lose 15% of their weight in a year*.</p>
+                        <h2 class="mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16 md:text-h1Min">There’s a reason why everyone is talking about semaglutide. It works.</h2>
+                        <p class="minlg:max-w-[290px] text-main-text text-dark-blue-50-2">On average, people on Wegovy lose 15% of their weight in a year*.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="rounded-[20px] bg-secondary py-16">
+    <section class="rounded-[20px] bg-secondary py-16 md:py-10">
         <div class="container">
             <div class="row">
                 <div class="col-span-12">
-                    <div class="max-w-[552px] flex flex-col items-center mx-auto mb-8">
-                        <h2 class="text-white h2 text-center mb-6">Lose up to 15% of your body weight in 3 easy
+                    <div class="max-w-[552px] flex flex-col items-center mx-auto mb-8 md:mb-0">
+                        <h2 class="text-white h2 text-center mb-6 md:hidden">Lose up to 15% of your body weight in 3 easy
                             steps</h2>
-                        <p class="text-white max-w-[434px] text-center text-main-text">Ozempic for weight loss has shown
+                        <h2 class="text-white h2 text-left font-medium mb-4 minmd:hidden">Lose up to 15% of your body weight <span class="italic font-light">in 3 steps!</span></h2>
+                        <p class="text-white max-w-[434px] text-center text-main-text md:text-left md:max-w-full">Ozempic for weight loss has shown
                             to be successful with patients losing weight in clinical trials. </p>
                     </div>
                 </div>
             </div>
-            <div class="row gap-x-6 pt-[73px] pb-[92px]">
-                <div class="col-span-4">
+            <div class="row gap-x-6 pt-[73px] pb-[92px] md:gap-x-0 md:gap-y-[60px] md:py-10">
+                <div class="col-span-4 md:col-span-12">
                     <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative arrow-right-top-block">
                         <div class="flex flex-col overflow-hidden h-full">
                             <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
@@ -203,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
+                <div class="col-span-4 md:col-span-12">
                     <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative arrow-right-bottom-block">
                         <div class="flex flex-col overflow-hidden h-full">
                             <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
@@ -217,7 +227,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
+                <div class="col-span-4 md:col-span-12">
                     <div class="rounded-[20px] bg-white px-6 py-8 flex flex-col h-full relative">
                         <div class="flex flex-col overflow-hidden h-full">
                             <div class="rounded-full overflow-hidden flex items-center justify-center w-16 h-16 bg-light-blue-1 mb-6">
@@ -235,7 +245,7 @@
             <div class="row">
                 <div class="col-span-12">
                     <div class="flex flex-col items-center mx-auto">
-                        <span class="text-h3 font-semibold text-white block mb-6">Ready to get approved?</span>
+                        <span class="text-h3 font-semibold text-white block mb-6 md:text-h2Min">Ready to get approved?</span>
                         <a class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                            href="#">Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
@@ -249,24 +259,26 @@
             </div>
         </div>
     </section>
-    <section class="py-16 border-b border-dashed border-light-blue-1">
+    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-5">
-                    <div class="max-w-[433px]">
-                        <h2 class="h2 block mb-6 text-h2 font-medium tracking-tight-2.16">Revolutionary <br>medications!</h2>
+            <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
+                <div class="col-span-5 md:col-span-12">
+                    <div class="max-w-[433px] md:max-w-full">
+                        <h2 class="h2 block mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16">Revolutionary <br class="md:hidden">medications!</h2>
                         <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
                             (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
                             works by mimicking your body’s natural hormones, helping you feel fuller faster and for
                             longer.</p>
                     </div>
                 </div>
-                <div class="col-span-7">
+                <div class="col-span-7 md:col-span-12">
                     <div class="grid grid-cols-7 grid-rows-2 gap-6">
-                        <div class="col-span-3">
-                            <div class="h-[154px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6">
-                                <img class="mr-6" src="images/image-2.png" alt="Saxenda RX Image">
-                                <div class="flex flex-col h-full py-4 text-primary">
+                        <div class="col-span-3 xl:col-span-7">
+                            <div class="h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6 md:pl-8">
+                                <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
+                                    <img class="" src="images/image-2.png" alt="Saxenda RX Image">
+                                </div>
+                                <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col h-full py-4 text-primary">
                                     <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
                                     <p class="text-base">Semaglutude</p>
                                     <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
@@ -280,12 +292,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-4 col-start-4">
-                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6">
-                                <div class="flex-1 flex justify-center mr-4">
-                                    <img class="" src="images/image-3.png" alt="Saxenda RX Image">
+                        <div class="col-span-4 xl:col-span-7 minxl:col-start-4">
+                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6 md:pl-8">
+                                <div class="flex-1 flex justify-center mr-4 md:mr-8 relative">
+                                    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="155" height="154" viewBox="0 0 155 154" fill="none">
+                                        <circle cx="77.5" cy="77" r="77" fill="#3A60CD"/>
+                                        <circle cx="76.9379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                    </svg>
+                                    <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
                                 </div>
-                                <div class="flex flex-col h-full py-4 text-white flex-1">
+                                <div class="flex flex-col h-full py-4 text-white flex-1 md:flex-[4_4_0%] z-10">
                                     <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
                                     <p class="text-base">Semaglutude</p>
                                     <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
@@ -299,12 +315,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-7 row-start-2">
-                            <div class="h-[154px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6">
-                                <div class="flex-1 flex mr-8">
-                                    <img class="" src="images/image-4.png" alt="Saxenda RX Image">
+                        <div class="col-span-7 minxl:row-start-2">
+                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6 md:pl-8">
+                                <div class="flex-1 flex mr-8 md:mr-8">
+                                    <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
+                                    <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
                                 </div>
-                                <div class="flex flex-col h-full py-4 text-primary flex-1">
+                                <div class="flex flex-col h-full py-4 text-primary flex-1 md:flex-[4_4_0%]">
                                     <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
                                     <p class="text-base">Semaglutude</p>
                                     <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
@@ -323,19 +340,18 @@
             </div>
         </div>
     </section>
-    <section class="py-16 border-b border-dashed border-light-blue-1">
+    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-5">
-                    <div class="flex items-center gap-x-4 mb-4">
-                        <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold">Starting with just 450$ month</span>
-                        <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold">Weekly you lost 1000$</span>
+            <div class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                <div class="col-span-12">
+                    <div class="flex items-center flex-wrap gap-4 mb-4 lg:mb-0">
+                        <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold md:text-h3Min md:font-medium">Starting with just 450$ month</span>
+                        <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold md:text-h3Min md:font-medium">Weekly you lost 1000$</span>
                     </div>
                 </div>
-                <div class="col-span-7"></div>
-                <div class="col-span-5">
+                <div class="col-span-5 lg:col-span-12">
                     <div class="flex flex-col h-full px-6 py-8 border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px]">
-                        <h4 class="text-h4 text-primary mb-6 block">What include our weight program?</h4>
+                        <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
                         <ul class="flex flex-col gap-y-6 mb-10">
                             <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -378,9 +394,9 @@
                         <p class="text-dark-blue-100">We don’t work with insurance!</p>
                     </div>
                 </div>
-                <div class="col-span-7">
+                <div class="col-span-7 lg:col-span-12">
                     <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
-                        <div class="px-8 py-14 flex items-center justify-center h-full w-full">
+                        <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
                             <img class="object-contain w-full" src="images/image-5.png" alt="Image">
                         </div>
                     </div>
@@ -388,209 +404,348 @@
             </div>
         </div>
     </section>
-    <section class="py-16 border-b border-dashed border-light-blue-1">
+    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-9">
-                    <div class="max-w-[600px]">
-                        <h3 class="h2 text-dark-blue-100 block mb-6">Feedback from our customers.</h3>
-                        <p>Thousands of people lose weight with GLP-1 drugs
+            <div class="swiper mySwiper">
+                <div class="flex w-full gap-x-6 mb-12 md:mb-10">
+                    <div class="minmd:max-w-[600px]">
+                        <h3 class="h2 text-dark-blue-100 block mb-6 md:mb-4">Feedback from our customers.</h3>
+                        <p class="text-main-text">Thousands of people lose weight with GLP-1 drugs
                             Learn more from our clients whose success has inspired other people!</p>
                     </div>
-                </div>
-                <div class="col-span-3"></div>
-                <div class="col-span-4">
-                    <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
-                        <div class="flex items-center mb-5"></div>
-                        <div class="mb-8 flex items-center">
-                            <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
-                                <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-main-text mb-2 block">Sophya Morry</span>
-                                <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
-                            </div>
-                        </div>
-                        <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
-                        <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
-                            est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
-                            diam semper vitae eu in ut.</p>
+                    <div class="relative max-w-[112px] w-full ml-auto md:hidden">
+                        <div class="swiper-button-arrow swiper-button-prev"></div>
+                        <div class="swiper-button-arrow swiper-button-next"></div>
                     </div>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
+                            <div class="flex items-center gap-x-1 mb-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                </svg>
+                            </div>
+                            <div class="mb-8 flex items-center">
+                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
+                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-main-text mb-2 block">Sophya Morry</span>
+                                    <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                            </div>
+                            <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
+                            <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
+                                diam semper vitae eu in ut.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
+                            <div class="flex items-center gap-x-1 mb-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                </svg>
+                            </div>
+                            <div class="mb-8 flex items-center">
+                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
+                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-main-text mb-2 block">Sophya Morry</span>
+                                    <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                            </div>
+                            <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
+                            <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
+                                diam semper vitae eu in ut.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
+                            <div class="flex items-center gap-x-1 mb-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                </svg>
+                            </div>
+                            <div class="mb-8 flex items-center">
+                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
+                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-main-text mb-2 block">Sophya Morry</span>
+                                    <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                            </div>
+                            <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
+                            <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
+                                diam semper vitae eu in ut.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
+                            <div class="flex items-center gap-x-1 mb-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                </svg>
+                            </div>
+                            <div class="mb-8 flex items-center">
+                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
+                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-main-text mb-2 block">Sophya Morry</span>
+                                    <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                            </div>
+                            <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
+                            <p class="text-main-text text-primary">Lorem ipsum dolor sit amet consectetur adipiscing elit
+                                est cras ut adipiscing ut eget ut id integer ac velit cras quis nulla lectus enim nam cras
+                                diam semper vitae eu in ut.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative mt-6 w-full h-12 max-w-[112px] minmd:hidden">
+                    <div class="swiper-button-arrow swiper-button-prev"></div>
+                    <div class="swiper-button-arrow swiper-button-next"></div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 border-b border-dashed border-light-blue-1">
+    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
-            <div class="row mb-12">
+            <div class="row mb-12 md:mb-10">
                 <div class="col-span-12">
-                    <div class="max-w-[552px] flex flex-col items-center mx-auto">
-                        <h2 class="text-primary h2 text-center mb-6">Most Popular Questions</h2>
-                        <p class="text-dark-blue-50-2 max-w-[434px] text-center text-main-text">Ozempic for weight loss
+                    <div class="max-w-[552px] md:max-w-full flex flex-col items-center md:items-start mx-auto">
+                        <h2 class="text-primary h2 text-center mb-6 md:text-left md:mb-4">Most Popular Questions</h2>
+                        <p class="text-dark-blue-50-2 max-w-[434px] md:text-left md:max-w-full text-center text-main-text">Ozempic for weight loss
                             has shown to be successful with patients losing weight in clinical trials.</p>
                     </div>
                 </div>
             </div>
-            <div class="row gap-6">
-                <div class="col-span-6">
+            <div class="row gap-6 md:gap-x-0">
+                <div class="col-span-6 md:col-span-12">
                     <div class="flex flex-col gap-y-6">
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: true }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: true }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItemOne" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     How much does Ozempic cost?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItemOne" role="region"
                                      aria-labelledby="controlsAccordionItemOne" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItem3" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     Are there foods to avoid while taking Ozempic?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItem3" role="region"
                                      aria-labelledby="controlsAccordionItem3" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItem5" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     What are the most common Ozempic side effects?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItem5" role="region"
                                      aria-labelledby="controlsAccordionItem5" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-span-6">
+                <div class="col-span-6 md:col-span-12">
                     <div class="flex flex-col gap-y-6">
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItem2" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     Are there foods to avoid while taking Ozempic?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItem2" role="region"
                                      aria-labelledby="controlsAccordionItem2" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItem4" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     How much does metabolic testing cost?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItem4" role="region"
                                      aria-labelledby="controlsAccordionItem4" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="w-full overflow-hidden rounded-2xl">
-                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6">
+                            <div x-data="{ isExpanded: false }" class="bg-light-blue-2 py-5 px-6 md:px-5">
                                 <button id="controlsAccordionItem6" type="button"
                                         class="flex w-full items-center justify-between text-left text-h5 font-semibold"
                                         aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
                                         :class="isExpanded ? 'active'  : 'inActive'"
                                         :aria-expanded="isExpanded ? 'true' : 'false'">
                                     What are the most common Ozempic side effects?
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                         stroke-width="2" stroke="currentColor" class="size-5 shrink-0 transition"
-                                         aria-hidden="true" :class="isExpanded  ?  'rotate-180'  :  ''">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
-                                    </svg>
+                                    <span class="rounded-full w-8 min-w-8 h-8 flex items-center justify-center overflow-hidden transition-all ml-1" :class="isExpanded  ?  'bg-light-blue-1'  :  'bg-secondary'">
+                                        <svg :class="isExpanded  ?  'block'  :  'hidden'" xmlns="http://www.w3.org/2000/svg" width="18" height="2" viewBox="0 0 18 2" fill="none">
+                                          <path d="M1 1L17 1" stroke="#365AC1" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                        <svg :class="isExpanded  ?  'hidden'  :  'block'" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                          <path d="M1 9L17 9M9 1V17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
                                 </button>
                                 <div x-cloak x-show="isExpanded" id="accordionItem6" role="region"
                                      aria-labelledby="controlsAccordionItem6" x-collapse>
-                                    <div class="pt-3 text-main-text">
+                                    <p class="pt-3 text-main-text md:text-base">
                                         The cost of your Ozempic medication can range depending on your insurance
                                         coverage—and we’re here to help with that! As your insurance concierge, our team
                                         will work with your insurance provider to determine coverage for your GLP-1
                                         medication.
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -599,15 +754,15 @@
             </div>
         </div>
     </section>
-    <section class="py-16">
+    <section class="py-16 md:py-10">
         <div class="container">
-            <form class="bg-secondary py-14 px-10 rounded-3xl overflow-hidden -mx-4">
-                <div class="row gap-x-6 row--m0">
-                    <div class="col-span-5">
-                        <div class="flex flex-col gap-y-6 h-full text-white">
-                            <span class="font-medium text-h1 tracking-tight-2.16">Still have questions?</span>
+            <form class="background-blue-circle bg-r-45 py-14 px-10 rounded-3xl overflow-hidden md:py-8 md:px-4 minmd:-mx-4">
+                <div class="row gap-x-6 md:gap-x-0 row--m0">
+                    <div class="col-span-5 md:col-span-12">
+                        <div class="flex flex-col gap-y-6 h-full text-white md:mb-10 md:gap-y-4">
+                            <span class="font-medium text-h1 tracking-tight-2.16 md:text-h1Min md:tracking-tight-1.5">Still have questions?</span>
                             <p class="text-main-text">If you have any questions or would like to know information about medications, leave your contact details and we will contact you!</p>
-                            <button type="submit" class="group flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12 mt-auto"
+                            <button type="submit" class="group md:hidden flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12 mt-auto"
                                >Make a request
                                 <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                 <span class="arrow absolute transition-transform duration-100 ease-in-out">
@@ -617,33 +772,33 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-span-7">
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="col-span-1">
-                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                    <div class="col-span-7 md:col-span-12">
+                        <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4">
+                            <div class="col-span-1 sm:col-span-2">
+                                <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputFirstName" class="w-fit text-none">First Name</label>
                                     <input id="textInputFirstName" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="first name" placeholder="First Name" autocomplete="first name"/>
                                 </div>
                             </div>
-                            <div class="col-span-1">
-                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                            <div class="col-span-1 sm:col-span-2">
+                                <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputSecondName" class="w-fit text-none">Second Name</label>
                                     <input id="textInputSecondName" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="second name" placeholder="Second Name" autocomplete="second name"/>
                                 </div>
                             </div>
-                            <div class="col-span-1">
-                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                            <div class="col-span-1 sm:col-span-2">
+                                <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputMail" class="w-fit text-none">Email</label>
                                     <input id="textInputMail" type="email" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
                                 </div>
                             </div>
-                            <div class="col-span-1">
-                                <div class="flex w-full max-w-xs flex-col text-dark-blue-50-2">
+                            <div class="col-span-1 sm:col-span-2">
+                                <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputPhone" class="w-fit text-none">Phone</label>
                                     <input id="textInputPhone" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75" name="phone" placeholder="Phone" autocomplete="phone"/>
                                 </div>
                             </div>
-                            <div class="col-span-2">
+                            <div class="col-span-2 sm:col-span-2">
                                 <div class="relative flex w-full flex-col text-dark-blue-50-2">
                                     <label for="selectState" class="w-fit text-none">Choose State</label>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
@@ -658,6 +813,14 @@
                                 </div>
                             </div>
                         </div>
+                        <button type="submit" class="group minmd:hidden mt-10 flex items-center border border-primary transition-all hover:bg-blue-2 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                        >Make a request
+                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                    <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -666,17 +829,19 @@
 
     <footer class="py-8 bg-dark-blue-100 mt-auto w-full">
         <div class="container">
-            <div class="row gap-x-6">
-                <div class="col-span-4 flex items-center">
+            <div class="row gap-x-6 md:gap-x-4">
+                <div class="col-span-4 md:col-span-4 flex items-center">
                     <span class="py-3 px-4 mr-auto text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded">1DocRX</span>
                 </div>
-                <div class="col-span-4 flex items-center">
-                    <p class="mx-auto text-white">© 2023 All rights reserved.</p>
+                <div class="col-span-4 md:col-span-8 flex items-center">
+                    <p class="mx-auto md:mr-0 text-white md:text-right">© 2023 All rights reserved.</p>
                 </div>
-                <div class="col-span-4 flex items-center">
-                    <a class="ml-auto text-white" href="tel:+107425899611">
-                        <i></i>
-                        <span>+ (07425) 899611</span>
+                <div class="col-span-4 md:hidden flex items-center">
+                    <a class="flex items-center hover:underline ml-auto text-white" href="tel:+107425899611">
+                                <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-secondary">
+                                    <i class="phone-white-icon"></i>
+                                </span>
+                        <span class="text-base ">+ (07425) 899611</span>
                     </a>
                 </div>
             </div>

@@ -138,6 +138,16 @@ section {
     background: url("images/icons/Comment.svg");
     @apply block h-[20px] w-[20px] bg-100-auto bg-center bg-no-repeat;
 }
+
+.Main-logo {
+    background: url("images/icons/Main-logo.svg");
+    @apply block h-[61px] w-[40px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.Main-logo-white {
+    background: url("images/icons/Main-logo-white.svg");
+    @apply block h-[61px] w-[40px] bg-100-auto bg-center bg-no-repeat;
+}
 /*icons end*/
 
 .arrow-right-top-block::before {

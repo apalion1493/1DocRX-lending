@@ -9,7 +9,7 @@
 </head>
 <body class="">
 
-<main x-data="{modalIsOpen: true}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
+<main x-data="{modalIsOpen: false}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
     <header class="py-8 md:py-5 w-full">
         <div class="container">
             <div class="row">
@@ -264,151 +264,154 @@
             </div>
         </div>
     </section>
-    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
-        <div class="container">
-            <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
-                <div class="col-span-5 md:col-span-12">
-                    <div class="max-w-[433px] md:max-w-full">
-                        <h2 class="h2 block mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16">Revolutionary <br class="md:hidden">medications!</h2>
-                        <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
-                            (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
-                            works by mimicking your body’s natural hormones, helping you feel fuller faster and for
-                            longer.</p>
+    <div x-data="{ selectedTab: 'groups' }" class="w-full">
+        <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
+            <div class="container">
+                <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
+                    <div class="col-span-5 md:col-span-12">
+                        <div class="max-w-[433px] md:max-w-full">
+                            <h2 class="h2 block mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16">Revolutionary <br class="md:hidden">medications!</h2>
+                            <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
+                                (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
+                                works by mimicking your body’s natural hormones, helping you feel fuller faster and for
+                                longer.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-span-7 md:col-span-12">
-                    <div class="grid grid-cols-7 grid-rows-2 gap-6">
-                        <div class="col-span-3 xl:col-span-7">
-                            <div class="h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6 md:pl-8">
-                                <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
-                                    <img class="" src="images/image-2.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col h-full py-4 text-primary">
-                                    <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                    <div class="col-span-7 md:col-span-12">
+                        <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()" class="grid grid-cols-7 grid-rows-2 gap-6">
+                            <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'" :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-3 xl:col-span-7">
+                                <div class="h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6 md:pl-8">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
+                                        <img class="" src="images/image-2.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col h-full py-4 text-primary">
+                                        <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
+                                        <p class="text-base">Semaglutude</p>
+                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                           href="#">Make a request
+                                            <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                             <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                                 <i class="arrow-right-white"></i>
                                             </span>
                                         </span>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-4 xl:col-span-7 minxl:col-start-4">
-                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6 md:pl-8">
-                                <div class="flex-1 flex justify-center mr-4 md:mr-8 relative">
-                                    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="155" height="154" viewBox="0 0 155 154" fill="none">
-                                        <circle cx="77.5" cy="77" r="77" fill="#3A60CD"/>
-                                        <circle cx="76.9379" cy="77.0001" r="52.2701" fill="#335ACB"/>
-                                    </svg>
-                                    <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex flex-col h-full py-4 text-white flex-1 md:flex-[4_4_0%] z-10">
-                                    <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                            <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'" :tabindex="selectedTab === 'likes' ? '0' : '-1'" class="col-span-4 xl:col-span-7 minxl:col-start-4">
+                                <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6 md:pl-8">
+                                    <div class="flex-1 flex justify-center mr-4 md:mr-8 relative">
+                                        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="155" height="154" viewBox="0 0 155 154" fill="none">
+                                            <circle cx="77.5" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.9379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex flex-col h-full py-4 text-white flex-1 md:flex-[4_4_0%] z-10">
+                                        <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
+                                        <p class="text-base">Semaglutude</p>
+                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                           href="#">Make a request
+                                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                             <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                                 <i class="arrow-right"></i>
                                             </span>
                                         </span>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-7 minxl:row-start-2">
-                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6 md:pl-8">
-                                <div class="flex-1 flex mr-8 md:mr-8">
-                                    <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
-                                    <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex flex-col h-full py-4 text-primary flex-1 md:flex-[4_4_0%]">
-                                    <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                            <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'" :tabindex="selectedTab === 'comments' ? '0' : '-1'" class="col-span-7 minxl:row-start-2">
+                                <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6 md:pl-8">
+                                    <div class="flex-1 flex mr-8 md:mr-8">
+                                        <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
+                                        <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex flex-col h-full py-4 text-primary flex-1 md:flex-[4_4_0%]">
+                                        <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
+                                        <p class="text-base">Semaglutude</p>
+                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
+                                           href="#">Make a request
+                                            <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                             <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                                 <i class="arrow-right-white"></i>
                                             </span>
                                         </span>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
-        <div class="container">
-            <div class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
-                <div class="col-span-12">
-                    <div class="flex items-center flex-wrap gap-4 mb-4 lg:mb-0">
-                        <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold md:text-h3Min md:font-medium">Starting with just 450$ month</span>
-                        <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold md:text-h3Min md:font-medium">Weekly you lost 1000$</span>
-                    </div>
-                </div>
-                <div class="col-span-5 lg:col-span-12">
-                    <div class="flex flex-col h-full px-6 py-8 border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px]">
-                        <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
-                        <ul class="flex flex-col gap-y-6 mb-10">
-                            <li class="flex items-center gap-x-4">
+        </section>
+        <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
+            <div class="container">
+                <div x-show="selectedTab === 'groups'" id="tabpanelGroups" role="tabpanel" aria-label="groups" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Car-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
-                                    you order an item on our website, you receive free shipping!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="present-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
-                                    will deliver your order the next day to your door!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Plan-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
-                                    will provide you with a complete treatment plan!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Comment-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
-                                    will advise you on all your concerns about treatment</p>
-                            </li>
-                        </ul>
-                        <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">
-                            Start Treatment Now
-                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                        </a>
-                        <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-span-7 lg:col-span-12">
-                    <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
-                        <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                            <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
             <div class="swiper mySwiper">
@@ -552,6 +555,27 @@
                 <div class="relative mt-6 w-full h-12 max-w-[112px] minmd:hidden">
                     <div class="swiper-button-arrow swiper-button-prev"></div>
                     <div class="swiper-button-arrow swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rounded-[20px] bg-secondary py-14 md:py-10 background-blue-circle-2 overflow-hidden">
+        <div class="container flex">
+            <div class="flex flex-col items-center relative max-w-[551px] mx-auto">
+                <div class="arrow-3 absolute top-10 -left-16 md:hidden"></div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-h2 font-medium text-white tracking-tight-2.16 mb-6 text-center md:text-h1Min">Weight loss <span class="font-extralight otherFont italic capitalize">for everybody!</span></h3>
+                    <div class="relative arrow-1-mob">
+                        <p class="text-main-text text-white text-center">Traditional diets don’t work because nearly 70% of weight is genetically determined. Through medication you can work with your body rather than against it - to create safe and long lasting weight loss results.</p>
+                    </div>
+                    <a class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                       href="#">Make a Request
+                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                            <i class="arrow-right"></i>
+                        </span>
+                    </span>
+                    </a>
                 </div>
             </div>
         </div>

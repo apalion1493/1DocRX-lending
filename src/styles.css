@@ -79,8 +79,13 @@ section {
 /*--------------*/
 
 .background-blue-circle {
-    background: url("images/bg-img.png");
+    background: #365AC1 url("images/bg-img.png");
     @apply block h-full w-full bg-cover bg-no-repeat;
+}
+
+.background-blue-circle-2 {
+    background: #365AC1 url("images/bg-img-2.png");
+    @apply block h-full w-full bg-cover bg-center bg-no-repeat;
 }
 
 .bg-r-full {
@@ -173,6 +178,21 @@ section {
     right: -80px;
     background: url("images/icons/arrow-2.svg");
     @apply block h-[40px] w-[169px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.arrow-3 {
+    background: url("images/icons/arrow-3.svg");
+    @apply block h-[230px] w-[243px] bg-100-auto bg-center bg-no-repeat;
+}
+
+.arrow-1-mob::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url("images/icons/arrow-1-mob.svg");
+    @apply block h-[35px] w-[134px] bg-100-auto bg-center bg-no-repeat minmd:hidden;
 }
 
 .swiper.mySwiper {

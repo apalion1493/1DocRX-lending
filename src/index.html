@@ -9,7 +9,7 @@
 </head>
 <body class="">
 
-<main x-data="{modalIsOpen: false}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
+<main x-data="{modalIsOpen: true}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
     <header class="py-8 md:py-5 w-full">
         <div class="container">
             <div class="row">
@@ -844,31 +844,80 @@
         </div>
     </footer>
 
-    <div x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false" @click.self="modalIsOpen = false" class="fixed inset-0 z-30 flex w-full items-center justify-center bg-black/20 p-4 pb-8 backdrop-blur-md lg:p-8" role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
+    <div style="display: none" x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false" @click.self="modalIsOpen = false" class="fixed inset-0 z-[60] flex w-full items-center justify-center bg-black/20 p-4 pb-8 backdrop-blur-md lg:p-4" role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
         <!-- Modal Dialog -->
-        <div x-show="modalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="flex max-w-[716px] flex-col gap-4 overflow-hidden rounded-xl border border-slate-300 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 p-10">
+        <form x-show="modalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="flex max-w-[716px] w-full flex-col gap-4 overflow-hidden rounded-3xl bg-white text-slate-700 relative p-10 md:py-8 md:px-4 modal-bg">
             <!-- Dialog Header -->
-            <div class="flex items-center justify-between border-b border-slate-300 bg-slate-100/60 dark:border-slate-700 dark:bg-slate-900/20">
-                <div class="flex flex-col max-w-[385px]">
-                    <h1>Make a request!</h1>
-                    <p>We will contact you within a few minutes for consultation and for confirmation of the order.</p>
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col max-w-[385px] mr-2">
+                    <h1 class="text-h2 md:text-h1Min text-primary font-medium tracking-tight-2.16 block mb-6">Make a request!</h1>
+                    <p class="text-main-text text-dark-blue-50-2">We will contact you within a few minutes for consultation and for confirmation of the order.</p>
                 </div>
                 <button class="self-start" @click="modalIsOpen = false" aria-label="close modal">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="1.4" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M0.68624 23.3137C0.165541 22.793 0.165541 21.9487 0.68624 21.428L21.428 0.68624C21.9487 0.165541 22.793 0.165541 23.3137 0.68624C23.8344 1.20694 23.8344 2.05116 23.3137 2.57186L2.57186 23.3137C2.05116 23.8344 1.20694 23.8344 0.68624 23.3137Z" fill="#001A60"/>
+                        <path d="M0.68624 0.68624C1.20694 0.165541 2.05116 0.165541 2.57186 0.68624L23.3137 21.428C23.8344 21.9487 23.8344 22.793 23.3137 23.3137C22.793 23.8344 21.9487 23.8344 21.428 23.3137L0.68624 2.57186C0.165541 2.05116 0.165541 1.20694 0.68624 0.68624Z" fill="#001A60"/>
+                    </svg>
+                    <svg class="minmd:hidden mt-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M0.807535 19.1924C0.384467 18.7694 0.384467 18.0834 0.807535 17.6604L17.6602 0.807658C18.0833 0.38459 18.7692 0.384589 19.1923 0.807657C19.6154 1.23073 19.6154 1.91665 19.1923 2.33972L2.3396 19.1924C1.91653 19.6155 1.2306 19.6155 0.807535 19.1924Z" fill="#001A60"/>
+                        <path d="M0.807535 0.807657C1.2306 0.384589 1.91653 0.384589 2.3396 0.807657L19.1923 17.6604C19.6154 18.0834 19.6154 18.7694 19.1923 19.1924C18.7692 19.6155 18.0833 19.6155 17.6602 19.1924L0.807535 2.33972C0.384467 1.91665 0.384467 1.23073 0.807535 0.807657Z" fill="#001A60"/>
                     </svg>
                 </button>
             </div>
             <!-- Dialog Body -->
-            <div class="px-4 py-8">
-                <p>As a token of appreciation, we have an exclusive offer just for you. Upgrade your account now to unlock premium features and enjoy a seamless experience.</p>
+            <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6">
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputFirstNameModal" class="w-fit text-none">First Name</label>
+                        <input id="textInputFirstNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="first name" placeholder="First Name" autocomplete="first name"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputSecondNameModal" class="w-fit text-none">Second Name</label>
+                        <input id="textInputSecondNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="second name" placeholder="Second Name" autocomplete="second name"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputMailModal" class="w-fit text-none">Email</label>
+                        <input id="textInputMailModal" type="email" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputPhoneModal" class="w-fit text-none">Phone</label>
+                        <input id="textInputPhoneModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="phone" placeholder="Phone" autocomplete="phone"/>
+                    </div>
+                </div>
+                <div class="col-span-2 sm:col-span-2">
+                    <div class="relative flex w-full flex-col text-dark-blue-50-2">
+                        <label for="selectStateModal" class="w-fit text-none">Choose State</label>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
+                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                        </svg>
+                        <select id="selectStateModal" name="Choose State" class="w-full appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
+                            <option selected>Choose State</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
             </div>
+
             <!-- Dialog Footer -->
-            <div class="flex flex-col-reverse justify-between gap-2 border-t border-slate-300 bg-slate-100/60 p-4 dark:border-slate-700 dark:bg-slate-900/20 sm:flex-row sm:items-center md:justify-end">
-                <button @click="modalIsOpen = false" type="button" class="cursor-pointer whitespace-nowrap rounded-xl px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:text-slate-300 dark:focus-visible:outline-blue-600">Remind me later</button>
-                <button @click="modalIsOpen = false" type="button" class="cursor-pointer whitespace-nowrap rounded-xl bg-blue-700 px-4 py-2 text-center text-sm font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:opacity-100 active:outline-offset-0 dark:bg-blue-600 dark:text-slate-100 dark:focus-visible:outline-blue-600">Upgrade Now</button>
+            <div class="flex mt-2">
+                <button type="submit" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                >Make a request
+                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                            <i class="arrow-right"></i>
+                        </span>
+                    </span>
+                </button>
             </div>
-        </div>
+        </form>
     </div>
 </main>
 

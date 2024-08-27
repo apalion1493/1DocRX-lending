@@ -47,6 +47,13 @@ section {
     @apply text-dark-blue-50-2;
 }
 
+.modal-bg {
+    background: #F9FAFF url("images/bg-modal.png") no-repeat;
+    background-position-y: center;
+    background-position-x: 45%;
+    background-size: cover;
+}
+
 /* Button animation */
 @keyframes moveArrow {
     0% {

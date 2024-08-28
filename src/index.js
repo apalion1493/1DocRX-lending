@@ -10,7 +10,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 window.Alpine = Alpine
-Alpine.plugin(collapse, mask, focus)
+Alpine.plugin(collapse)
+Alpine.plugin(mask)
+Alpine.plugin(focus)
 Alpine.start()
 
 // init Swiper:

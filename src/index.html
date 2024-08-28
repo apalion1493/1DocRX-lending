@@ -278,66 +278,74 @@
                         </div>
                     </div>
                     <div class="col-span-7 md:col-span-12">
-                        <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()" class="grid grid-cols-7 grid-rows-2 gap-6">
-                            <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'" :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-3 xl:col-span-7">
-                                <div class="h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6 md:pl-8">
+                        <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()" class="grid grid-cols-8 grid-rows-2 gap-6">
+                            <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'" :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-4 xl:col-span-8">
+                                <div :class="selectedTab === 'groups' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end px-6 md:pl-8">
                                     <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
                                         <img class="" src="images/image-2.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col h-full py-4 text-primary">
+                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col items-start h-full py-4">
                                         <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
-                                        <p class="text-base">Semaglutude</p>
-                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                           href="#">Make a request
-                                            <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right-white"></i>
+                                        <p class="text-base leading-[120%]">Semaglutude</p>
+                                        <div :class="selectedTab === 'groups' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'groups' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'groups' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'groups' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'groups' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'" :tabindex="selectedTab === 'likes' ? '0' : '-1'" class="col-span-4 xl:col-span-7 minxl:col-start-4">
-                                <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6 md:pl-8">
-                                    <div class="flex-1 flex justify-center mr-4 md:mr-8 relative">
-                                        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="155" height="154" viewBox="0 0 155 154" fill="none">
-                                            <circle cx="77.5" cy="77" r="77" fill="#3A60CD"/>
-                                            <circle cx="76.9379" cy="77.0001" r="52.2701" fill="#335ACB"/>
-                                        </svg>
+                            <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'" :tabindex="selectedTab === 'likes' ? '0' : '-1'" class="col-span-4 xl:col-span-8 minxl:col-start-5">
+                                <div :class="selectedTab === 'likes' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] rounded-[20px] overflow-hidden border border-dashed border-light-blue-1 flex items-end px-6 md:pl-8">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
                                         <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex flex-col h-full py-4 text-white flex-1 md:flex-[4_4_0%] z-10">
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] flex-col items-start z-10">
                                         <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
-                                        <p class="text-base">Semaglutude</p>
-                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                           href="#">Make a request
-                                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right"></i>
+                                        <p class="text-base leading-[120%]">Semaglutude</p>
+                                        <div :class="selectedTab === 'likes' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'likes' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'likes' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'likes' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'likes' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'" :tabindex="selectedTab === 'comments' ? '0' : '-1'" class="col-span-7 minxl:row-start-2">
-                                <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6 md:pl-8">
+                            <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'" :tabindex="selectedTab === 'comments' ? '0' : '-1'" class="col-span-8 minxl:row-start-2">
+                                <div :class="selectedTab === 'comments' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end pr-6 md:pl-8">
                                     <div class="flex-1 flex mr-8 md:mr-8">
                                         <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
                                         <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex flex-col h-full py-4 text-primary flex-1 md:flex-[4_4_0%]">
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] flex-col items-start">
                                         <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
                                         <p class="text-base">Semaglutude</p>
-                                        <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                           href="#">Make a request
-                                            <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right-white"></i>
+                                        <div :class="selectedTab === 'comments' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'comments' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'comments' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'comments' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'comments' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -348,7 +356,7 @@
         </section>
         <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
             <div class="container">
-                <div x-show="selectedTab === 'groups'" id="tabpanelGroups" role="tabpanel" aria-label="groups" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                <div x-show="selectedTab === 'groups'" id="tabpanel1" role="tabpanel" aria-label="Saxenda RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
                     <div class="col-span-5 lg:col-span-12">
                         <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
                             <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
@@ -356,8 +364,130 @@
                                 -
                                 <span class="">Weekly you lost 1000$</span></span>
                             </div>
-                            <div class="px-6 pb-8 pt-10">
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
                                 <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Car-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="present-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Plan-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Comment-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="selectedTab === 'likes'" id="tabpanel2" role="tabpanel" aria-label="Wegovy RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">Ахтунг! ЗАГОЛОВОК 2</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Car-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="present-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Plan-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Comment-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full" src="images/hero-img.png" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="selectedTab === 'comments'" id="tabpanel3" role="tabpanel" aria-label="Ozempic RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">Ахтунг! ЗАГОЛОВОК 3</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -559,7 +689,12 @@
             </div>
         </div>
     </section>
-    <section class="rounded-[20px] bg-secondary py-14 md:py-10 background-blue-circle-2 overflow-hidden">
+    <section class="rounded-[20px] bg-secondary py-14 md:py-10 overflow-hidden relative">
+        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full sm:top-[10%]" width="860" height="377" viewBox="0 0 860 377" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="430" cy="188" r="430" fill="#3A60CD"/>
+            <circle cx="430.5" cy="187.5" r="347.5" fill="#335ACB"/>
+            <circle cx="430" cy="188" r="273" fill="#2D54BF"/>
+        </svg>
         <div class="container flex">
             <div class="flex flex-col items-center relative max-w-[551px] mx-auto">
                 <div class="arrow-3 absolute top-10 -left-16 md:hidden"></div>

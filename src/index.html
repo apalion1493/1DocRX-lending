@@ -30,14 +30,14 @@
                                 </span>
                                     <span class="text-base text-primary">+ (07425) 899611</span>
                                 </a>
-                                <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                <a href="#" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                    >Get Started Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                <i class="arrow-right"></i>
-                            </span>
-                        </span>
-                                </button>
+                                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                            <i class="arrow-right"></i>
+                                        </span>
+                                    </span>
+                                </a>
                             </div>
                             <!-- Mobile Menu Button -->
                             <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
@@ -66,8 +66,11 @@
                              :class="mobileMenuIsOpen ? 'flex' : 'hidden'" style="display: none"
                              class="fixed max-h-svh z-50 overflow-y-auto inset-x-0 top-0 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 minmd:hidden">
                             <div class="items-center justify-end w-full gap-y-8 flex flex-col">
-                                <span class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
-                                >1DocRX</span>
+                                <a class="uppercase flex items-center justify-center font-extrabold"
+                                   href="#">
+                                    <i class="Main-logo mr-2"></i>
+                                    <span>1DocRX</span>
+                                </a>
                                 <a class="flex items-center hover:underline" href="tel:+107425899611">
                                     <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
                                         <i class="phone-icon"></i>
@@ -98,28 +101,28 @@
                             <h1 class="font-medium text-h1 md:text-h1Min tracking-tight-2.16 md:tracking-tight-1.5 mb-5 md:mb-4">Weight loss made easy <br class="md:hidden">
                                 <span class="text-h2 md:text-h1Min font-light italic otherFont">with Ozempic !</span></h1>
                             <p class="minmd:max-w-[414px] text-h5 md:text-main-text">Buy an Ozempic and lose unnecessary pounds, place an order and receive it the very next day!</p>
-                            <a class="group md:hidden mt-6 flex items-center border border-primary transition-all py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                               href="#">Make a Request
+                            <button @click="modalIsOpen = true" type="button" class="group md:hidden mt-6 flex items-center border border-primary transition-all py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                               >Make a Request
                                 <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="col-span-6 md:col-span-12">
                         <div class="relative minmd:-left-8 md:mt-6">
                             <img class="w-full" src="images/hero-img.png" alt="Ozempic">
                         </div>
-                        <a class="group mt-6 minmd:hidden flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">Make a Request
+                        <button @click="modalIsOpen = true" type="button" class="group mt-6 minmd:hidden flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           >Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -251,14 +254,14 @@
                 <div class="col-span-12">
                     <div class="flex flex-col items-center mx-auto">
                         <span class="text-h3 font-semibold text-white block mb-6 md:text-h2Min">Ready to get approved?</span>
-                        <a class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">Make a Request
+                        <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           >Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                 <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                     <i class="arrow-right"></i>
                                 </span>
                             </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -281,13 +284,17 @@
                         <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()" class="grid grid-cols-8 grid-rows-2 gap-6">
                             <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'" :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-4 xl:col-span-8">
                                 <div :class="selectedTab === 'groups' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end px-6 md:pl-8">
-                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
-                                        <img class="" src="images/image-2.png" alt="Saxenda RX Image">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
+                                        <svg :class="selectedTab === 'groups' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:min-h-[156px]" src="images/image-2.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col items-start h-full py-4">
+                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col items-start h-full py-4 relative z-10">
                                         <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
                                         <p class="text-base leading-[120%]">Semaglutude</p>
-                                        <div :class="selectedTab === 'groups' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                        <div :class="selectedTab === 'groups' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
                                             <span class="text-base font-semibold leading-[120%]">400$</span>
                                         </div>
                                         <span :class="selectedTab === 'groups' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
@@ -304,13 +311,17 @@
                             </div>
                             <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'" :tabindex="selectedTab === 'likes' ? '0' : '-1'" class="col-span-4 xl:col-span-8 minxl:col-start-5">
                                 <div :class="selectedTab === 'likes' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] rounded-[20px] overflow-hidden border border-dashed border-light-blue-1 flex items-end px-6 md:pl-8">
-                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
-                                        <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
+                                        <svg :class="selectedTab === 'likes' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:min-h-[156px]"  src="images/image-3.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] flex-col items-start z-10">
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] items-start z-10 relative">
                                         <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
                                         <p class="text-base leading-[120%]">Semaglutude</p>
-                                        <div :class="selectedTab === 'likes' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                        <div :class="selectedTab === 'likes' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
                                             <span class="text-base font-semibold leading-[120%]">400$</span>
                                         </div>
                                         <span :class="selectedTab === 'likes' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
@@ -327,14 +338,18 @@
                             </div>
                             <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'" :tabindex="selectedTab === 'comments' ? '0' : '-1'" class="col-span-8 minxl:row-start-2">
                                 <div :class="selectedTab === 'comments' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end pr-6 md:pl-8">
-                                    <div class="flex-1 flex mr-8 md:mr-8">
-                                        <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
-                                        <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
+                                    <div class="flex-1 flex mr-8 md:mr-8 md:justify-center relative">
+                                        <svg :class="selectedTab === 'comments' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:hidden md:min-h-[156px]" src="images/image-4.png" alt="Saxenda RX Image">
+                                        <img class="relative z-10 minmd:hidden md:min-h-[156px]" src="images/image-7.png" alt="Saxenda RX Image">
                                     </div>
-                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] flex-col items-start">
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] items-start relative z-10">
                                         <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
                                         <p class="text-base">Semaglutude</p>
-                                        <div :class="selectedTab === 'comments' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 mb-0">
+                                        <div :class="selectedTab === 'comments' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
                                             <span class="text-base font-semibold leading-[120%]">400$</span>
                                         </div>
                                         <span :class="selectedTab === 'comments' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
@@ -412,7 +427,7 @@
                     <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
                         <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
                             <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                                <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-1.png" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -426,7 +441,7 @@
                                 <span class="">Weekly you lost 1000$</span></span>
                             </div>
                             <div class="px-6 pb-8 pt-10 flex flex-col h-full">
-                                <h4 class="text-h4 text-primary mb-6 block font-semibold">Ахтунг! ЗАГОЛОВОК 2</h4>
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -473,7 +488,7 @@
                     <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
                         <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
                             <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                                <img class="object-contain w-full" src="images/hero-img.png" alt="Image">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-2.png" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -487,7 +502,7 @@
                                 <span class="">Weekly you lost 1000$</span></span>
                             </div>
                             <div class="px-6 pb-8 pt-10 flex flex-col h-full">
-                                <h4 class="text-h4 text-primary mb-6 block font-semibold">Ахтунг! ЗАГОЛОВОК 3</h4>
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -534,7 +549,7 @@
                     <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
                         <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
                             <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                                <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-3.png" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -703,14 +718,14 @@
                     <div class="relative arrow-1-mob">
                         <p class="text-main-text text-white text-center">Traditional diets don’t work because nearly 70% of weight is genetically determined. Through medication you can work with your body rather than against it - to create safe and long lasting weight loss results.</p>
                     </div>
-                    <a class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                       href="#">Make a Request
+                    <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                       >Make a Request
                         <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                         <span class="arrow absolute transition-transform duration-100 ease-in-out">
                             <i class="arrow-right"></i>
                         </span>
                     </span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>

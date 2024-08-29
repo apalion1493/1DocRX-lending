@@ -9,37 +9,41 @@
 <script defer src="main.js"></script><link href="styles.css" rel="stylesheet"></head>
 <body class="">
 
-<main id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
+<main x-data="{modalIsOpen: false}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
     <header class="py-8 md:py-5 w-full">
         <div class="container">
             <div class="row">
                 <div class="col-span-12">
                     <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
                          class="flex items-center justify-between" aria-label="penguin ui menu">
-                        <!-- Brand Logo -->
-                        <a class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
-                           href="#">1DocRX</a>
-                        <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
-                            <a class="flex items-center hover:underline" href="tel:+107425899611">
+                        <div class="flex items-center justify-between w-full h-12">
+                            <!-- Brand Logo -->
+                            <a class="uppercase flex items-center justify-center font-extrabold"
+                               href="#">
+                                <i class="Main-logo mr-2"></i>
+                                <span>1DocRX</span>
+                            </a>
+                            <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
+                                <a class="flex items-center hover:underline" href="tel:+107425899611">
                                 <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
                                     <i class="phone-icon"></i>
                                 </span>
-                                <span class="text-base text-primary">+ (07425) 899611</span>
-                            </a>
-                            <a class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                               href="#">Get Started Now
-                                <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                <i class="arrow-right"></i>
-                            </span>
-                        </span>
-                            </a>
-                        </div>
-                        <!-- Mobile Menu Button -->
-                        <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
-                                :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
-                                class="flex text-slate-700 z-[51] minmd:hidden" aria-label="mobile menu"
-                                aria-controls="mobileMenu">
+                                    <span class="text-base text-primary">+ (07425) 899611</span>
+                                </a>
+                                <a href="#" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   >Get Started Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                            <i class="arrow-right"></i>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                            <!-- Mobile Menu Button -->
+                            <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
+                                    :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
+                                    class="flex text-slate-700 z-[51] minmd:hidden" aria-label="mobile menu"
+                                    aria-controls="mobileMenu">
                             <span x-show="!mobileMenuIsOpen" class="rounded-full w-12 h-12 overflow-hidden flex items-center justify-center bg-light-blue-1">
                                 <svg x-cloak xmlns="http://www.w3.org/2000/svg" fill="none"
                                      aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 stroke-primary">
@@ -47,11 +51,12 @@
                                           d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                                 </svg>
                             </span>
-                            <svg x-cloak x-show="mobileMenuIsOpen" style="display: none" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                 aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
-                            </svg>
-                        </button>
+                                <svg x-cloak x-show="mobileMenuIsOpen" style="display: none" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                     aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
                         <!-- Mobile Menu -->
                         <div x-cloak x-show="mobileMenuIsOpen"
                              x-transition:enter="transition motion-reduce:transition-none ease-out duration-300"
@@ -61,8 +66,11 @@
                              :class="mobileMenuIsOpen ? 'flex' : 'hidden'" style="display: none"
                              class="fixed max-h-svh z-50 overflow-y-auto inset-x-0 top-0 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 minmd:hidden">
                             <div class="items-center justify-end w-full gap-y-8 flex flex-col">
-                                <span class="py-3 px-4 text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded transition-all hover:bg-primary"
-                                >1DocRX</span>
+                                <a class="uppercase flex items-center justify-center font-extrabold"
+                                   href="#">
+                                    <i class="Main-logo mr-2"></i>
+                                    <span>1DocRX</span>
+                                </a>
                                 <a class="flex items-center hover:underline" href="tel:+107425899611">
                                     <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
                                         <i class="phone-icon"></i>
@@ -93,28 +101,28 @@
                             <h1 class="font-medium text-h1 md:text-h1Min tracking-tight-2.16 md:tracking-tight-1.5 mb-5 md:mb-4">Weight loss made easy <br class="md:hidden">
                                 <span class="text-h2 md:text-h1Min font-light italic otherFont">with Ozempic !</span></h1>
                             <p class="minmd:max-w-[414px] text-h5 md:text-main-text">Buy an Ozempic and lose unnecessary pounds, place an order and receive it the very next day!</p>
-                            <a class="group md:hidden mt-6 flex items-center border border-primary transition-all py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                               href="#">Make a Request
+                            <button @click="modalIsOpen = true" type="button" class="group md:hidden mt-6 flex items-center border border-primary transition-all py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                               >Make a Request
                                 <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="col-span-6 md:col-span-12">
                         <div class="relative minmd:-left-8 md:mt-6">
                             <img class="w-full" src="images/hero-img.png" alt="Ozempic">
                         </div>
-                        <a class="group mt-6 minmd:hidden flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">Make a Request
+                        <button @click="modalIsOpen = true" type="button" class="group mt-6 minmd:hidden flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           >Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -177,7 +185,7 @@
                     </div>
                 </div>
                 <div class="col-span-5 lg:col-span-12 lg:order-1">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col h-full justify-center">
                         <h2 class="mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16 md:text-h1Min">There’s a reason why everyone is talking about semaglutide. It works.</h2>
                         <p class="minlg:max-w-[290px] text-main-text text-dark-blue-50-2">On average, people on Wegovy lose 15% of their weight in a year*.</p>
                     </div>
@@ -246,164 +254,309 @@
                 <div class="col-span-12">
                     <div class="flex flex-col items-center mx-auto">
                         <span class="text-h3 font-semibold text-white block mb-6 md:text-h2Min">Ready to get approved?</span>
-                        <a class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">Make a Request
+                        <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                           >Make a Request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                 <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                     <i class="arrow-right"></i>
                                 </span>
                             </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
-        <div class="container">
-            <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
-                <div class="col-span-5 md:col-span-12">
-                    <div class="max-w-[433px] md:max-w-full">
-                        <h2 class="h2 block mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16">Revolutionary <br class="md:hidden">medications!</h2>
-                        <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
-                            (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
-                            works by mimicking your body’s natural hormones, helping you feel fuller faster and for
-                            longer.</p>
+    <div x-data="{ selectedTab: 'groups' }" class="w-full">
+        <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
+            <div class="container">
+                <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
+                    <div class="col-span-5 md:col-span-12">
+                        <div class="max-w-[433px] md:max-w-full">
+                            <h2 class="h2 block mb-6 md:mb-4 text-h2 font-medium tracking-tight-2.16">Revolutionary <br class="md:hidden">medications!</h2>
+                            <p class="text-dark-blue-50-2 text-main-text">Wegovy, Saxenda and Ozempic are semaglutide
+                                (a GLP-1) that may be prescribed for weight loss if appropriate. It’s a once-weekly shot that
+                                works by mimicking your body’s natural hormones, helping you feel fuller faster and for
+                                longer.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-span-7 md:col-span-12">
-                    <div class="grid grid-cols-7 grid-rows-2 gap-6">
-                        <div class="col-span-3 xl:col-span-7">
-                            <div class="h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden bg-light-blue-2 flex items-end px-6 md:pl-8">
-                                <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center">
-                                    <img class="" src="images/image-2.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col h-full py-4 text-primary">
-                                    <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right-white"></i>
+                    <div class="col-span-7 md:col-span-12">
+                        <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()" class="grid grid-cols-8 grid-rows-2 gap-6">
+                            <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'" :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-4 xl:col-span-8">
+                                <div :class="selectedTab === 'groups' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end px-6 md:pl-8">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
+                                        <svg :class="selectedTab === 'groups' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:min-h-[156px]" src="images/image-2.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex xl:flex-1 md:flex-[4_4_0%] flex-col items-start h-full py-4 relative z-10">
+                                        <span class="font-bold text-h4 block mb-1">Saxenda RX</span>
+                                        <p class="text-base leading-[120%]">Semaglutude</p>
+                                        <div :class="selectedTab === 'groups' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'groups' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'groups' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'groups' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'groups' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-4 xl:col-span-7 minxl:col-start-4">
-                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-secondary flex items-end px-6 md:pl-8">
-                                <div class="flex-1 flex justify-center mr-4 md:mr-8 relative">
-                                    <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" width="155" height="154" viewBox="0 0 155 154" fill="none">
-                                        <circle cx="77.5" cy="77" r="77" fill="#3A60CD"/>
-                                        <circle cx="76.9379" cy="77.0001" r="52.2701" fill="#335ACB"/>
-                                    </svg>
-                                    <img class="z-10" src="images/image-3.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex flex-col h-full py-4 text-white flex-1 md:flex-[4_4_0%] z-10">
-                                    <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right"></i>
+                            <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'" :tabindex="selectedTab === 'likes' ? '0' : '-1'" class="col-span-4 xl:col-span-8 minxl:col-start-5">
+                                <div :class="selectedTab === 'likes' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] rounded-[20px] overflow-hidden border border-dashed border-light-blue-1 flex items-end px-6 md:pl-8">
+                                    <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
+                                        <svg :class="selectedTab === 'likes' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:min-h-[156px]"  src="images/image-3.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] items-start z-10 relative">
+                                        <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
+                                        <p class="text-base leading-[120%]">Semaglutude</p>
+                                        <div :class="selectedTab === 'likes' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'likes' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'likes' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'likes' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'likes' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-span-7 minxl:row-start-2">
-                            <div class="h-[154px] md:h-[176px] rounded-[20px] overflow-hidden bg-light-blue-1 flex items-end pr-6 md:pl-8">
-                                <div class="flex-1 flex mr-8 md:mr-8">
-                                    <img class="md:hidden" src="images/image-4.png" alt="Saxenda RX Image">
-                                    <img class="minmd:hidden" src="images/image-7.png" alt="Saxenda RX Image">
-                                </div>
-                                <div class="flex flex-col h-full py-4 text-primary flex-1 md:flex-[4_4_0%]">
-                                    <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
-                                    <p class="text-base">Semaglutude</p>
-                                    <a class="group mt-auto flex items-center transition-all font-medium text-base w-max"
-                                       href="#">Make a request
-                                        <span class="ml-2 rounded-full bg-primary overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                                            <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                                                <i class="arrow-right-white"></i>
+                            <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'" :tabindex="selectedTab === 'comments' ? '0' : '-1'" class="col-span-8 minxl:row-start-2">
+                                <div :class="selectedTab === 'comments' ? 'bg-secondary text-white' : 'bg-light-blue-2'" class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end pr-6 md:pl-8">
+                                    <div class="flex-1 flex mr-8 md:mr-8 md:justify-center relative">
+                                        <svg :class="selectedTab === 'comments' ? 'block' : 'hidden'" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 minmd:w-full minxl:w-[126px]" xmlns="http://www.w3.org/2000/svg" width="154" height="154" viewBox="0 0 154 154" fill="none">
+                                            <circle cx="77" cy="77" r="77" fill="#3A60CD"/>
+                                            <circle cx="76.4379" cy="77.0001" r="52.2701" fill="#335ACB"/>
+                                        </svg>
+                                        <img class="relative z-10 md:hidden md:min-h-[156px]" src="images/image-4.png" alt="Saxenda RX Image">
+                                        <img class="relative z-10 minmd:hidden md:min-h-[156px]" src="images/image-7.png" alt="Saxenda RX Image">
+                                    </div>
+                                    <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] items-start relative z-10">
+                                        <span class="font-bold text-h4 block mb-1">Ozempic RX</span>
+                                        <p class="text-base">Semaglutude</p>
+                                        <div :class="selectedTab === 'comments' ? 'bg-white text-secondary' : 'bg-secondary text-white'" class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
+                                            <span class="text-base font-semibold leading-[120%]">400$</span>
+                                        </div>
+                                        <span :class="selectedTab === 'comments' ? 'text-white' : 'text-base'" class="group mt-auto flex items-center transition-all font-medium  w-max"
+                                           >Make a request
+                                            <span :class="selectedTab === 'comments' ? 'bg-white' : 'bg-primary'" class="ml-2 rounded-full  overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                                <span class="arrow absolute transition-transform duration-100 ease-in-out flex items-center justify-center">
+                                                    <i :class="selectedTab === 'comments' ? 'dn' : 'db'" class="arrow-right-white"></i>
+                                                    <i :class="selectedTab === 'comments' ? 'db' : 'dn'" class="arrow-right"></i>
+                                                </span>
                                             </span>
                                         </span>
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
-        <div class="container">
-            <div class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
-                <div class="col-span-12">
-                    <div class="flex items-center flex-wrap gap-4 mb-4 lg:mb-0">
-                        <span class="rounded-full py-3 px-4 text-center bg-secondary text-white text-base font-semibold md:text-h3Min md:font-medium">Starting with just 450$ month</span>
-                        <span class="rounded-full py-3 px-4 text-center bg-light-blue-1 text-primary text-base font-semibold md:text-h3Min md:font-medium">Weekly you lost 1000$</span>
-                    </div>
-                </div>
-                <div class="col-span-5 lg:col-span-12">
-                    <div class="flex flex-col h-full px-6 py-8 border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px]">
-                        <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
-                        <ul class="flex flex-col gap-y-6 mb-10">
-                            <li class="flex items-center gap-x-4">
+        </section>
+        <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
+            <div class="container">
+                <div x-show="selectedTab === 'groups'" id="tabpanel1" role="tabpanel" aria-label="Saxenda RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Car-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
-                                    you order an item on our website, you receive free shipping!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="present-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
-                                    will deliver your order the next day to your door!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Plan-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
-                                    will provide you with a complete treatment plan!</p>
-                            </li>
-                            <li class="flex items-center gap-x-4">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
                                         <i class="Comment-icon"></i>
                                     </span>
-                                <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
-                                    will advise you on all your concerns about treatment</p>
-                            </li>
-                        </ul>
-                        <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                           href="#">
-                            Start Treatment Now
-                            <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                        </a>
-                        <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-1.png" alt="Image">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-span-7 lg:col-span-12">
-                    <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
-                        <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                            <img class="object-contain w-full" src="images/image-5.png" alt="Image">
+                <div x-show="selectedTab === 'likes'" id="tabpanel2" role="tabpanel" aria-label="Wegovy RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Car-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="present-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Plan-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Comment-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-2.png" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="selectedTab === 'comments'" id="tabpanel3" role="tabpanel" aria-label="Ozempic RX" class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
+                    <div class="col-span-5 lg:col-span-12">
+                        <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
+                            <div class="flex gap-x-2 items-center text-white text-base md:text-h3Min bg-secondary w-full py-3 px-4">
+                                <span><span class="font-semibold">Starting with just 450$ / mo</span>
+                                -
+                                <span class="">Weekly you lost 1000$</span></span>
+                            </div>
+                            <div class="px-6 pb-8 pt-10 flex flex-col h-full">
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What include our weight program?</h4>
+                                <ul class="flex flex-col gap-y-6 mb-10">
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Car-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Free shimpent</span>-When
+                                            you order an item on our website, you receive free shipping!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="present-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Next day delivery</span>-We
+                                            will deliver your order the next day to your door!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Plan-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Full Treatment Plan</span>-We
+                                            will provide you with a complete treatment plan!</p>
+                                    </li>
+                                    <li class="flex items-center gap-x-4">
+                                    <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
+                                        <i class="Comment-icon"></i>
+                                    </span>
+                                        <p class="text-dark-blue-50 text-main-text"><span class="text-dark-blue-100">Consultation</span>-We
+                                            will advise you on all your concerns about treatment</p>
+                                    </li>
+                                </ul>
+                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">
+                                    Start Treatment Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                    <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                        <i class="arrow-right"></i>
+                                    </span>
+                                </span>
+                                </a>
+                                <p class="text-dark-blue-100">We don’t work with insurance!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
+                        <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
+                            <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
+                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-3.png" alt="Image">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
             <div class="swiper mySwiper">
@@ -421,30 +574,27 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
-                            <div class="flex items-center gap-x-1 mb-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
-                                </svg>
-                            </div>
                             <div class="mb-8 flex items-center">
-                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
-                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
-                                </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col mr-2">
                                     <span class="text-main-text mb-2 block">Sophya Morry</span>
                                     <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                                <div class="flex items-center gap-x-1 ml-auto self-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                    </svg>
                                 </div>
                             </div>
                             <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
@@ -455,30 +605,27 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
-                            <div class="flex items-center gap-x-1 mb-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
-                                </svg>
-                            </div>
                             <div class="mb-8 flex items-center">
-                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
-                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
-                                </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col mr-2">
                                     <span class="text-main-text mb-2 block">Sophya Morry</span>
                                     <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                                <div class="flex items-center gap-x-1 ml-auto self-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                    </svg>
                                 </div>
                             </div>
                             <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
@@ -489,30 +636,27 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
-                            <div class="flex items-center gap-x-1 mb-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
-                                </svg>
-                            </div>
                             <div class="mb-8 flex items-center">
-                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
-                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
-                                </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col mr-2">
                                     <span class="text-main-text mb-2 block">Sophya Morry</span>
                                     <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                                <div class="flex items-center gap-x-1 ml-auto self-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                    </svg>
                                 </div>
                             </div>
                             <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
@@ -523,30 +667,27 @@
                     </div>
                     <div class="swiper-slide">
                         <div class="flex flex-col p-6 h-full bg-white border border-dashed border-light-blue-1 rounded-[20px]">
-                            <div class="flex items-center gap-x-1 mb-5">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                                    <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
-                                </svg>
-                            </div>
                             <div class="mb-8 flex items-center">
-                                <div class="w-[68px] h-[68px] rounded-full overflow-hidden mr-3 flex items-center justify-center">
-                                    <img class="object-center object-contain w-full" src="images/avatar-1.png" alt="Avatar">
-                                </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col mr-2">
                                     <span class="text-main-text mb-2 block">Sophya Morry</span>
                                     <time class="text-main-text text-dark-blue-50-2" datetime="2024-08-12">12.08.2024</time>
+                                </div>
+                                <div class="flex items-center gap-x-1 ml-auto self-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#365AC1"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                        <path d="M10.5734 1.39058C11.0224 0.00861192 12.9776 0.00861001 13.4266 1.39058L15.0309 6.32827C15.2318 6.9463 15.8077 7.36475 16.4575 7.36475H21.6493C23.1024 7.36475 23.7066 9.22417 22.531 10.0783L18.3307 13.1299C17.805 13.5119 17.585 14.1889 17.7858 14.807L19.3902 19.7447C19.8392 21.1266 18.2575 22.2758 17.0819 21.4217L12.8817 18.3701C12.3559 17.9881 11.6441 17.9881 11.1183 18.3701L6.91807 21.4217C5.7425 22.2758 4.16078 21.1266 4.60981 19.7447L6.21416 14.807C6.41497 14.189 6.19498 13.5119 5.66925 13.1299L1.469 10.0783C0.293431 9.22417 0.897592 7.36475 2.35068 7.36475H7.54247C8.19231 7.36475 8.76825 6.9463 8.96906 6.32827L10.5734 1.39058Z" fill="#D9E3FE"/>
+                                    </svg>
                                 </div>
                             </div>
                             <span class="text-h4 font-semibold block mb-3 text-primary">The Best Weight-loss programm!</span>
@@ -559,6 +700,32 @@
                 <div class="relative mt-6 w-full h-12 max-w-[112px] minmd:hidden">
                     <div class="swiper-button-arrow swiper-button-prev"></div>
                     <div class="swiper-button-arrow swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="rounded-[20px] bg-secondary py-14 md:py-10 overflow-hidden relative">
+        <svg class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-full sm:top-[10%]" width="860" height="377" viewBox="0 0 860 377" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="430" cy="188" r="430" fill="#3A60CD"/>
+            <circle cx="430.5" cy="187.5" r="347.5" fill="#335ACB"/>
+            <circle cx="430" cy="188" r="273" fill="#2D54BF"/>
+        </svg>
+        <div class="container flex">
+            <div class="flex flex-col items-center relative max-w-[551px] mx-auto">
+                <div class="arrow-3 absolute top-10 -left-16 md:hidden"></div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-h2 font-medium text-white tracking-tight-2.16 mb-6 text-center md:text-h1Min">Weight loss <span class="font-extralight otherFont italic capitalize">for everybody!</span></h3>
+                    <div class="relative arrow-1-mob">
+                        <p class="text-main-text text-white text-center">Traditional diets don’t work because nearly 70% of weight is genetically determined. Through medication you can work with your body rather than against it - to create safe and long lasting weight loss results.</p>
+                    </div>
+                    <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                       >Make a Request
+                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                            <i class="arrow-right"></i>
+                        </span>
+                    </span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -831,7 +998,10 @@
         <div class="container">
             <div class="row gap-x-6 md:gap-x-4">
                 <div class="col-span-4 md:col-span-4 flex items-center">
-                    <span class="py-3 px-4 mr-auto text-white uppercase bg-secondary flex items-center justify-center font-extrabold w-[97px] rounded">1DocRX</span>
+                    <span class="uppercase flex items-center justify-center text-white font-extrabold">
+                        <i class="Main-logo mr-2"></i>
+                        <span>1DocRX</span>
+                    </span>
                 </div>
                 <div class="col-span-4 md:col-span-8 flex items-center">
                     <p class="mx-auto md:mr-0 text-white md:text-right">© 2023 All rights reserved.</p>
@@ -847,6 +1017,82 @@
             </div>
         </div>
     </footer>
+
+    <div style="display: none" x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false" @click.self="modalIsOpen = false" class="fixed inset-0 z-[60] flex w-full items-center justify-center bg-black/20 p-4 pb-8 backdrop-blur-md lg:p-4" role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
+        <!-- Modal Dialog -->
+        <form x-show="modalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="flex max-w-[716px] w-full flex-col gap-4 overflow-hidden rounded-3xl bg-white text-slate-700 relative p-10 md:py-8 md:px-4 modal-bg">
+            <!-- Dialog Header -->
+            <div class="flex items-center justify-between">
+                <div class="flex flex-col max-w-[385px] mr-2">
+                    <h1 class="text-h2 md:text-h1Min text-primary font-medium tracking-tight-2.16 block mb-6">Make a request!</h1>
+                    <p class="text-main-text text-dark-blue-50-2">We will contact you within a few minutes for consultation and for confirmation of the order.</p>
+                </div>
+                <button class="self-start" @click="modalIsOpen = false" aria-label="close modal">
+                    <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M0.68624 23.3137C0.165541 22.793 0.165541 21.9487 0.68624 21.428L21.428 0.68624C21.9487 0.165541 22.793 0.165541 23.3137 0.68624C23.8344 1.20694 23.8344 2.05116 23.3137 2.57186L2.57186 23.3137C2.05116 23.8344 1.20694 23.8344 0.68624 23.3137Z" fill="#001A60"/>
+                        <path d="M0.68624 0.68624C1.20694 0.165541 2.05116 0.165541 2.57186 0.68624L23.3137 21.428C23.8344 21.9487 23.8344 22.793 23.3137 23.3137C22.793 23.8344 21.9487 23.8344 21.428 23.3137L0.68624 2.57186C0.165541 2.05116 0.165541 1.20694 0.68624 0.68624Z" fill="#001A60"/>
+                    </svg>
+                    <svg class="minmd:hidden mt-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M0.807535 19.1924C0.384467 18.7694 0.384467 18.0834 0.807535 17.6604L17.6602 0.807658C18.0833 0.38459 18.7692 0.384589 19.1923 0.807657C19.6154 1.23073 19.6154 1.91665 19.1923 2.33972L2.3396 19.1924C1.91653 19.6155 1.2306 19.6155 0.807535 19.1924Z" fill="#001A60"/>
+                        <path d="M0.807535 0.807657C1.2306 0.384589 1.91653 0.384589 2.3396 0.807657L19.1923 17.6604C19.6154 18.0834 19.6154 18.7694 19.1923 19.1924C18.7692 19.6155 18.0833 19.6155 17.6602 19.1924L0.807535 2.33972C0.384467 1.91665 0.384467 1.23073 0.807535 0.807657Z" fill="#001A60"/>
+                    </svg>
+                </button>
+            </div>
+            <!-- Dialog Body -->
+            <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6">
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputFirstNameModal" class="w-fit text-none">First Name</label>
+                        <input id="textInputFirstNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="first name" placeholder="First Name" autocomplete="first name"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputSecondNameModal" class="w-fit text-none">Second Name</label>
+                        <input id="textInputSecondNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="second name" placeholder="Second Name" autocomplete="second name"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputMailModal" class="w-fit text-none">Email</label>
+                        <input id="textInputMailModal" type="email" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
+                    </div>
+                </div>
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex w-full flex-col text-dark-blue-50-2">
+                        <label for="textInputPhoneModal" class="w-fit text-none">Phone</label>
+                        <input id="textInputPhoneModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="phone" placeholder="Phone" autocomplete="phone"/>
+                    </div>
+                </div>
+                <div class="col-span-2 sm:col-span-2">
+                    <div class="relative flex w-full flex-col text-dark-blue-50-2">
+                        <label for="selectStateModal" class="w-fit text-none">Choose State</label>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
+                            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                        </svg>
+                        <select id="selectStateModal" name="Choose State" class="w-full appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
+                            <option selected>Choose State</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialog Footer -->
+            <div class="flex mt-2">
+                <button type="submit" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                >Make a request
+                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                            <i class="arrow-right"></i>
+                        </span>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
 </main>
 
 </body>

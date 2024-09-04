@@ -43,6 +43,18 @@ section {
     width: calc(100% + 32px) !important;
 }
 
+.input.error {
+    @apply border-red-500 text-red-600;
+}
+
+.input.error::placeholder {
+    @apply border-red-500 text-red-600;
+}
+
+select.error {
+    @apply border-red-500 text-red-600;
+}
+
 .input::placeholder {
     @apply text-dark-blue-50-2;
 }

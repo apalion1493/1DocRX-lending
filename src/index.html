@@ -30,14 +30,14 @@
                                 </span>
                                     <span class="text-base text-primary">+ (07425) 899611</span>
                                 </a>
-                                <a href="#" class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                <span @click="modalIsOpen = true" class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                    >Get Started Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                         <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                             <i class="arrow-right"></i>
                                         </span>
                                     </span>
-                                </a>
+                                </span>
                             </div>
                             <!-- Mobile Menu Button -->
                             <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
@@ -411,15 +411,14 @@
                                             will advise you on all your concerns about treatment</p>
                                     </li>
                                 </ul>
-                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                                   href="#">
+                                <button type="button" @click="modalIsOpen = true" class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12">
                                     Start Treatment Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                                </a>
+                                </button>
                                 <p class="text-dark-blue-100">We don’t work with insurance!</p>
                             </div>
                         </div>
@@ -472,15 +471,15 @@
                                             will advise you on all your concerns about treatment</p>
                                     </li>
                                 </ul>
-                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                                   href="#">
+                                <button type="button" @click="modalIsOpen = true" class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   >
                                     Start Treatment Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                                </a>
+                                </button>
                                 <p class="text-dark-blue-100">We don’t work with insurance!</p>
                             </div>
                         </div>
@@ -533,15 +532,15 @@
                                             will advise you on all your concerns about treatment</p>
                                     </li>
                                 </ul>
-                                <a class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                                   href="#">
+                                <button @click="modalIsOpen = true" type="button" class="mb-4 mt-auto group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                  >
                                     Start Treatment Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                     <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                         <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                                </a>
+                                </button>
                                 <p class="text-dark-blue-100">We don’t work with insurance!</p>
                             </div>
                         </div>
@@ -718,14 +717,14 @@
                     <div class="relative arrow-1-mob">
                         <p class="text-main-text text-white text-center">Traditional diets don’t work because nearly 70% of weight is genetically determined. Through medication you can work with your body rather than against it - to create safe and long lasting weight loss results.</p>
                     </div>
-                    <button @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                    <span @click="modalIsOpen = true" type="button" class="group flex items-center border border-primary transition-all mt-8 md:mt-[100px] md:mb-0 mb-6 py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                        >Make a Request
                         <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                         <span class="arrow absolute transition-transform duration-100 ease-in-out">
                             <i class="arrow-right"></i>
                         </span>
                     </span>
-                    </button>
+                    </span>
                 </div>
             </div>
         </div>
@@ -979,6 +978,10 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-span-2">
+                                <span class="rounded-xl w-fit border border-green-600 bg-green-600 px-2 py-1 text-h5  text-white uppercase dark:border-green-600 dark:bg-green-600 dark:text-white">success</span>
+                                <span class="rounded-xl w-fit border border-red-600 bg-red-600 px-2 py-1 text-h5  text-white uppercase dark:border-red-600 dark:bg-red-600 dark:text-white">Error</span>
+                            </div>
                         </div>
                         <button type="submit" class="group minmd:hidden mt-10 flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                         >Make a request
@@ -1027,7 +1030,7 @@
                     <h1 class="text-h2 md:text-h1Min text-primary font-medium tracking-tight-2.16 block mb-6">Make a request!</h1>
                     <p class="text-main-text text-dark-blue-50-2">We will contact you within a few minutes for consultation and for confirmation of the order.</p>
                 </div>
-                <button class="self-start" @click="modalIsOpen = false" aria-label="close modal">
+                <button type="button" class="self-start" @click="modalIsOpen = false" aria-label="close modal">
                     <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M0.68624 23.3137C0.165541 22.793 0.165541 21.9487 0.68624 21.428L21.428 0.68624C21.9487 0.165541 22.793 0.165541 23.3137 0.68624C23.8344 1.20694 23.8344 2.05116 23.3137 2.57186L2.57186 23.3137C2.05116 23.8344 1.20694 23.8344 0.68624 23.3137Z" fill="#001A60"/>
                         <path d="M0.68624 0.68624C1.20694 0.165541 2.05116 0.165541 2.57186 0.68624L23.3137 21.428C23.8344 21.9487 23.8344 22.793 23.3137 23.3137C22.793 23.8344 21.9487 23.8344 21.428 23.3137L0.68624 2.57186C0.165541 2.05116 0.165541 1.20694 0.68624 0.68624Z" fill="#001A60"/>
@@ -1039,44 +1042,47 @@
                 </button>
             </div>
             <!-- Dialog Body -->
-            <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6">
-                <div class="col-span-1 sm:col-span-2">
+            <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6 min-h-[216px]">
+                <div class="col-span-1 sm:col-span-2 ">
                     <div class="flex w-full flex-col text-dark-blue-50-2">
                         <label for="textInputFirstNameModal" class="w-fit text-none">First Name</label>
                         <input id="textInputFirstNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="first name" placeholder="First Name" autocomplete="first name"/>
                     </div>
                 </div>
-                <div class="col-span-1 sm:col-span-2">
+                <div class="col-span-1 sm:col-span-2 ">
                     <div class="flex w-full flex-col text-dark-blue-50-2">
                         <label for="textInputSecondNameModal" class="w-fit text-none">Second Name</label>
                         <input id="textInputSecondNameModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="second name" placeholder="Second Name" autocomplete="second name"/>
                     </div>
                 </div>
-                <div class="col-span-1 sm:col-span-2">
+                <div class="col-span-1 sm:col-span-2 ">
                     <div class="flex w-full flex-col text-dark-blue-50-2">
                         <label for="textInputMailModal" class="w-fit text-none">Email</label>
-                        <input id="textInputMailModal" type="email" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
+                        <input id="textInputMailModal" type="email" class="input error w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="email" placeholder="Email" autocomplete="email"/>
                     </div>
                 </div>
-                <div class="col-span-1 sm:col-span-2">
+                <div class="col-span-1 sm:col-span-2 ">
                     <div class="flex w-full flex-col text-dark-blue-50-2">
                         <label for="textInputPhoneModal" class="w-fit text-none">Phone</label>
                         <input id="textInputPhoneModal" type="text" class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75" name="phone" placeholder="Phone" autocomplete="phone"/>
                     </div>
                 </div>
-                <div class="col-span-2 sm:col-span-2">
+                <div class="col-span-2 sm:col-span-2 ">
                     <div class="relative flex w-full flex-col text-dark-blue-50-2">
                         <label for="selectStateModal" class="w-fit text-none">Choose State</label>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
                             <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                         </svg>
-                        <select id="selectStateModal" name="Choose State" class="w-full appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
+                        <select id="selectStateModal" name="Choose State" class="w-full error appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
                             <option selected>Choose State</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
                     </div>
+                </div>
+                <div class="col-span-2 hidden">
+                    <h2 class="text-h1 text-center text-primary">Сообщение отправлено! Спасибо!</h2>
                 </div>
             </div>
 

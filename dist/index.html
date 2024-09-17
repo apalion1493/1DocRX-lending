@@ -9,7 +9,8 @@
 <script defer src="main.js"></script><link href="styles.css" rel="stylesheet"></head>
 <body class="">
 
-<main x-data="{modalIsOpen: false}" id="content" class="flex flex-col items-center min-h-screen overflow-hidden">
+<main x-data="{modalIsOpen: false, openDialog: false}" id="content"
+      class="flex flex-col items-center min-h-screen overflow-hidden">
     <header class="py-8 md:py-5 w-full">
         <div class="container">
             <div class="row">
@@ -24,11 +25,11 @@
                                 <span>1DocRX</span>
                             </a>
                             <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
-                                <a class="flex items-center hover:underline" href="tel:+107425899611">
-                                <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
-                                    <i class="phone-icon"></i>
-                                </span>
-                                    <span class="text-base text-primary">+ (07425) 899611</span>
+                                <a class="flex items-center hover:underline" href="skype:+16467559735">
+                                    <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                        <i class="phone-icon"></i>
+                                    </span>
+                                    <span class="text-base text-primary">+1 (646) 755-9735</span>
                                 </a>
                                 <span @click="modalIsOpen = true"
                                       class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
@@ -147,7 +148,7 @@
                 <div class="col-span-5 lg:col-span-12 lg:mb-5">
                     <div class="flex flex-col minlg:max-w-[400px]">
                         <h2 class="mb-6 md:mb-4 text-h2 md:text-h1Min font-medium tracking-tight-2.16">How does
-                            Ozempic works?</h2>
+                            Ozempic work?</h2>
                         <p class="text-dark-blue-50-2 text-main-text">Ozempic works by slowing the digestion process,
                             and can help you to feel full for longer.
                             Ozempic, acts like a hormone your body naturally makes to regulate blood sugar and help
@@ -183,7 +184,7 @@
                         <img class="md:hidden" src="images/img-1.png" alt="Img 1">
                         <img class="minmd:hidden object-contain" src="images/image-6.png" alt="Img 1">
                         <div class="py-8 md:p-0 md:mt-6 h-full mx-auto">
-                            <div x-data="{ currentVal: 20 }"
+                            <div x-data="{ currentVal: 180 }"
                                  class="flex flex-col max-w-[358px] md:max-w-[303px] w-full items-center">
                                 <span class="block mb-6 font-semibold text-h5">Your current weight:</span>
                                 <span class="w-[70px] h-[42px] text-main-text bg-secondary rounded-xl text-center flex items-center justify-center font-bold text-white"
@@ -192,11 +193,11 @@
                                     <label for="rangeSlider" class="sr-only">Brightness</label>
                                     <input x-model="currentVal" id="rangeSlider" type="range"
                                            class="h-[3px] w-[354px] md:w-[248px] appearance-none bg-light-blue-1 [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-blue-700 active:[&::-moz-range-thumb]:scale-110 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-none [&::-webkit-slider-thumb]:bg-blue-700 active:[&::-webkit-slider-thumb]:scale-110 [&::-moz-range-thumb]:rounded-full [&::-webkit-slider-thumb]:rounded-full rounded-full"
-                                           min="0" max="100" step="1"/>
+                                           min="140" max="280" step="1"/>
                                 </div>
                                 <p class="text-main-text mb-3">You could easy lose:</p>
                                 <span class="text-secondary text-h5 font-bold">
-                                    <span class="" x-text="Number(currentVal) + 20"></span>
+                                    <span class="" x-text="`${Math.round(Number(currentVal) / 100 * 20)}`"></span>
                                     lib
                                 </span>
                             </div>
@@ -368,7 +369,7 @@
                                              alt="Saxenda RX Image">
                                     </div>
                                     <div class="flex flex-col h-full py-4 flex-1 md:flex-[4_4_0%] items-start z-10 relative">
-                                        <span class="font-bold text-h4 block mb-1">Wegovy RX</span>
+                                        <span class="font-bold text-h4 block mb-1">Mounjaro RX</span>
                                         <p class="text-base leading-[120%]">Semaglutude</p>
                                         <div :class="selectedTab === 'likes' ? 'bg-white text-secondary' : 'bg-secondary text-white'"
                                              class="flex items-center justify-center rounded-lg overflow-hidden py-1 px-2 min-h-[27px] mt-3 md:mt-5 mb-0">
@@ -446,7 +447,8 @@
                                 <span class="font-semibold">Save up to $500 monthly!</span>
                             </div>
                             <div class="px-6 pb-8 pt-10 flex flex-col h-full">
-                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our program?</h4>
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our
+                                    program?</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -499,7 +501,7 @@
                         </div>
                     </div>
                 </div>
-                <div x-show="selectedTab === 'likes'" id="tabpanel2" role="tabpanel" aria-label="Wegovy RX"
+                <div x-show="selectedTab === 'likes'" id="tabpanel2" role="tabpanel" aria-label="Mounjaro RX"
                      class="row gap-x-6 lg:gap-x-0 lg:gap-y-4">
                     <div class="col-span-5 lg:col-span-12">
                         <div class="flex flex-col h-full border border-dashed border-light-blue-1 bg-light-blue-2 rounded-[20px] overflow-hidden">
@@ -507,7 +509,8 @@
                                 <span class="font-semibold">Save up to $500 monthly!</span>
                             </div>
                             <div class="px-6 pb-8 pt-10 flex flex-col h-full">
-                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our program?</h4>
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our
+                                    program?</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -569,7 +572,8 @@
                                 <span class="font-semibold">Save up to $500 monthly!</span>
                             </div>
                             <div class="px-6 pb-8 pt-10 flex flex-col h-full">
-                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our program?</h4>
+                                <h4 class="text-h4 text-primary mb-6 block font-semibold">What includes our
+                                    program?</h4>
                                 <ul class="flex flex-col gap-y-6 mb-10">
                                     <li class="flex items-center gap-x-4">
                                     <span class="rounded-full flex items-center justify-center bg-light-blue-1 overflow-hidden w-10 h-10 min-w-10">
@@ -617,7 +621,7 @@
                     <div class="col-span-7 lg:col-span-12 pt-[47px] lg:pt-0">
                         <div class="rounded-3xl overflow-hidden bg-r-full background-blue-circle">
                             <div class="px-8 py-14 md:py-4 flex items-center justify-center h-full w-full">
-                                <img class="object-contain w-full max-h-[500px]" src="images/Product-img-3.png"
+                                <img class="object-contain w-full max-h-[500px]" src="images/hero-img.png"
                                      alt="Image">
                             </div>
                         </div>
@@ -1126,7 +1130,7 @@
                                     <i class="arrow-right"></i>
                                     </span>
                                 </span>
-                            </button>
+                            </button> <!-- @click="openDialog = true; setTimeout(() => openDialog = false, 5000) -->
                         </div>
                     </div>
                     <div class="col-span-7 md:col-span-12">
@@ -1186,7 +1190,7 @@
                                 <span class="rounded-xl w-fit border border-red-600 bg-red-600 px-2 py-1 text-h5  text-white uppercase dark:border-red-600 dark:bg-red-600 dark:text-white">Error</span>
                             </div>
                         </div>
-                        <button type="submit"
+                        <button @click="openDialog = true; setTimeout(() => openDialog = false, 5000)" type="submit"
                                 class="group minmd:hidden mt-10 flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                         >Make a request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
@@ -1211,14 +1215,14 @@
                     </span>
                 </div>
                 <div class="col-span-4 md:col-span-8 flex items-center">
-                    <p class="mx-auto md:mr-0 text-white md:text-right">© 2023 All rights reserved.</p>
+                    <p class="mx-auto md:mr-0 text-white md:text-right">© 2024 All rights reserved.</p>
                 </div>
                 <div class="col-span-4 md:hidden flex items-center">
-                    <a class="flex items-center hover:underline ml-auto text-white" href="tel:+107425899611">
+                    <a class="flex items-center hover:underline ml-auto text-white" href="skype:+16467559735">
                                 <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-secondary">
                                     <i class="phone-white-icon"></i>
                                 </span>
-                        <span class="text-base ">+ (07425) 899611</span>
+                        <span class="text-base">+1 (646) 755-9735</span>
                     </a>
                 </div>
             </div>
@@ -1330,6 +1334,24 @@
             </div>
         </form>
     </div>
+
+    <!--    <dialog style="display: none" x-show="openDialog" @click.away="openDialog = false" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 transition-opacity">-->
+    <!--        &lt;!&ndash; Dialog box &ndash;&gt;-->
+    <!--        <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg transition-transform transform" x-show="open" x-transition>-->
+    <!--            <h2 class="text-xl font-semibold mb-4">Dialog Title</h2>-->
+    <!--            <p class="mb-4">This dialog will close automatically after 5 seconds.</p>-->
+
+    <!--            <div class="flex justify-end space-x-2">-->
+    <!--                <button @click="openDialog = false" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">-->
+    <!--                    Cancel-->
+    <!--                </button>-->
+    <!--                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">-->
+    <!--                    Confirm-->
+    <!--                </button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </dialog>-->
+
 </main>
 
 </body>

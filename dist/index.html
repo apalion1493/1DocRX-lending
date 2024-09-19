@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1DocRX</title>
+    <link rel="icon" type="image/x-icon" href="images/Favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap"
           rel="stylesheet">
 <script defer src="main.js"></script><link href="styles.css" rel="stylesheet"></head>
@@ -295,7 +296,7 @@
             </div>
         </div>
     </section>
-    <div x-data="{ selectedTab: 'groups' }" class="w-full">
+    <form id="form1" x-data="{ selectedTab: 'groups' }" class="w-full ajax-form">
         <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
             <div class="container">
                 <div class="row gap-x-6 md:gap-x-0 md:gap-y-10">
@@ -314,8 +315,11 @@
                         <div @keydown.right.prevent="$focus.wrap().next()"
                              @keydown.left.prevent="$focus.wrap().previous()"
                              class="grid grid-cols-8 grid-rows-2 gap-6">
-                            <div @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'"
+                            <div @click="selectedTab = 'groups'; document.getElementById('option1').click()" :aria-selected="selectedTab === 'groups'"
                                  :tabindex="selectedTab === 'groups' ? '0' : '-1'" class="col-span-4 xl:col-span-8">
+                                <label class="hidden">
+                                    <input id="option1" type="radio" name="preparation" value="Saxenda RX" checked>
+                                </label>
                                 <div :class="selectedTab === 'groups' ? 'bg-secondary text-white' : 'bg-light-blue-2'"
                                      class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end px-6 md:pl-8">
                                     <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
@@ -352,9 +356,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div @click="selectedTab = 'likes'" :aria-selected="selectedTab === 'likes'"
+                            <div @click="selectedTab = 'likes'; document.getElementById('option2').click()" :aria-selected="selectedTab === 'likes'"
                                  :tabindex="selectedTab === 'likes' ? '0' : '-1'"
                                  class="col-span-4 xl:col-span-8 minxl:col-start-5">
+                                <label class="hidden">
+                                    <input id="option2" type="radio" name="preparation" value="Mounjaro RX">
+                                </label>
                                 <div :class="selectedTab === 'likes' ? 'bg-secondary text-white' : 'bg-light-blue-2'"
                                      class="group cursor-pointer h-[154px] md:h-[176px] rounded-[20px] overflow-hidden border border-dashed border-light-blue-1 flex items-end px-6 md:pl-8">
                                     <div class="mr-6 md:mr-8 xl:flex-1 xl:flex xl:justify-center relative">
@@ -391,9 +398,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div @click="selectedTab = 'comments'" :aria-selected="selectedTab === 'comments'"
+                            <div @click="selectedTab = 'comments'; document.getElementById('option3').click()" :aria-selected="selectedTab === 'comments'"
                                  :tabindex="selectedTab === 'comments' ? '0' : '-1'"
                                  class="col-span-8 minxl:row-start-2">
+                                <label class="hidden">
+                                    <input id="option3" type="radio" name="preparation" value="Mounjaro RX">
+                                </label>
                                 <div :class="selectedTab === 'comments' ? 'bg-secondary text-white' : 'bg-light-blue-2'"
                                      class="group cursor-pointer h-[154px] md:h-[176px] border border-dashed border-light-blue-1 rounded-[20px] overflow-hidden flex items-end pr-6 md:pl-8">
                                     <div class="flex-1 flex mr-8 md:mr-8 md:justify-center relative">
@@ -629,7 +639,159 @@
                 </div>
             </div>
         </section>
-    </div>
+        <div style="display: none" x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms
+             x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false" @click.self="modalIsOpen = false"
+             class="fixed inset-0 z-[60] flex w-full items-center justify-center bg-black/20 p-4 pb-8 backdrop-blur-md lg:p-4"
+             role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
+            <!-- Modal Dialog -->
+            <div x-show="modalIsOpen"
+                  x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity"
+                  x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100"
+                  class="flex max-w-[716px] w-full flex-col gap-4 overflow-hidden rounded-3xl bg-white text-slate-700 relative p-10 md:py-8 md:px-4 modal-bg">
+                <!-- Dialog Header -->
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-col max-w-[385px] mr-2">
+                        <h1 class="text-h2 md:text-h1Min text-primary font-medium tracking-tight-2.16 block mb-6">Make a
+                            request!</h1>
+                        <p class="text-main-text text-dark-blue-50-2">We will contact you within a few minutes for
+                            consultation and for confirmation of the order.</p>
+                    </div>
+                    <button type="button" class="self-start" @click="modalIsOpen = false" aria-label="close modal">
+                        <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                             fill="none">
+                            <path d="M0.68624 23.3137C0.165541 22.793 0.165541 21.9487 0.68624 21.428L21.428 0.68624C21.9487 0.165541 22.793 0.165541 23.3137 0.68624C23.8344 1.20694 23.8344 2.05116 23.3137 2.57186L2.57186 23.3137C2.05116 23.8344 1.20694 23.8344 0.68624 23.3137Z"
+                                  fill="#001A60"/>
+                            <path d="M0.68624 0.68624C1.20694 0.165541 2.05116 0.165541 2.57186 0.68624L23.3137 21.428C23.8344 21.9487 23.8344 22.793 23.3137 23.3137C22.793 23.8344 21.9487 23.8344 21.428 23.3137L0.68624 2.57186C0.165541 2.05116 0.165541 1.20694 0.68624 0.68624Z"
+                                  fill="#001A60"/>
+                        </svg>
+                        <svg class="minmd:hidden mt-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                             viewBox="0 0 20 20" fill="none">
+                            <path d="M0.807535 19.1924C0.384467 18.7694 0.384467 18.0834 0.807535 17.6604L17.6602 0.807658C18.0833 0.38459 18.7692 0.384589 19.1923 0.807657C19.6154 1.23073 19.6154 1.91665 19.1923 2.33972L2.3396 19.1924C1.91653 19.6155 1.2306 19.6155 0.807535 19.1924Z"
+                                  fill="#001A60"/>
+                            <path d="M0.807535 0.807657C1.2306 0.384589 1.91653 0.384589 2.3396 0.807657L19.1923 17.6604C19.6154 18.0834 19.6154 18.7694 19.1923 19.1924C18.7692 19.6155 18.0833 19.6155 17.6602 19.1924L0.807535 2.33972C0.384467 1.91665 0.384467 1.23073 0.807535 0.807657Z"
+                                  fill="#001A60"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Dialog Body -->
+                <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6 min-h-[216px]">
+                    <div class="col-span-1 sm:col-span-2 ">
+                        <div class="flex w-full flex-col text-dark-blue-50-2">
+                            <label for="textInputFirstNameModal" class="w-fit text-none">First Name</label>
+                            <input id="textInputFirstNameModal" type="text" required
+                                   class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
+                                   name="first name" placeholder="First Name" autocomplete="first name"/>
+                        </div>
+                    </div>
+                    <div class="col-span-1 sm:col-span-2 ">
+                        <div class="flex w-full flex-col text-dark-blue-50-2">
+                            <label for="textInputSecondNameModal" class="w-fit text-none">Second Name</label>
+                            <input id="textInputSecondNameModal" type="text" required
+                                   class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
+                                   name="second name" placeholder="Second Name" autocomplete="second name"/>
+                        </div>
+                    </div>
+                    <div class="col-span-1 sm:col-span-2 ">
+                        <div class="flex w-full flex-col text-dark-blue-50-2">
+                            <label for="textInputMailModal" class="w-fit text-none">Email</label>
+                            <input id="textInputMailModal" type="email" required
+                                   class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
+                                   name="email" placeholder="Email" autocomplete="email"/>
+                        </div>
+                    </div>
+                    <div class="col-span-1 sm:col-span-2 ">
+                        <div class="flex w-full flex-col text-dark-blue-50-2">
+                            <label for="textInputPhoneModal" class="w-fit text-none">Phone</label>
+                            <input id="textInputPhoneModal" type="text" required
+                                   class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
+                                   name="phone" placeholder="Phone" autocomplete="phone"/>
+                        </div>
+                    </div>
+                    <div class="col-span-2 sm:col-span-2 ">
+                        <div class="relative flex w-full flex-col text-dark-blue-50-2">
+                            <label for="selectStateModal" class="w-fit text-none">Choose State</label>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                 class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
+                                <path fill-rule="evenodd"
+                                      d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <select id="selectStateModal" name="Choose State" required
+                                    class="w-full appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
+                                <option value="" selected disabled>Choose State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="response1" class="col-span-2 hidden">
+                        <span class="text-h4 text-primary">Message sent! Thank you!</span>
+                    </div>
+                </div>
+
+                <!-- Dialog Footer -->
+                <div class="flex mt-2">
+                    <button type="submit"
+                            class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                    >Make a request
+                        <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                            <i class="arrow-right"></i>
+                        </span>
+                    </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
     <section class="py-16 md:py-10 border-b border-dashed border-light-blue-1 md:border">
         <div class="container">
             <div class="swiper mySwiper">
@@ -1115,7 +1277,7 @@
     </section>
     <section class="py-16 md:py-10">
         <div class="container">
-            <form class="background-blue-circle bg-r-45 py-14 px-10 rounded-3xl overflow-hidden md:py-8 md:px-4 minmd:-mx-4">
+            <form id="form2" class="background-blue-circle ajax-form bg-r-45 py-14 px-10 rounded-3xl overflow-hidden md:py-8 md:px-4 minmd:-mx-4">
                 <div class="row gap-x-6 md:gap-x-0 row--m0">
                     <div class="col-span-5 md:col-span-12">
                         <div class="flex flex-col gap-y-6 h-full text-white md:mb-10 md:gap-y-4">
@@ -1138,7 +1300,7 @@
                             <div class="col-span-1 sm:col-span-2">
                                 <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputFirstName" class="w-fit text-none">First Name</label>
-                                    <input id="textInputFirstName" type="text"
+                                    <input id="textInputFirstName" type="text" required
                                            class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                            name="first name" placeholder="First Name" autocomplete="first name"/>
                                 </div>
@@ -1146,7 +1308,7 @@
                             <div class="col-span-1 sm:col-span-2">
                                 <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputSecondName" class="w-fit text-none">Second Name</label>
-                                    <input id="textInputSecondName" type="text"
+                                    <input id="textInputSecondName" type="text" required
                                            class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                            name="second name" placeholder="Second Name" autocomplete="second name"/>
                                 </div>
@@ -1154,7 +1316,7 @@
                             <div class="col-span-1 sm:col-span-2">
                                 <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputMail" class="w-fit text-none">Email</label>
-                                    <input id="textInputMail" type="email"
+                                    <input id="textInputMail" type="email" required
                                            class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                            name="email" placeholder="Email" autocomplete="email"/>
                                 </div>
@@ -1162,7 +1324,7 @@
                             <div class="col-span-1 sm:col-span-2">
                                 <div class="flex w-full flex-col text-dark-blue-50-2">
                                     <label for="textInputPhone" class="w-fit text-none">Phone</label>
-                                    <input id="textInputPhone" type="text"
+                                    <input id="textInputPhone" type="text" required
                                            class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                            name="phone" placeholder="Phone" autocomplete="phone"/>
                                 </div>
@@ -1176,21 +1338,69 @@
                                               d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
                                               clip-rule="evenodd"/>
                                     </svg>
-                                    <select id="selectState" name="Choose State"
+                                    <select id="selectState" name="Choose State" required
                                             class="w-full appearance-none h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75">
-                                        <option selected>Choose State</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
+                                        <option value="" selected disabled>Choose State</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-span-2 hidden">
-                                <span class="rounded-xl w-fit border border-green-600 bg-green-600 px-2 py-1 text-h5  text-white uppercase dark:border-green-600 dark:bg-green-600 dark:text-white">success</span>
-                                <span class="rounded-xl w-fit border border-red-600 bg-red-600 px-2 py-1 text-h5  text-white uppercase dark:border-red-600 dark:bg-red-600 dark:text-white">Error</span>
+                            <div class="col-span-2">
+                                <div id="response2" class="col-span-2 hidden">
+                                    <span class="text-h4 text-white">Message sent! Thank you!</span>
+                                </div>
                             </div>
                         </div>
-                        <button @click="openDialog = true; setTimeout(() => openDialog = false, 5000)" type="submit"
+                        <button @click="openDialog = true" type="submit"
                                 class="group minmd:hidden mt-10 flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                         >Make a request
                             <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
@@ -1229,130 +1439,6 @@
         </div>
     </footer>
 
-    <div style="display: none" x-cloak x-show="modalIsOpen" x-transition.opacity.duration.200ms
-         x-trap.inert.noscroll="modalIsOpen" @keydown.esc.window="modalIsOpen = false" @click.self="modalIsOpen = false"
-         class="fixed inset-0 z-[60] flex w-full items-center justify-center bg-black/20 p-4 pb-8 backdrop-blur-md lg:p-4"
-         role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
-        <!-- Modal Dialog -->
-        <form x-show="modalIsOpen"
-              x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity"
-              x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100"
-              class="flex max-w-[716px] w-full flex-col gap-4 overflow-hidden rounded-3xl bg-white text-slate-700 relative p-10 md:py-8 md:px-4 modal-bg">
-            <!-- Dialog Header -->
-            <div class="flex items-center justify-between">
-                <div class="flex flex-col max-w-[385px] mr-2">
-                    <h1 class="text-h2 md:text-h1Min text-primary font-medium tracking-tight-2.16 block mb-6">Make a
-                        request!</h1>
-                    <p class="text-main-text text-dark-blue-50-2">We will contact you within a few minutes for
-                        consultation and for confirmation of the order.</p>
-                </div>
-                <button type="button" class="self-start" @click="modalIsOpen = false" aria-label="close modal">
-                    <svg class="md:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none">
-                        <path d="M0.68624 23.3137C0.165541 22.793 0.165541 21.9487 0.68624 21.428L21.428 0.68624C21.9487 0.165541 22.793 0.165541 23.3137 0.68624C23.8344 1.20694 23.8344 2.05116 23.3137 2.57186L2.57186 23.3137C2.05116 23.8344 1.20694 23.8344 0.68624 23.3137Z"
-                              fill="#001A60"/>
-                        <path d="M0.68624 0.68624C1.20694 0.165541 2.05116 0.165541 2.57186 0.68624L23.3137 21.428C23.8344 21.9487 23.8344 22.793 23.3137 23.3137C22.793 23.8344 21.9487 23.8344 21.428 23.3137L0.68624 2.57186C0.165541 2.05116 0.165541 1.20694 0.68624 0.68624Z"
-                              fill="#001A60"/>
-                    </svg>
-                    <svg class="minmd:hidden mt-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                         viewBox="0 0 20 20" fill="none">
-                        <path d="M0.807535 19.1924C0.384467 18.7694 0.384467 18.0834 0.807535 17.6604L17.6602 0.807658C18.0833 0.38459 18.7692 0.384589 19.1923 0.807657C19.6154 1.23073 19.6154 1.91665 19.1923 2.33972L2.3396 19.1924C1.91653 19.6155 1.2306 19.6155 0.807535 19.1924Z"
-                              fill="#001A60"/>
-                        <path d="M0.807535 0.807657C1.2306 0.384589 1.91653 0.384589 2.3396 0.807657L19.1923 17.6604C19.6154 18.0834 19.6154 18.7694 19.1923 19.1924C18.7692 19.6155 18.0833 19.6155 17.6602 19.1924L0.807535 2.33972C0.384467 1.91665 0.384467 1.23073 0.807535 0.807657Z"
-                              fill="#001A60"/>
-                    </svg>
-                </button>
-            </div>
-            <!-- Dialog Body -->
-            <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4 mt-6 min-h-[216px]">
-                <div class="col-span-1 sm:col-span-2 ">
-                    <div class="flex w-full flex-col text-dark-blue-50-2">
-                        <label for="textInputFirstNameModal" class="w-fit text-none">First Name</label>
-                        <input id="textInputFirstNameModal" type="text"
-                               class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
-                               name="first name" placeholder="First Name" autocomplete="first name"/>
-                    </div>
-                </div>
-                <div class="col-span-1 sm:col-span-2 ">
-                    <div class="flex w-full flex-col text-dark-blue-50-2">
-                        <label for="textInputSecondNameModal" class="w-fit text-none">Second Name</label>
-                        <input id="textInputSecondNameModal" type="text"
-                               class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
-                               name="second name" placeholder="Second Name" autocomplete="second name"/>
-                    </div>
-                </div>
-                <div class="col-span-1 sm:col-span-2 ">
-                    <div class="flex w-full flex-col text-dark-blue-50-2">
-                        <label for="textInputMailModal" class="w-fit text-none">Email</label>
-                        <input id="textInputMailModal" type="email"
-                               class="input error w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
-                               name="email" placeholder="Email" autocomplete="email"/>
-                    </div>
-                </div>
-                <div class="col-span-1 sm:col-span-2 ">
-                    <div class="flex w-full flex-col text-dark-blue-50-2">
-                        <label for="textInputPhoneModal" class="w-fit text-none">Phone</label>
-                        <input id="textInputPhoneModal" type="text"
-                               class="input w-full h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75"
-                               name="phone" placeholder="Phone" autocomplete="phone"/>
-                    </div>
-                </div>
-                <div class="col-span-2 sm:col-span-2 ">
-                    <div class="relative flex w-full flex-col text-dark-blue-50-2">
-                        <label for="selectStateModal" class="w-fit text-none">Choose State</label>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                             class="absolute pointer-events-none right-4 top-[18px] h-5 w-5">
-                            <path fill-rule="evenodd"
-                                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                                  clip-rule="evenodd"/>
-                        </svg>
-                        <select id="selectStateModal" name="Choose State"
-                                class="w-full error appearance-none h-14 rounded-2xl border border-light-blue-1 bg-white p-4 text-base text-dark-blue-50-2 placeholder:text-dark-blue-50-2 focus-visible:text-primary focus-visible:outline-0 focus-visible:bg-light-blue-2  disabled:cursor-not-allowed disabled:opacity-75">
-                            <option selected>Choose State</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-span-2 hidden">
-                    <h2 class="text-h1 text-center text-primary">Сообщение отправлено! Спасибо!</h2>
-                </div>
-            </div>
-
-            <!-- Dialog Footer -->
-            <div class="flex mt-2">
-                <button type="submit"
-                        class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
-                >Make a request
-                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
-                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
-                            <i class="arrow-right"></i>
-                        </span>
-                    </span>
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <!--    <dialog style="display: none" x-show="openDialog" @click.away="openDialog = false" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 transition-opacity">-->
-    <!--        &lt;!&ndash; Dialog box &ndash;&gt;-->
-    <!--        <div class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg transition-transform transform" x-show="open" x-transition>-->
-    <!--            <h2 class="text-xl font-semibold mb-4">Dialog Title</h2>-->
-    <!--            <p class="mb-4">This dialog will close automatically after 5 seconds.</p>-->
-
-    <!--            <div class="flex justify-end space-x-2">-->
-    <!--                <button @click="openDialog = false" class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">-->
-    <!--                    Cancel-->
-    <!--                </button>-->
-    <!--                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">-->
-    <!--                    Confirm-->
-    <!--                </button>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </dialog>-->
-
 </main>
-
 </body>
 </html>

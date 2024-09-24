@@ -63,6 +63,8 @@ document.querySelectorAll('.ajax-form').forEach(form => {
                     responseEl.classList.add('hidden');
                 }, 10000);
             })
+
+            form.reset()
         } catch (error) {
             document.querySelectorAll('.responseForm').forEach(responseEl => {
                 console.log(error);

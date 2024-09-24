@@ -47,29 +47,31 @@ const swiper = new Swiper('.mySwiper', {
 
 document.querySelectorAll('.ajax-form').forEach(form => {
     form.addEventListener('submit', async event => {
-        event.preventDefault(); // Предотвратить обычную отправку формы
-
+        event.preventDefault();
         const formData = new FormData(form);
-        const formId = form.id;
-        const responseDivId = `response${formId.replace('form', '')}`;
-        const thankYouDivId = `thank-you${formId.replace('form', '')}`;
 
         try {
-            const response = await fetch('process.php', { // Путь к вашему PHP-скрипту
+            const response = await fetch('form.php', {
                 method: 'POST',
                 body: formData
             });
             const data = await response.text();
-            document.getElementById(responseDivId).innerHTML = data; // Обработка ответа от PHP-скрипта
-            document.getElementById(thankYouDivId).style.display = 'block'; // Показать сообщение благодарности
+            document.querySelectorAll('.responseForm').forEach(responseEl => {
+                responseEl.innerHTML = data;
+                responseEl.classList.remove('hidden');
+                setTimeout(() => {
+                    responseEl.classList.add('hidden');
+                }, 10000);
+            })
         } catch (error) {
-            document.getElementById(responseDivId).innerHTML = 'There was an error sending data.';
+            document.querySelectorAll('.responseForm').forEach(responseEl => {
+                console.log(error);
+                responseEl.innerHTML = 'There was an error sending data.';
+                responseEl.classList.remove('hidden');
+                setTimeout(() => {
+                    responseEl.classList.add('hidden');
+                }, 10000);
+            })
         }
-
-        // // Симуляция ответа сервера
-        // setTimeout(() => {
-        //     // Показываем блок "Спасибо"
-        //     document.getElementById(responseDivId).classList.remove('hidden');
-        // }, 1000); // Задержка для симуляции сетевого запроса
     });
 });

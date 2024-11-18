@@ -40,6 +40,10 @@ module.exports = {
             filename: 'Request-prescription.html',
             template: './src/Request-prescription.html',
         }),
+        new HtmlWebpackPlugin({
+            filename: 'Terms.html',
+            template: './src/Terms.html',
+        }),
         new MiniCssExtractPlugin({
             filename: 'styles.css', // Название выходного CSS файла
         }),

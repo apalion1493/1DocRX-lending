@@ -288,3 +288,89 @@ select.error {
         letter-spacing: -1.5px;;
     }
 }
+
+.common-text-style p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: #001A6080;
+}
+
+.common-text-style h1,
+.common-text-style h2,
+.common-text-style h3,
+.common-text-style h4,
+.common-text-style h5,
+.common-text-style h6 {
+    line-height: 130%;
+    color: #060B52;
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.common-text-style h1 {
+    font-size: 48px;
+}
+
+.common-text-style h2 {
+    font-size: 34px;
+}
+
+.common-text-style h3 {
+    font-size: 24px;
+}
+
+.common-text-style h4 {
+    font-size: 20px;
+}
+
+.common-text-style h5 {
+    font-size: 18px;
+}
+
+.common-text-style h6 {
+    font-size: 16px;
+}
+
+.common-text-style a {
+    color: #335ACB;
+    text-decoration: underline;
+}
+
+.common-text-style ul {
+    list-style: disc;
+    padding-left: 16px;
+}
+
+.common-text-style ol {
+    list-style: decimal;
+    padding-left: 16px;
+}
+
+@media (max-width: 767.98px) {
+    .common-text-style h1 {
+        font-size: 34px;
+    }
+
+    .common-text-style h2 {
+        font-size: 24px;
+    }
+
+    .common-text-style h3 {
+        font-size: 20px;
+    }
+
+    .common-text-style h4 {
+        font-size: 18px;
+    }
+
+    .common-text-style h5 {
+        font-size: 16px;
+    }
+
+    .common-text-style h6 {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1DocRX</title>
+    <link rel="icon" type="image/x-icon" href="images/Favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap"
+          rel="stylesheet">
+</head>
+<body class="">
+
+<main x-data="{modalIsOpen: false, openDialog: false}" id="content"
+      class="flex flex-col items-center min-h-screen overflow-hidden">
+    <header class="py-8 md:py-5 w-full">
+        <div class="container">
+            <div class="row">
+                <div class="col-span-12">
+                    <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
+                         class="flex items-center justify-between" aria-label="penguin ui menu">
+                        <div class="flex items-center justify-between w-full h-12">
+                            <!-- Brand Logo -->
+                            <a class="uppercase flex items-center justify-center font-extrabold"
+                               href="#">
+                                <i class="Main-logo mr-2"></i>
+                                <span>1DocRX</span>
+                            </a>
+                            <div class="items-center justify-end w-full gap-x-8 hidden minmd:flex">
+                                <a class="flex items-center hover:underline" href="skype:+16467559735">
+                                    <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                        <i class="phone-icon"></i>
+                                    </span>
+                                    <span class="text-base text-primary">+1 (646) 755-9735</span>
+                                </a>
+                                <span @click="modalIsOpen = true"
+                                      class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                >Get Started Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                            <i class="arrow-right"></i>
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                            <!-- Mobile Menu Button -->
+                            <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
+                                    :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
+                                    class="flex text-slate-700 z-[51] minmd:hidden" aria-label="mobile menu"
+                                    aria-controls="mobileMenu">
+                            <span x-show="!mobileMenuIsOpen"
+                                  class="rounded-full w-12 h-12 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                <svg x-cloak xmlns="http://www.w3.org/2000/svg" fill="none"
+                                     aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     class="size-6 stroke-primary">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                                </svg>
+                            </span>
+                                <svg x-cloak x-show="mobileMenuIsOpen" style="display: none"
+                                     xmlns="http://www.w3.org/2000/svg" fill="none"
+                                     aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                     class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div x-cloak x-show="mobileMenuIsOpen"
+                             x-transition:enter="transition motion-reduce:transition-none ease-out duration-300"
+                             x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0"
+                             x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
+                             x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full"
+                             id="mobileMenu"
+                             :class="mobileMenuIsOpen ? 'flex' : 'hidden'" style="display: none"
+                             class="fixed max-h-svh z-50 overflow-y-auto inset-x-0 top-0 flex-col divide-y divide-slate-300 rounded-b-xl border-b border-slate-300 bg-slate-100 px-6 pb-6 pt-10 minmd:hidden">
+                            <div class="items-center justify-end w-full gap-y-8 flex flex-col">
+                                <a class="uppercase flex items-center justify-center font-extrabold"
+                                   href="#">
+                                    <i class="Main-logo mr-2"></i>
+                                    <span>1DocRX</span>
+                                </a>
+                                <a class="flex items-center hover:underline" href="tel:+107425899611">
+                                    <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-light-blue-1">
+                                        <i class="phone-icon"></i>
+                                    </span>
+                                    <span class="text-base text-primary">+ (07425) 899611</span>
+                                </a>
+                                <a class="group flex items-center border border-primary transition-all  py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                   href="#">Get Started Now
+                                    <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
+                                        <span class="arrow absolute transition-transform duration-100 ease-in-out">
+                                            <i class="arrow-right"></i>
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="">
+
+    </section>
+    <footer class="py-8 bg-dark-blue-100 mt-auto w-full">
+        <div class="container">
+            <div class="flex items-center gap-x-4 w-full">
+                <div class="flex items-center">
+                    <span class="uppercase flex items-center justify-center text-white font-extrabold">
+                        <i class="Main-logo mr-2"></i>
+                        <span>1DocRX</span>
+                    </span>
+                </div>
+                <div class="flex items-center w-full justify-around">
+                    <a class="mx-auto md:mr-0 text-white underline" href="index.html">Home</a>
+                    <a class="mx-auto md:mr-0 text-white underline" href="#">Terms&Conditions</a>
+                    <p class="mx-auto md:mr-0 text-white">© 2024 All rights reserved.</p>
+                </div>
+                <div class="md:hidden flex items-center ml-auto min-w-[175px]">
+                    <a class="flex items-center hover:underline ml-auto text-white" href="skype:+16467559735">
+                                <span class="rounded-full w-10 min-w-10 h-10 mr-2 overflow-hidden flex items-center justify-center bg-secondary">
+                                    <i class="phone-white-icon"></i>
+                                </span>
+                        <span class="text-base">+1 (646) 755-9735</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</main>
+</body>
+</html>

@@ -37,12 +37,16 @@ module.exports = {
             template: './src/index.html',
         }),
         new HtmlWebpackPlugin({
-            filename: 'Request-prescription.html',
-            template: './src/Request-prescription.html',
+            filename: 'Thank-you-message.html',
+            template: './src/Thank-you-message.html',
         }),
         new HtmlWebpackPlugin({
             filename: 'Terms.html',
             template: './src/Terms.html',
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'Request-prescription.html',
+            template: './src/Request-prescription.html',
         }),
         new MiniCssExtractPlugin({
             filename: 'styles.css', // Название выходного CSS файла

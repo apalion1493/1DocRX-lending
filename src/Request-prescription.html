@@ -116,43 +116,73 @@
                             </div>
                             <div class="flex flex-col">
                                 <div x-data='{
-                                    questions: [
-                                        { type: "radio", text: "What is your gender?", subtitle:"This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
-                                        { type: "conditional", text: "Вы любите путешествовать?", subtitle:"This refers to your biological gender.", answer: null, followUp: "", followUpVisible: false, isAnswered: false }
-                                    ],
-                                    get answeredCount() {
-                                        return this.questions.filter((q) => q.isAnswered).length;
-                                    },
-                                    isEnabled(index) {
-                                        if (index === 0) return true; // Первый вопрос всегда доступен
-                                        // Все последующие вопросы доступны, если предыдущий был отвечен
-                                        return this.questions[index - 1].isAnswered;
-                                    },
-                                    updateAnswer(index) {
-                                        const question = this.questions[index];
-                                        if (question.type === "radio" || question.type === "textarea") {
-                                            question.isAnswered = !!question.answer;
-                                        } else if (question.type === "conditional") {
-                                            question.isAnswered = question.answer === "Нет" || (question.answer === "Да" && question.followUp.trim() !== "");
-                                        }
-                                    },
-                                    handleConditional(index, isYes) {
-                                        const question = this.questions[index];
-                                        question.followUpVisible = isYes;
-                                        question.isAnswered = !isYes || (isYes && question.followUp.trim() !== "");
-                                    }
-                                }'
-                                     class="max-w-full w-full mx-auto mt-10 p-5 border rounded shadow-lg space-y-6">
-                                    <!-- Прогресс-бар и счётчик -->
+    questions: [
+        { type: "radio", text: "What is your gender?", subtitle: "This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
+        { type: "conditional", text: "Do you suffer from any allergies?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+        { type: "select", text: "What is your country of residence?", subtitle: "Please select your country.", options: ["USA", "Canada", "UK", "Germany"], answer: null, isAnswered: false },
+        {
+            type: "select-group",
+            text: "Select your date of birth",
+            subtitle: "You must be at least 18 years old.",
+            answers: { day: null, month: null, year: null },
+            options: {
+                day: Array.from({ length: 31 }, (_, i) => i + 1),
+                month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                year: Array.from({ length: 101 }, (_, i) => new Date().getFullYear() - i)
+            },
+            isAnswered: false,
+            isValid: true
+        },
+         { type: "conditional", text: "T3", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+    ],
+    get answeredCount() {
+        return this.questions.filter((q) => q.isAnswered).length;
+    },
+    isEnabled(index) {
+        if (index === 0) return true;
+        return this.questions[index - 1].isAnswered;
+    },
+    updateAnswer(index) {
+        const question = this.questions[index];
+        if (question.type === "radio" || question.type === "select") {
+            question.isAnswered = !!question.answer;
+        } else if (question.type === "select-group") {
+            this.validateDateOfBirth(index);
+        } else if (question.type === "conditional") {
+            question.isAnswered = question.answer === "No" || (question.answer === "Yes" && question.followUp.trim() !== "");
+        }
+    },
+    handleConditional(index, isYes) {
+    const question = this.questions[index];
+    question.followUpVisible = isYes;
+    question.isAnswered = !isYes || (isYes && question.followUp.trim() !== "");
+    },
+    validateDateOfBirth(index) {
+        const question = this.questions[index];
+        const { day, month, year } = question.answers;
+        if (!day || !month || !year) {
+            question.isAnswered = false;
+            question.isValid = true;
+            return;
+        }
+        const dateOfBirth = new Date(`${month} ${day}, ${year}`);
+        const ageCutoff = new Date();
+        ageCutoff.setFullYear(ageCutoff.getFullYear() - 18); // Установить дату 18 лет назад
+
+        question.isValid = dateOfBirth <= ageCutoff;
+        question.isAnswered = question.isValid; // Отметить вопрос как отвеченный только если дата валидна
+    }
+}' class="max-w-full w-full mt-10 space-y-6">
+                                    <!-- Прогресс-бар -->
                                     <div class="flex items-center justify-between mb-6">
                                         <div class="flex-1 flex space-x-1">
                                             <template x-for="index in questions.length" :key="index">
                                                 <div :class="{
-            'bg-blue-500': questions[index - 1].isAnswered,
-            'bg-gray-300': !questions[index - 1].isAnswered
-          }"
-                                                     class="flex-1 h-4 rounded"
-                                                ></div>
+                        'bg-blue-500': questions[index - 1].isAnswered,
+                        'bg-gray-300': !questions[index - 1].isAnswered
+                    }"
+                                                     class="flex-1 h-4 rounded">
+                                                </div>
                                             </template>
                                         </div>
                                         <div class="ml-4 text-gray-600 font-semibold">
@@ -161,54 +191,108 @@
                                     </div>
 
                                     <!-- Вопросы -->
-                                    <template x-for='(question, index) in questions' :key="question.id || index">
-                                        <div class="space-y-3">
-                                            <div>
-                                                <span class="text-lg font-semibold" x-text="question.text"></span>
-                                                <p x-text="question.subtitle"></p>
-                                            </div>
-                                            <fieldset :disabled="!isEnabled(index)" class="space-y-2">
-                                                <!-- Радио-кнопки -->
-                                                <template x-if="question.type === 'radio'">
-                                                    <div>
-                                                        <template x-for="option in question.options" :key="option">
-                                                            <label>
-                                                                <input type="radio" :name="'q' + index" :value="option"
-                                                                       x-model="question.answer"
-                                                                       @change="updateAnswer(index)" class="mr-2"/>
-                                                                <span x-text="option"></span>
-                                                            </label>
-                                                        </template>
-                                                    </div>
-                                                </template>
-
-                                                <!-- Условный текст -->
-                                                <template x-if="question.type === 'conditional'">
-                                                    <div>
-                                                        <label>
-                                                            <input type="radio" :name="'q' + index" value="Да"
-                                                                   x-model="question.answer"
-                                                                   @change="handleConditional(index, true)" class="mr-2"/>
-                                                            Да
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" :name="'q' + index" value="Нет"
-                                                                   x-model="question.answer"
-                                                                   @change="handleConditional(index, false)" class="mr-2"/>
-                                                            Нет
-                                                        </label>
-                                                        <div x-show="question.followUpVisible" class="mt-3">
-                                                        <textarea x-model="question.followUp"
-                                                                  @input="updateAnswer(index)"
-                                                                  class="w-full border rounded px-2 py-1"
-                                                                  rows="4"></textarea>
+                                    <div class="flex flex-col gap-y-5">
+                                        <template x-for='(question, index) in questions' :key="index">
+                                            <div :class="!isEnabled(index) ? 'disabled-bg' : ''" class="rounded-[20px] p-8 bg-white border flex flex-col gap-y-3 relative">
+                                                <div>
+                                                    <span class="text-h4 font-semibold" x-text="question.text"></span>
+                                                    <p class="text-main-text" x-text="question.subtitle"></p>
+                                                </div>
+                                                <fieldset :disabled="!isEnabled(index)" class="space-y-2">
+                                                    <!-- Радио-кнопки -->
+                                                    <template x-if="question.type === 'radio'">
+                                                        <div>
+                                                            <template x-for="option in question.options" :key="option">
+                                                                <label>
+                                                                    <input type="radio" :name="'q' + index" :value="option"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="mr-2" />
+                                                                    <span x-text="option"></span>
+                                                                </label>
+                                                            </template>
                                                         </div>
-                                                    </div>
-                                                </template>
-                                            </fieldset>
-                                        </div>
-                                    </template>
+                                                    </template>
+
+                                                    <!-- Условный текст -->
+                                                    <template x-if="question.type === 'conditional'">
+                                                        <div class="flex flex-col gap-y-3">
+                                                            <div class="flex gap-x-4">
+                                                                <label>
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="handleConditional(index, true)" class="mr-2" />
+                                                                    Yes
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="handleConditional(index, false)" class="mr-2" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                            <div x-show="question.followUpVisible" class="w-full">
+                                <textarea x-model="question.followUp"
+                                          @input="updateAnswer(index)"
+                                          class="w-full border rounded px-2 py-1"
+                                          rows="4"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Select -->
+                                                    <template x-if="question.type === 'select'">
+                                                        <div>
+                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-full border rounded px-2 py-1">
+                                                                <option value="">Select an option</option>
+                                                                <template x-for="option in question.options" :key="option">
+                                                                    <option :value="option" x-text="option"></option>
+                                                                </template>
+                                                            </select>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Группа Select -->
+                                                    <template x-if="question.type === 'select-group'">
+                                                        <div class="flex gap-x-3">
+                                                            <div>
+                                                                <label>
+                                                                    <select x-model="question.answers.day" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                        <option value="">Day</option>
+                                                                        <template x-for="day in question.options.day" :key="day">
+                                                                            <option :value="day" x-text="day"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                <label>
+                                                                    <select x-model="question.answers.month" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                        <option value="">Month</option>
+                                                                        <template x-for="month in question.options.month" :key="month">
+                                                                            <option :value="month" x-text="month"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                <label>
+                                                                    <select x-model="question.answers.year" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                        <option value="">Year</option>
+                                                                        <template x-for="year in question.options.year" :key="year">
+                                                                            <option :value="year" x-text="year"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div x-show="!question.isValid" class="text-red-500 text-sm mt-2">You must be at least 18 years old.</div>
+                                                    </template>
+                                                </fieldset>
+                                            </div>
+                                        </template>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -230,7 +314,8 @@
                                     <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4">
                                         <div class="col-span-1 sm:col-span-2">
                                             <div class="flex w-full flex-col text-dark-blue-50-2">
-                                                <label for="textInputFirstName" class="w-fit text-none">First Name</label>
+                                                <label for="textInputFirstName" class="w-fit text-none">First
+                                                    Name</label>
                                                 <input id="textInputFirstName" type="text" required
                                                        class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                                        name="first name" placeholder="First Name"
@@ -239,7 +324,8 @@
                                         </div>
                                         <div class="col-span-1 sm:col-span-2">
                                             <div class="flex w-full flex-col text-dark-blue-50-2">
-                                                <label for="textInputSecondName" class="w-fit text-none">Second Name</label>
+                                                <label for="textInputSecondName" class="w-fit text-none">Second
+                                                    Name</label>
                                                 <input id="textInputSecondName" type="text" required
                                                        class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                                        name="second name" placeholder="Second Name"
@@ -341,7 +427,8 @@
                                         <div class="relative flex items-center">
                                             <input id="checkbox1" type="checkbox" required
                                                    class="w-5 h-5 min-w-5 before:content[''] peer relative size-4 cursor-pointer appearance-none overflow-hidden rounded-full border border-slate-300 bg-slate-100 before:absolute before:inset-0 checked:border-secondary checked:before:bg-secondary focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slate-800 checked:focus:outline-secondary active:outline-offset-0 disabled:cursor-not-allowed"/>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                 aria-hidden="true"
                                                  stroke="currentColor" fill="none" stroke-width="4"
                                                  class="pointer-events-none invisible absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-slate-100 peer-checked:visible">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -355,7 +442,8 @@
                                         <div class="relative flex items-center">
                                             <input id="checkbox2" type="checkbox" required
                                                    class="w-5 h-5 min-w-5 before:content[''] peer relative size-4 cursor-pointer appearance-none overflow-hidden rounded-full border border-slate-300 bg-slate-100 before:absolute before:inset-0 checked:border-secondary checked:before:bg-secondary focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slate-800 checked:focus:outline-secondary active:outline-offset-0 disabled:cursor-not-allowed"/>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                 aria-hidden="true"
                                                  stroke="currentColor" fill="none" stroke-width="4"
                                                  class="pointer-events-none invisible absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-slate-100 peer-checked:visible">
                                                 <path stroke-linecap="round" stroke-linejoin="round"

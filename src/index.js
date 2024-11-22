@@ -59,6 +59,7 @@ document.querySelectorAll('.ajax-form').forEach(form => {
             document.querySelectorAll('.responseForm').forEach(responseEl => {
                 responseEl.innerHTML = data;
                 responseEl.classList.remove('hidden');
+                window.location.href = '/Thank-you-message.html';
                 setTimeout(() => {
                     responseEl.classList.add('hidden');
                 }, 10000);

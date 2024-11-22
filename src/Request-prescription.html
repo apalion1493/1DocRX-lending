@@ -102,28 +102,13 @@
         </div>
     </header>
     <section class="border-y border-dashed border-light-blue-1">
-        <form action="">
-            <div class="py-16 md:py-10 my-auto">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-span-12">
-                            <div class="flex flex-col max-w-[768px]">
-                                <h1 class="text-h2 mb-6 font-medium tracking-[-2.16px]">Free online prescription
-                                    diagnostics.</h1>
-                                <p class="text-main-text text-dark-blue-50-2">It is important that you provide accurate
-                                    information, just answer the questions about your health and lifestyle so that the
-                                    doctor can prescribe the treatment you need.</p>
-                            </div>
-                            <div class="flex flex-col">
-                                <div x-data='{
+        <form action="" x-data='{
     questions: [
-        { type: "radio", text: "What is your gender?", subtitle: "This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
-        { type: "conditional", text: "Do you suffer from any allergies?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
-        { type: "select", text: "What is your country of residence?", subtitle: "Please select your country.", options: ["USA", "Canada", "UK", "Germany"], answer: null, isAnswered: false },
+        { type: "radio", text: "Please state your gender", subtitle: "This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
         {
             type: "select-group",
-            text: "Select your date of birth",
-            subtitle: "You must be at least 18 years old.",
+            text: "What is your date of birth?",
+            subtitle: "Use the calendar to select your date of birth. You must be at least 18 years old.",
             answers: { day: null, month: null, year: null },
             options: {
                 day: Array.from({ length: 31 }, (_, i) => i + 1),
@@ -133,7 +118,11 @@
             isAnswered: false,
             isValid: true
         },
-         { type: "conditional", text: "T3", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+        { type: "select", text: "What is your height (cm)?", subtitle: "Your height is important for the prescribers decision.", options: ["140cm", "150cm", "160cm", "165cm", "170cm", "175cm", "180cm", "185cm", "190cm", "195cm", "200cm", "other"], answer: null, isAnswered: false },
+        { type: "conditional", text: "Do you suffer from any allergies?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Do you have any recent or past medical history of note?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Do you currently take any medication whatsoever?", subtitle: "Please list all your current prescription medication including any medication you buy over the counter.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "text", text: "What is your full name?", subtitle: "Please provide your legal name.", answer: "", isAnswered: false }
     ],
     get answeredCount() {
         return this.questions.filter((q) => q.isAnswered).length;
@@ -144,8 +133,8 @@
     },
     updateAnswer(index) {
         const question = this.questions[index];
-        if (question.type === "radio" || question.type === "select") {
-            question.isAnswered = !!question.answer;
+       if (question.type === "radio" || question.type === "select" || question.type === "text") {
+            question.isAnswered = !!question.answer && question.answer.trim() !== "";
         } else if (question.type === "select-group") {
             this.validateDateOfBirth(index);
         } else if (question.type === "conditional") {
@@ -172,20 +161,32 @@
         question.isValid = dateOfBirth <= ageCutoff;
         question.isAnswered = question.isValid; // Отметить вопрос как отвеченный только если дата валидна
     }
-}' class="max-w-full w-full mt-10 space-y-6">
+}'>
+            <div class="py-16 md:py-10 my-auto">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-span-12">
+                            <div class="flex flex-col max-w-[768px]">
+                                <h1 class="text-h2 mb-6 font-medium tracking-[-2.16px]">Free online prescription
+                                    diagnostics.</h1>
+                                <p class="text-main-text text-dark-blue-50-2">It is important that you provide accurate
+                                    information, just answer the questions about your health and lifestyle so that the
+                                    doctor can prescribe the treatment you need.</p>
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="max-w-full w-full mt-10 space-y-6">
                                     <!-- Прогресс-бар -->
                                     <div class="flex items-center justify-between mb-6">
                                         <div class="flex-1 flex space-x-1">
                                             <template x-for="index in questions.length" :key="index">
                                                 <div :class="{
-                        'bg-blue-500': questions[index - 1].isAnswered,
-                        'bg-gray-300': !questions[index - 1].isAnswered
-                    }"
-                                                     class="flex-1 h-4 rounded">
+                                                                'bg-secondary': questions[index - 1].isAnswered,
+                                                                'bg-light-blue-1': !questions[index - 1].isAnswered
+                                                            }" class="flex-1 h-4 rounded">
                                                 </div>
                                             </template>
                                         </div>
-                                        <div class="ml-4 text-gray-600 font-semibold">
+                                        <div class="ml-6 bg-secondary rounded-xl text-white font-semibold w-[61px] h-[48px] flex items-center justify-center ">
                                             <span x-text="answeredCount"></span>/<span x-text="questions.length"></span>
                                         </div>
                                     </div>
@@ -193,15 +194,15 @@
                                     <!-- Вопросы -->
                                     <div class="flex flex-col gap-y-5">
                                         <template x-for='(question, index) in questions' :key="index">
-                                            <div :class="!isEnabled(index) ? 'disabled-bg' : ''" class="rounded-[20px] p-8 bg-white border flex flex-col gap-y-3 relative">
-                                                <div>
+                                            <div :class="!isEnabled(index) ? 'disabled-bg' : ''" class="rounded-[20px] p-8 bg-white border flex items-start relative">
+                                                <div class="flex flex-col gap-y-3">
                                                     <span class="text-h4 font-semibold" x-text="question.text"></span>
                                                     <p class="text-main-text" x-text="question.subtitle"></p>
                                                 </div>
-                                                <fieldset :disabled="!isEnabled(index)" class="space-y-2">
+                                                <fieldset :disabled="!isEnabled(index)" class="space-y-2 ml-auto max-w-[360px] w-full">
                                                     <!-- Радио-кнопки -->
                                                     <template x-if="question.type === 'radio'">
-                                                        <div>
+                                                        <div class="flex justify-end gap-x-4">
                                                             <template x-for="option in question.options" :key="option">
                                                                 <label>
                                                                     <input type="radio" :name="'q' + index" :value="option"
@@ -215,7 +216,7 @@
 
                                                     <!-- Условный текст -->
                                                     <template x-if="question.type === 'conditional'">
-                                                        <div class="flex flex-col gap-y-3">
+                                                        <div class="flex flex-col gap-y-3 items-end">
                                                             <div class="flex gap-x-4">
                                                                 <label>
                                                                     <input type="radio" :name="'q' + index" value="Yes"
@@ -231,18 +232,22 @@
                                                                 </label>
                                                             </div>
                                                             <div x-show="question.followUpVisible" class="w-full">
-                                <textarea x-model="question.followUp"
-                                          @input="updateAnswer(index)"
-                                          class="w-full border rounded px-2 py-1"
-                                          rows="4"></textarea>
+                                                                <label>
+                                                                    <textarea x-model="question.followUp"
+                                                                              @input="updateAnswer(index)"
+                                                                              class="w-full border rounded p-4 bg-white border-light-blue-1 resize-none min-h-[112px]"
+                                                                              rows="4"
+                                                                              placeholder="Write more info here..."
+                                                                    ></textarea>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </template>
 
                                                     <!-- Select -->
                                                     <template x-if="question.type === 'select'">
-                                                        <div>
-                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-full border rounded px-2 py-1">
+                                                        <div class="flex justify-end">
+                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-fit border rounded px-2 py-1">
                                                                 <option value="">Select an option</option>
                                                                 <template x-for="option in question.options" :key="option">
                                                                     <option :value="option" x-text="option"></option>
@@ -253,8 +258,8 @@
 
                                                     <!-- Группа Select -->
                                                     <template x-if="question.type === 'select-group'">
-                                                        <div class="flex gap-x-3">
-                                                            <div>
+                                                        <div class="flex justify-end gap-x-3">
+                                                            <div class="">
                                                                 <label>
                                                                     <select x-model="question.answers.day" @change="updateAnswer(index)" class="border rounded px-2 py-1">
                                                                         <option value="">Day</option>
@@ -287,9 +292,29 @@
                                                         </div>
                                                         <div x-show="!question.isValid" class="text-red-500 text-sm mt-2">You must be at least 18 years old.</div>
                                                     </template>
+
+                                                    <!-- Текстовое поле -->
+                                                    <template x-if="question.type === 'text'">
+                                                        <div class="flex justify-end">
+                                                            <input type="text" x-model="question.answer"
+                                                                   @input="updateAnswer(index)"
+                                                                   class="w-full border rounded px-2 py-1"
+                                                                   placeholder="Provide more information here..." />
+                                                        </div>
+                                                    </template>
                                                 </fieldset>
                                             </div>
                                         </template>
+                                        <div class="-z-10 opacity-0 h-0">
+                                            <label class="-z-10 opacity-0">
+                                                <input name="hiddenInput" type="text" value="">
+                                            </label>
+                                            <label class="-z-10 opacity-0" for="selectId1">
+                                                <select name="hiddenSelect" id="selectId1">
+                                                    <option :value="{null}">null</option>
+                                                </select>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -298,7 +323,7 @@
                     </div>
                 </div>
             </div>
-            <div class="py-16 md:py-10 my-auto">
+            <div x-show="answeredCount === questions.length" class="py-16 md:py-10 my-auto">
                 <div class="container">
                     <div class="row">
                         <div class="col-span-12">

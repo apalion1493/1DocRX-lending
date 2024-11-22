@@ -385,4 +385,5 @@ select.error {
     background: #fff;
     opacity: 0.85;
     z-index: 1;
+    border-radius: 40px;
 }

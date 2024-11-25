@@ -289,7 +289,7 @@ select.error {
     }
 }
 
-.common-text-style select {
+.questions-block select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

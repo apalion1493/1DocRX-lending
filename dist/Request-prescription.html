@@ -32,15 +32,15 @@
                                     </span>
                                     <span class="text-base text-primary">+1 (646) 755-9735</span>
                                 </a>
-                                <span @click="modalIsOpen = true"
-                                      class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                <a href="Request-prescription.html"
+                                   class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                 >Get Started Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                         <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                             <i class="arrow-right"></i>
                                         </span>
                                     </span>
-                                </span>
+                                </a>
                             </div>
                             <!-- Mobile Menu Button -->
                             <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
@@ -102,10 +102,103 @@
         </div>
     </header>
     <section class="border-y border-dashed border-light-blue-1">
-        <form action="">
+        <form id="form3" class="ajax-form common-text-style" x-data='{
+    questions: [
+        { type: "radio", text: "Please state your gender", subtitle: "This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
+        {
+            type: "select-group",
+            text: "What is your date of birth?",
+            subtitle: "Use the calendar to select your date of birth. You must be at least 18 years old.",
+            answers: { day: null, month: null, year: null },
+            options: {
+                day: Array.from({ length: 31 }, (_, i) => i + 1),
+                month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                year: Array.from({ length: 101 }, (_, i) => new Date().getFullYear() - i)
+            },
+            isAnswered: false,
+            isValid: true
+        },
+        { type: "text", text: "What is your height (in cms)?", subtitle: "Your height is important for the prescribers decision.", answer: null, isAnswered: false },
+        { type: "text", text: "Please add your current weight (in kgs)", subtitle: "Please make sure to add your current weight. This may affect the prescribers decision.", answer: null, isAnswered: false },
+        { type: "conditional", text: "Do you suffer from any allergies?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Do you have any recent or past medical history of note?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Do you currently take any medication whatsoever?", subtitle: "Please list all your current prescription medication including any medication you buy over the counter.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Is there a history of medical disorders within your family?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Are there any other health/medical details you feel we should know?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+        { type: "yes-no", text: "Is this a repeat prescription?", subtitle: "", answer: null, isAnswered: false },
+         { type: "stop-conditional", text: "Have you ever suffered from an eating disorder such as Anorexia Nervosa or Bulimia?", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+         { type: "stop-conditional", text: "Are you pregnant or breast feeding or intending to become pregnant or start breast feeding whilst taking medication?", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+         { type: "stop-conditional", text: "Are you allergic to orlistat?", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+          { type: "stop-conditional", text: "Have you been diagnosed with any of the following?", subtitle: "<ul><li>Problems absorbing food (chronic malabsorption syndrome) diagnosed by a doctor</li><li>Liver problems</li><li>Kidney problems</li><li>Thyroid problems</li><li>Surgery to remove your gall bladder (cholecystectomy)</li><li>Cholestasis (condition where the flow of bile from the liver is blocked)</li><li>any serious medical condition which may require immediate hospitalisation</li>", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+          { type: "yes-no", text: "Are you using an oral contraceptive?", subtitle: "<b>Please Note</b>: Orlistat can reduce the absorption of oral contraceptives and therefore reduce their effectiveness and increase the risk of their failure. You should use additional forms of contraceptive whilst taking orlistat.", answer: null, isAnswered: false },
+          { type: "yes-no", text: "Are you taking any medicine for high cholesterol, diabetes or high blood pressure?", subtitle: "<b>Please Note</b>: You must speak to your GP to discuss the dosage of your medicine when your weight changes.", answer: null, isAnswered: false },
+           { type: "conditional", text: "Are you currently taking any medication (including over the counter, prescription or recreational drugs)?", subtitle: "If so, please list the medication", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+            { type: "yes-no", text: "Are you taking any of the following medications?", subtitle: "<ul><li>Other Anti-Obesity Drugs</li><li>HIV Medication</li><li>Fat Soluble Vitamins</li><li>Oral anticoagulant drugs used to thin the blood such as Warfarin</li><li>Ciclosporin, used after organ transplants, for severe rheumatoid arthritis and some severe skin conditions</li><li>a thyroid medicine (levothyroxine</li><li>Iodine salts</li><li>Amiodarone, used for heart rhythm problems.</li><li>Acarbose (an anti-diabetic drug used to treat type 2 diabetes mellitus)</li><li>Anti-convulsant/anti-epileptic drugs</li><li>Antidepressants</li><li>Antipsychotics including lithium</li><li>Benzodiazepines including diazepam</li></ul>", answer: null, isAnswered: false },
+             { type: "stop-on-no", text: "Do you understand that treatment cannot be continued if you gain weight 3 months after starting the treatment?", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+              { type: "stop-on-no", text: "Do you understand that the treatment must be stopped once your BMI goes below 28?", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+              { type: "stop-on-no", text: "Do you understand the treatment should be taken with a nutritionally balanced, calorie controlled diet that contains approximately 30% of the calories from fat? It is recommended that your diet is rich in fruit and vegetables.", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+              { type: "stop-on-no", text: "Do you understand that you should take a multivitamin that contains vitamins D, E, and K and beta carotene? It should be taken once a day at least 2 hours before or after taking Orlistat (Xenical/Alli/Orlos) such as at bedtime.", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+              { type: "conditional", text: "Is there anything else which you feel we should know about prior to you taking this medication?", subtitle: "", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+               { type: "stop-on-no", text: "Do you agree to the following?", subtitle: "<ul><li>You will read the patient information leaflet supplied with your medication</li><li>You will contact us and inform your GP of your medication if you experience any side effects of treatment, if you start new medication or if your medical conditions change during treatment.</li><li>The treatment is solely for your own use</li><li>You have answered all the above questions accurately and truthfully. You understand our prescribers take your answers in good faith and base their prescribing decisions accordingly, and that incorrect information can be hazardous to your health.</li></ul>", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
+
+<!--         { type: "stop-conditional", text: "Have you experienced any serious health issues recently?", subtitle: "If Yes, you must stop and contact your doctor.", answer: null, isAnswered: false, showError: false },-->
+
+<!--          { type: "conditional", text: "Are there any other health/medical details you feel we should know?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },-->
+<!--          { type: "yes-no", text: "Are you a smoker?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false },-->
+<!--          { type: "yes-no", text: "Are you a smoker2?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false }-->
+    ],
+    get answeredCount() {
+        return this.questions.filter((q) => q.isAnswered).length;
+    },
+   isEnabled(index) {
+        if (index === 0) return true;
+        const stopConditionIndex = this.questions.findIndex(
+            (q) => (q.type === "stop-conditional" && q.answer === "Yes") ||
+                   (q.type === "stop-on-no" && q.answer === "No")
+        );
+        if (stopConditionIndex !== -1 && stopConditionIndex < index) return false;
+        return this.questions[index - 1].isAnswered;
+    },
+    updateAnswer(index) {
+        const question = this.questions[index];
+       if (question.type === "radio" || question.type === "select" || question.type === "text" || question.type === "yes-no") {
+            question.isAnswered = !!question.answer && question.answer.trim() !== "";
+        } else if (question.type === "stop-conditional") {
+            question.isAnswered = !!question.answer;
+            question.showError = question.answer === "Yes";
+        } else if (question.type === "stop-on-no") {
+            question.isAnswered = !!question.answer;
+            question.showError = question.answer === "No";
+        } else if (question.type === "select-group") {
+            this.validateDateOfBirth(index);
+        } else if (question.type === "conditional") {
+            question.isAnswered = question.answer === "No" || (question.answer === "Yes" && question.followUp.trim() !== "");
+        }
+    },
+    handleConditional(index, isYes) {
+    const question = this.questions[index];
+    question.followUpVisible = isYes;
+    question.isAnswered = !isYes || (isYes && question.followUp.trim() !== "");
+    },
+    validateDateOfBirth(index) {
+        const question = this.questions[index];
+        const { day, month, year } = question.answers;
+        if (!day || !month || !year) {
+            question.isAnswered = false;
+            question.isValid = true;
+            return;
+        }
+        const dateOfBirth = new Date(`${month} ${day}, ${year}`);
+        const ageCutoff = new Date();
+        ageCutoff.setFullYear(ageCutoff.getFullYear() - 18); // Установить дату 18 лет назад
+
+        question.isValid = dateOfBirth <= ageCutoff;
+        question.isAnswered = question.isValid; // Отметить вопрос как отвеченный только если дата валидна
+    }
+}'>
             <div class="py-16 md:py-10 my-auto">
                 <div class="container">
-                    <div class="row">
+                    <div class="row row--m0">
                         <div class="col-span-12">
                             <div class="flex flex-col max-w-[768px]">
                                 <h1 class="text-h2 mb-6 font-medium tracking-[-2.16px]">Free online prescription
@@ -115,106 +208,218 @@
                                     doctor can prescribe the treatment you need.</p>
                             </div>
                             <div class="flex flex-col">
-                                <div x-data='{
-                                    questions: [
-                                        { type: "radio", text: "What is your gender?", subtitle:"This refers to your biological gender.", options: ["Female", "Male"], answer: null, isAnswered: false },
-                                        { type: "conditional", text: "Вы любите путешествовать?", subtitle:"This refers to your biological gender.", answer: null, followUp: "", followUpVisible: false, isAnswered: false }
-                                    ],
-                                    get answeredCount() {
-                                        return this.questions.filter((q) => q.isAnswered).length;
-                                    },
-                                    isEnabled(index) {
-                                        if (index === 0) return true; // Первый вопрос всегда доступен
-                                        // Все последующие вопросы доступны, если предыдущий был отвечен
-                                        return this.questions[index - 1].isAnswered;
-                                    },
-                                    updateAnswer(index) {
-                                        const question = this.questions[index];
-                                        if (question.type === "radio" || question.type === "textarea") {
-                                            question.isAnswered = !!question.answer;
-                                        } else if (question.type === "conditional") {
-                                            question.isAnswered = question.answer === "Нет" || (question.answer === "Да" && question.followUp.trim() !== "");
-                                        }
-                                    },
-                                    handleConditional(index, isYes) {
-                                        const question = this.questions[index];
-                                        question.followUpVisible = isYes;
-                                        question.isAnswered = !isYes || (isYes && question.followUp.trim() !== "");
-                                    }
-                                }'
-                                     class="max-w-full w-full mx-auto mt-10 p-5 border rounded shadow-lg space-y-6">
-                                    <!-- Прогресс-бар и счётчик -->
+                                <div class="max-w-full w-full mt-10 space-y-6">
+                                    <!-- Прогресс-бар -->
                                     <div class="flex items-center justify-between mb-6">
                                         <div class="flex-1 flex space-x-1">
                                             <template x-for="index in questions.length" :key="index">
                                                 <div :class="{
-            'bg-blue-500': questions[index - 1].isAnswered,
-            'bg-gray-300': !questions[index - 1].isAnswered
-          }"
-                                                     class="flex-1 h-4 rounded"
-                                                ></div>
+                                                                'bg-secondary': questions[index - 1].isAnswered,
+                                                                'bg-light-blue-1': !questions[index - 1].isAnswered
+                                                            }" class="flex-1 h-4 rounded">
+                                                </div>
                                             </template>
                                         </div>
-                                        <div class="ml-4 text-gray-600 font-semibold">
+                                        <div class="ml-6 bg-secondary rounded-xl text-white font-semibold w-[61px] h-[48px] flex items-center justify-center md:hidden">
                                             <span x-text="answeredCount"></span>/<span x-text="questions.length"></span>
                                         </div>
                                     </div>
 
                                     <!-- Вопросы -->
-                                    <template x-for='(question, index) in questions' :key="question.id || index">
-                                        <div class="space-y-3">
-                                            <div>
-                                                <span class="text-lg font-semibold" x-text="question.text"></span>
-                                                <p x-text="question.subtitle"></p>
-                                            </div>
-                                            <fieldset :disabled="!isEnabled(index)" class="space-y-2">
-                                                <!-- Радио-кнопки -->
-                                                <template x-if="question.type === 'radio'">
-                                                    <div>
-                                                        <template x-for="option in question.options" :key="option">
-                                                            <label>
-                                                                <input type="radio" :name="'q' + index" :value="option"
-                                                                       x-model="question.answer"
-                                                                       @change="updateAnswer(index)" class="mr-2"/>
-                                                                <span x-text="option"></span>
-                                                            </label>
-                                                        </template>
-                                                    </div>
-                                                </template>
-
-                                                <!-- Условный текст -->
-                                                <template x-if="question.type === 'conditional'">
-                                                    <div>
-                                                        <label>
-                                                            <input type="radio" :name="'q' + index" value="Да"
-                                                                   x-model="question.answer"
-                                                                   @change="handleConditional(index, true)" class="mr-2"/>
-                                                            Да
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" :name="'q' + index" value="Нет"
-                                                                   x-model="question.answer"
-                                                                   @change="handleConditional(index, false)" class="mr-2"/>
-                                                            Нет
-                                                        </label>
-                                                        <div x-show="question.followUpVisible" class="mt-3">
-                                                        <textarea x-model="question.followUp"
-                                                                  @input="updateAnswer(index)"
-                                                                  class="w-full border rounded px-2 py-1"
-                                                                  rows="4"></textarea>
+                                    <div class="flex flex-col gap-y-5">
+                                        <template x-for='(question, index) in questions' :key="index">
+                                            <div :class="!isEnabled(index) ? 'disabled-bg' : ''" class="rounded-[20px] p-8 md:px-5 py-6 bg-white border border-dashed flex items-start relative xl:flex-col">
+                                                <div class="flex flex-col gap-y-3">
+                                                    <span class="text-h4 font-semibold md:text-h5" x-text="question.text"></span>
+                                                    <div class="text-main-text" x-html="question.subtitle"></div>
+                                                </div>
+                                                <fieldset :disabled="!isEnabled(index)" class="space-y-2 ml-auto max-w-[360px] w-full xl:max-w-full xl:mt-6">
+                                                    <!-- Радио-кнопки -->
+                                                    <template x-if="question.type === 'radio'">
+                                                        <div class="flex justify-end xl:justify-start gap-x-4">
+                                                            <template x-for="option in question.options" :key="option">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" :value="option"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="w-5 h-5 min-w-5 border-secondary" />
+                                                                    <span class="text-main-text md:text-base" x-text="option"></span>
+                                                                </label>
+                                                            </template>
                                                         </div>
-                                                    </div>
-                                                </template>
-                                            </fieldset>
+                                                    </template>
+
+                                                    <!-- Условный текст -->
+                                                    <template x-if="question.type === 'conditional'">
+                                                        <div class="flex flex-col gap-y-3 items-end xl:items-start">
+                                                            <div class="flex gap-x-4 md:gap-x-3 md:w-full">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:min-w-[60px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="handleConditional(index, true)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="handleConditional(index, false)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                            <div x-show="question.followUpVisible" class="w-full">
+                                                                <label>
+                                                                    <textarea x-model="question.followUp"
+                                                                              @input="updateAnswer(index)"
+                                                                              class="w-full border rounded p-4 bg-white border-light-blue-1 resize-none min-h-[112px]"
+                                                                              rows="4"
+                                                                              placeholder="Write more info here..."
+                                                                    ></textarea>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Select -->
+                                                    <template x-if="question.type === 'select'">
+                                                        <div class="flex justify-end xl:justify-start">
+                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100 md:text-base">
+                                                                <option value="">Select an option</option>
+                                                                <template x-for="option in question.options" :key="option">
+                                                                    <option :value="option" x-text="option"></option>
+                                                                </template>
+                                                            </select>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Группа Select -->
+                                                    <template x-if="question.type === 'select-group'">
+                                                        <div class="flex justify-end xl:justify-start gap-x-3 sm2:gap-x-0 sm2:gap-y-2 sm2:flex-col">
+                                                            <div class="md:flex-1">
+                                                                <label class="md:flex-1">
+                                                                    <select x-model="question.answers.day" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100 md:text-base md:w-full">
+                                                                        <option value="">Day</option>
+                                                                        <template x-for="day in question.options.day" :key="day">
+                                                                            <option :value="day" x-text="day"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                            <div class="md:flex-1">
+                                                                <label class="md:flex-1">
+                                                                    <select x-model="question.answers.month" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100 md:text-base md:w-full">
+                                                                        <option value="">Month</option>
+                                                                        <template x-for="month in question.options.month" :key="month">
+                                                                            <option :value="month" x-text="month"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                            <div class="md:flex-1">
+                                                                <label class="md:flex-1">
+                                                                    <select x-model="question.answers.year" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100 md:text-base md:w-full">
+                                                                        <option value="">Year</option>
+                                                                        <template x-for="year in question.options.year" :key="year">
+                                                                            <option :value="year" x-text="year"></option>
+                                                                        </template>
+                                                                    </select>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div x-show="!question.isValid" class="text-red-500 text-sm mt-2">You must be at least 18 years old.</div>
+                                                    </template>
+
+                                                    <!-- Текстовое поле -->
+                                                    <template x-if="question.type === 'text'">
+                                                        <div class="flex justify-end xl:justify-start">
+                                                            <input type="text" x-model="question.answer"
+                                                                   @input="updateAnswer(index)"
+                                                                   class="w-full border rounded p-4 bg-white border-light-blue-1 md:text-base"
+                                                                   placeholder="Provide more information here..." />
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Stop Conditional -->
+                                                    <template x-if="question.type === 'stop-conditional'">
+                                                        <div class="flex flex-col gap-y-3 items-end xl:items-start">
+                                                            <div class="flex gap-x-4 md:gap-x-3 md:w-full">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                            <div x-show="question.showError" class="mt-3 text-red-500" x-text="question.errorText"></div>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Yes-No -->
+                                                    <template x-if="question.type === 'yes-no'">
+                                                        <div class="flex flex-col gap-y-3 items-end xl:items-start">
+                                                            <div class="flex gap-x-4 md:gap-x-3 md:w-full">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Stop on No -->
+                                                    <template x-if="question.type === 'stop-on-no'">
+                                                        <div class="flex flex-col gap-y-3 items-end xl:items-start">
+                                                            <div class="flex gap-x-4 md:gap-x-3 md:w-full">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px] md:text-base md:flex-1">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                            <div x-show="question.showError" class="mt-3 text-red-500" x-text="question.errorText"></div>
+                                                        </div>
+                                                    </template>
+                                                </fieldset>
+                                            </div>
+                                        </template>
+                                        <div class="-z-10 opacity-0 h-0">
+                                            <label class="-z-10 opacity-0">
+                                                <input name="hiddenInput" type="text" value="">
+                                            </label>
+                                            <label class="-z-10 opacity-0" for="selectId1">
+                                                <select name="hiddenSelect" id="selectId1">
+                                                    <option :value="{}">null</option>
+                                                </select>
+                                            </label>
                                         </div>
-                                    </template>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="py-16 md:py-10 my-auto">
+            <div x-show="answeredCount === questions.length" class="py-16 md:py-10 my-auto">
                 <div class="container">
                     <div class="row">
                         <div class="col-span-12">
@@ -230,7 +435,8 @@
                                     <div class="grid grid-cols-2 gap-6 sm:gap-x-0 sm:gap-y-4">
                                         <div class="col-span-1 sm:col-span-2">
                                             <div class="flex w-full flex-col text-dark-blue-50-2">
-                                                <label for="textInputFirstName" class="w-fit text-none">First Name</label>
+                                                <label for="textInputFirstName" class="w-fit text-none">First
+                                                    Name</label>
                                                 <input id="textInputFirstName" type="text" required
                                                        class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                                        name="first name" placeholder="First Name"
@@ -239,7 +445,8 @@
                                         </div>
                                         <div class="col-span-1 sm:col-span-2">
                                             <div class="flex w-full flex-col text-dark-blue-50-2">
-                                                <label for="textInputSecondName" class="w-fit text-none">Second Name</label>
+                                                <label for="textInputSecondName" class="w-fit text-none">Second
+                                                    Name</label>
                                                 <input id="textInputSecondName" type="text" required
                                                        class="input w-full h-14 rounded-2xl border border-light-blue-2 bg-light-blue-2 p-4 text-base text-primary placeholder:text-dark-blue-50-2 focus-visible:outline-0 focus-visible:bg-light-blue-1  disabled:cursor-not-allowed disabled:opacity-75"
                                                        name="second name" placeholder="Second Name"
@@ -341,7 +548,8 @@
                                         <div class="relative flex items-center">
                                             <input id="checkbox1" type="checkbox" required
                                                    class="w-5 h-5 min-w-5 before:content[''] peer relative size-4 cursor-pointer appearance-none overflow-hidden rounded-full border border-slate-300 bg-slate-100 before:absolute before:inset-0 checked:border-secondary checked:before:bg-secondary focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slate-800 checked:focus:outline-secondary active:outline-offset-0 disabled:cursor-not-allowed"/>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                 aria-hidden="true"
                                                  stroke="currentColor" fill="none" stroke-width="4"
                                                  class="pointer-events-none invisible absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-slate-100 peer-checked:visible">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -355,7 +563,8 @@
                                         <div class="relative flex items-center">
                                             <input id="checkbox2" type="checkbox" required
                                                    class="w-5 h-5 min-w-5 before:content[''] peer relative size-4 cursor-pointer appearance-none overflow-hidden rounded-full border border-slate-300 bg-slate-100 before:absolute before:inset-0 checked:border-secondary checked:before:bg-secondary focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-slate-800 checked:focus:outline-secondary active:outline-offset-0 disabled:cursor-not-allowed"/>
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                 aria-hidden="true"
                                                  stroke="currentColor" fill="none" stroke-width="4"
                                                  class="pointer-events-none invisible absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 text-slate-100 peer-checked:visible">
                                                 <path stroke-linecap="round" stroke-linejoin="round"

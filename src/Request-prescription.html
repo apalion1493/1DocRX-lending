@@ -32,15 +32,15 @@
                                     </span>
                                     <span class="text-base text-primary">+1 (646) 755-9735</span>
                                 </a>
-                                <span @click="modalIsOpen = true"
-                                      class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
+                                <a href="Request-prescription.html"
+                                   class="group flex items-center border border-primary transition-all cursor-pointer py-[6px] pr-[6px] pl-4 bg-primary text-white font-medium text-base rounded-full w-max h-12"
                                 >Get Started Now
                                     <span class="ml-2 rounded-full bg-white overflow-hidden flex items-center justify-center w-9 h-9 relative">
                                         <span class="arrow absolute transition-transform duration-100 ease-in-out">
                                             <i class="arrow-right"></i>
                                         </span>
                                     </span>
-                                </span>
+                                </a>
                             </div>
                             <!-- Mobile Menu Button -->
                             <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
@@ -118,23 +118,37 @@
             isAnswered: false,
             isValid: true
         },
-        { type: "select", text: "What is your height (cm)?", subtitle: "Your height is important for the prescribers decision.", options: ["140cm", "150cm", "160cm", "165cm", "170cm", "175cm", "180cm", "185cm", "190cm", "195cm", "200cm", "other"], answer: null, isAnswered: false },
+        { type: "text", text: "What is your height (in cms)?", subtitle: "Your height is important for the prescribers decision.", answer: null, isAnswered: false },
+        { type: "text", text: "Please add your current weight (in kgs)", subtitle: "Please make sure to add your current weight. This may affect the prescribers decision.", answer: null, isAnswered: false },
         { type: "conditional", text: "Do you suffer from any allergies?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
          { type: "conditional", text: "Do you have any recent or past medical history of note?", subtitle: "If yes, please provide more information.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
          { type: "conditional", text: "Do you currently take any medication whatsoever?", subtitle: "Please list all your current prescription medication including any medication you buy over the counter.", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
-         { type: "text", text: "What is your full name?", subtitle: "Please provide your legal name.", answer: "", isAnswered: false }
+         { type: "conditional", text: "Is there a history of medical disorders within your family?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+         { type: "conditional", text: "Are there any other health/medical details you feel we should know?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+
+
+         { type: "stop-conditional", text: "Have you experienced any serious health issues recently?", subtitle: "If Yes, you must stop and contact your doctor.", answer: null, isAnswered: false, showError: false },
+
+          { type: "conditional", text: "Are there any other health/medical details you feel we should know?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
+          { type: "yes-no", text: "Are you a smoker?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false },
+          { type: "yes-no", text: "Are you a smoker2?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false }
     ],
     get answeredCount() {
         return this.questions.filter((q) => q.isAnswered).length;
     },
     isEnabled(index) {
         if (index === 0) return true;
+        const stopConditionIndex = this.questions.findIndex((q) => q.type === "stop-conditional" && q.answer === "Yes");
+        if (stopConditionIndex !== -1 && stopConditionIndex < index) return false;
         return this.questions[index - 1].isAnswered;
     },
     updateAnswer(index) {
         const question = this.questions[index];
-       if (question.type === "radio" || question.type === "select" || question.type === "text") {
+       if (question.type === "radio" || question.type === "select" || question.type === "text" || question.type === "yes-no") {
             question.isAnswered = !!question.answer && question.answer.trim() !== "";
+        } else if (question.type === "stop-conditional") {
+            question.isAnswered = !!question.answer;
+            question.showError = question.answer === "Yes";
         } else if (question.type === "select-group") {
             this.validateDateOfBirth(index);
         } else if (question.type === "conditional") {
@@ -204,11 +218,11 @@
                                                     <template x-if="question.type === 'radio'">
                                                         <div class="flex justify-end gap-x-4">
                                                             <template x-for="option in question.options" :key="option">
-                                                                <label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white">
                                                                     <input type="radio" :name="'q' + index" :value="option"
                                                                            x-model="question.answer"
-                                                                           @change="updateAnswer(index)" class="mr-2" />
-                                                                    <span x-text="option"></span>
+                                                                           @change="updateAnswer(index)" class="w-5 h-5 min-w-5 border-secondary" />
+                                                                    <span class="text-main-text" x-text="option"></span>
                                                                 </label>
                                                             </template>
                                                         </div>
@@ -218,16 +232,16 @@
                                                     <template x-if="question.type === 'conditional'">
                                                         <div class="flex flex-col gap-y-3 items-end">
                                                             <div class="flex gap-x-4">
-                                                                <label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
                                                                     <input type="radio" :name="'q' + index" value="Yes"
                                                                            x-model="question.answer"
-                                                                           @change="handleConditional(index, true)" class="mr-2" />
+                                                                           @change="handleConditional(index, true)" class="hidden" />
                                                                     Yes
                                                                 </label>
-                                                                <label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
                                                                     <input type="radio" :name="'q' + index" value="No"
                                                                            x-model="question.answer"
-                                                                           @change="handleConditional(index, false)" class="mr-2" />
+                                                                           @change="handleConditional(index, false)" class="hidden" />
                                                                     No
                                                                 </label>
                                                             </div>
@@ -247,7 +261,7 @@
                                                     <!-- Select -->
                                                     <template x-if="question.type === 'select'">
                                                         <div class="flex justify-end">
-                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-fit border rounded px-2 py-1">
+                                                            <select x-model="question.answer" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100">
                                                                 <option value="">Select an option</option>
                                                                 <template x-for="option in question.options" :key="option">
                                                                     <option :value="option" x-text="option"></option>
@@ -261,7 +275,7 @@
                                                         <div class="flex justify-end gap-x-3">
                                                             <div class="">
                                                                 <label>
-                                                                    <select x-model="question.answers.day" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                    <select x-model="question.answers.day" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100">
                                                                         <option value="">Day</option>
                                                                         <template x-for="day in question.options.day" :key="day">
                                                                             <option :value="day" x-text="day"></option>
@@ -271,7 +285,7 @@
                                                             </div>
                                                             <div>
                                                                 <label>
-                                                                    <select x-model="question.answers.month" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                    <select x-model="question.answers.month" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100">
                                                                         <option value="">Month</option>
                                                                         <template x-for="month in question.options.month" :key="month">
                                                                             <option :value="month" x-text="month"></option>
@@ -281,7 +295,7 @@
                                                             </div>
                                                             <div>
                                                                 <label>
-                                                                    <select x-model="question.answers.year" @change="updateAnswer(index)" class="border rounded px-2 py-1">
+                                                                    <select x-model="question.answers.year" @change="updateAnswer(index)" class="w-fit border border-light-blue-1 rounded-xl px-5 pr-9 py-3 bg-light-blue-2 text-dark-blue-100">
                                                                         <option value="">Year</option>
                                                                         <template x-for="year in question.options.year" :key="year">
                                                                             <option :value="year" x-text="year"></option>
@@ -298,8 +312,51 @@
                                                         <div class="flex justify-end">
                                                             <input type="text" x-model="question.answer"
                                                                    @input="updateAnswer(index)"
-                                                                   class="w-full border rounded px-2 py-1"
+                                                                   class="w-full border rounded p-4 bg-white border-light-blue-1"
                                                                    placeholder="Provide more information here..." />
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Stop Conditional -->
+                                                    <template x-if="question.type === 'stop-conditional'">
+                                                        <div class="flex flex-col gap-y-3 items-end">
+                                                            <div class="flex gap-x-4">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
+                                                            <div x-show="question.showError" class="mt-3 text-red-500">
+                                                                You must stop and contact your doctor.
+                                                            </div>
+                                                        </div>
+                                                    </template>
+
+                                                    <!-- Yes-No -->
+                                                    <template x-if="question.type === 'yes-no'">
+                                                        <div class="flex flex-col gap-y-3 items-end">
+                                                            <div class="flex gap-x-4">
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
+                                                                    <input type="radio" :name="'q' + index" value="Yes"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    Yes
+                                                                </label>
+                                                                <label class="bg-light-blue-2 px-5 py-3 text-dark-blue-100 rounded-xl border 2 border-light-blue-1 flex items-center justify-center gap-x-2 has-[:checked]:bg-secondary has-[:checked]:text-white min-w-[91px]">
+                                                                    <input type="radio" :name="'q' + index" value="No"
+                                                                           x-model="question.answer"
+                                                                           @change="updateAnswer(index)" class="hidden" />
+                                                                    No
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                     </template>
                                                 </fieldset>

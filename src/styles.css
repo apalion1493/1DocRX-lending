@@ -289,6 +289,17 @@ select.error {
     }
 }
 
+.common-text-style select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("images/icons/select-arrow.svg") no-repeat right center;
+    -ms-background-position-x: calc(100% - 10px);
+    background-position-x: calc(100% - 10px);
+    outline: none;
+    cursor: pointer;
+}
+
 .common-text-style p {
     font-size: 18px;
     font-style: normal;
@@ -404,13 +415,3 @@ input[type="radio"]:checked {
     background: white url("images/icons/radio-checked.svg") no-repeat center center;
 }
 
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url("images/icons/select-arrow.svg") no-repeat right center;
-    -ms-background-position-x: calc(100% - 10px);
-    background-position-x: calc(100% - 10px);
-    outline: none;
-    cursor: pointer;
-}

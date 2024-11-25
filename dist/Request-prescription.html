@@ -140,12 +140,6 @@
               { type: "stop-on-no", text: "Do you understand that you should take a multivitamin that contains vitamins D, E, and K and beta carotene? It should be taken once a day at least 2 hours before or after taking Orlistat (Xenical/Alli/Orlos) such as at bedtime.", subtitle: "", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
               { type: "conditional", text: "Is there anything else which you feel we should know about prior to you taking this medication?", subtitle: "", answer: null, followUp: "", followUpVisible: false, isAnswered: false },
                { type: "stop-on-no", text: "Do you agree to the following?", subtitle: "<ul><li>You will read the patient information leaflet supplied with your medication</li><li>You will contact us and inform your GP of your medication if you experience any side effects of treatment, if you start new medication or if your medical conditions change during treatment.</li><li>The treatment is solely for your own use</li><li>You have answered all the above questions accurately and truthfully. You understand our prescribers take your answers in good faith and base their prescribing decisions accordingly, and that incorrect information can be hazardous to your health.</li></ul>", answer: null, isAnswered: false, showError: false, errorText: "Sorry. Your answer means that you`ll be unable to continue with this questionnaire. Please contact us to discuss." },
-
-<!--         { type: "stop-conditional", text: "Have you experienced any serious health issues recently?", subtitle: "If Yes, you must stop and contact your doctor.", answer: null, isAnswered: false, showError: false },-->
-
-<!--          { type: "conditional", text: "Are there any other health/medical details you feel we should know?", subtitle: "If so, please provide more information", answer: null, followUp: "", followUpVisible: false, isAnswered: false },-->
-<!--          { type: "yes-no", text: "Are you a smoker?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false },-->
-<!--          { type: "yes-no", text: "Are you a smoker2?", subtitle: "This helps us understand your health profile.", answer: null, isAnswered: false }-->
     ],
     get answeredCount() {
         return this.questions.filter((q) => q.isAnswered).length;
@@ -167,7 +161,7 @@
             question.isAnswered = !!question.answer;
             question.showError = question.answer === "Yes";
         } else if (question.type === "stop-on-no") {
-            question.isAnswered = !!question.answer;
+            question.isAnswered = question.answer === "Yes";
             question.showError = question.answer === "No";
         } else if (question.type === "select-group") {
             this.validateDateOfBirth(index);
@@ -226,7 +220,7 @@
                                     </div>
 
                                     <!-- Вопросы -->
-                                    <div class="flex flex-col gap-y-5">
+                                    <div class="flex flex-col gap-y-5 questions-block">
                                         <template x-for='(question, index) in questions' :key="index">
                                             <div :class="!isEnabled(index) ? 'disabled-bg' : ''" class="rounded-[20px] p-8 md:px-5 py-6 bg-white border border-dashed flex items-start relative xl:flex-col">
                                                 <div class="flex flex-col gap-y-3">
